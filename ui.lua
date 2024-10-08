@@ -3583,12 +3583,12 @@ local script = G2L["cc"];
 		["Fire"] = "rbxassetid://96274652157241",
 		["OnClientEvent"] = "rbxassetid://133871620937064"
 	}
-	script.Parent.Main.group.Remotespy.Buttons.Blockargs:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Blockargs.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			getgenv().loggedremotes.blockedremotes["Args"][(selected.remote.UniqueId)..selected.method] = selected.args
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Clearlogs:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Clearlogs.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			for i,v in pairs(script.Parent.Main.group.Remotespy.Logs:GetChildren()) do
 				if v:IsA("TextButton") then
@@ -3602,52 +3602,52 @@ local script = G2L["cc"];
 			end
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Blockremote:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Blockremote.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			getgenv().loggedremotes.blockedremotes["All"][(selected.remote.UniqueId)..selected.method] = selected
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Checkcaller:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Checkcaller.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			getgenv().checkcaller = not getgenv().checkcaller
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Clearblocks:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Clearblocks.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			getgenv().loggedremotes.blockedremotes = {["All"]={},["Args"]={}}
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Clearexclusions:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Clearexclusions.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			getgenv().loggedremotes.ignoredremotes = {["All"]={},["Args"]={}}
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Copycode:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Copycode.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			toclipboard(codegenerator(selected))
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Copypath:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Copypath.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			toclipboard(selected.remote.Parent or "nil")
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Excluderemote:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Excluderemote.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			getgenv().loggedremotes.ignoredremotes["All"][(selected.remote.UniqueId)..selected.method] = selected
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Excludeargs:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Excludeargs.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			getgenv().loggedremotes.ignoredremotes["Args"][(selected.remote.UniqueId)..selected.method] = selected.args
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Excludeargs:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Excludeargs.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			getgenv().loggedremotes.ignoredremotes["Args"][(selected.remote.UniqueId)..selected.method] = selected.args
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Getfuncinfo:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Getfuncinfo.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			local func = selected.callingfunction
 			local funcinfo = selected:functioninfo()
@@ -3666,27 +3666,27 @@ local script = G2L["cc"];
 			return toclipboard("local functioninfo = "..tableenc(functioninfo))
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.GetScript:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.GetScript.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			return selected.sourcescript
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Runcode:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Runcode.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			loadstring(codegenerator(selected))
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Viewcode:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Viewcode.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			print("not implemented")
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Viewfuncinfo:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Viewfuncinfo.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			print("not implemented")
 		end
 	end)
-	script.Parent.Main.group.Remotespy.Buttons.Autoblock:Connect(function()
+	script.Parent.Main.group.Remotespy.Buttons.Autoblock.Activated:Connect(function()
 		if script.Parent.Main.group.Remotespy.Visible == true and selected then
 			print("not implemented")
 		end
