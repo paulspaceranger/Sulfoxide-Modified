@@ -7,7 +7,7 @@
  Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
 ]=]
 
--- Instances: 204 | Scripts: 3 | Modules: 3 | Tags: 0
+-- Instances: 204 | Scripts: 4 | Modules: 2 | Tags: 0
 local G2L = {};
 
 -- StarterGui.ScreenGui
@@ -1957,19 +1957,19 @@ G2L["c9"]["Transparency"] = 0.5;
 G2L["c9"]["Color"] = Color3.fromRGB(61, 61, 61);
 
 
--- StarterGui.ScreenGui.Remotespymain
-G2L["ca"] = Instance.new("ModuleScript", G2L["1"]);
-G2L["ca"]["Name"] = [[Remotespymain]];
-
-
 -- StarterGui.ScreenGui.Luatypeencode
-G2L["cb"] = Instance.new("ModuleScript", G2L["1"]);
-G2L["cb"]["Name"] = [[Luatypeencode]];
+G2L["ca"] = Instance.new("ModuleScript", G2L["1"]);
+G2L["ca"]["Name"] = [[Luatypeencode]];
 
 
 -- StarterGui.ScreenGui.LuaEncode
-G2L["cc"] = Instance.new("ModuleScript", G2L["1"]);
-G2L["cc"]["Name"] = [[LuaEncode]];
+G2L["cb"] = Instance.new("ModuleScript", G2L["1"]);
+G2L["cb"]["Name"] = [[LuaEncode]];
+
+
+-- StarterGui.ScreenGui.Remotespymain
+G2L["cc"] = Instance.new("LocalScript", G2L["1"]);
+G2L["cc"]["Name"] = [[Remotespymain]];
 
 
 -- Require G2L wrapper
@@ -1989,256 +1989,7 @@ end
 
 G2L_MODULES[G2L["ca"]] = {
 Closure = function()
-    local script = G2L["ca"];local getgenv = getgenv or function() return _G end
-local typeenc = require(script.Parent.Luatypeencode)
-local tableenc = require(script.Parent.LuaEncode)
-local function codegenerator(remote)
-	local output = ""
-	output = output.."local args = "..tableenc(remote.args, {Prettify=true}).."\n"
-	if remote.method~="OnClientEvent" and remote.method~="OnClientInvoke" then
-	if remote.remote.Parent == nil then
-		output = "function getNil(name,class) for _,v in next, getnilinstances()do if v.ClassName==class and v.Name==name then return v;end end end\n\n"..output.."getnil("..remote.remote.Name..", "..remote.remote.ClassName.."):"..remote.method.."(unpack(args))"
-		return output	
-		end
-		local fullname = remote.remote:GetFullName()
-			if game[fullname:split(".")[1]].ClassName == "Workspace" then
-			output = output.."workspace"
-		elseif game:GetService(game[fullname:split(".")[1]].ClassName) then
-			output = output.."game:GetService("..game[fullname:split(".")[1]].ClassName..")"
-		else
-			output = output.."game."..game[fullname:split(".")[1]]
-		end
-		output = output..string.sub(fullname, #fullname:split(".")[1], #fullname)..":"..remote.method.."(unpack(args))"
-	elseif remote.method == "OnClientEvent" then
-		if remote.remote.Parent == nil then
-			output = "function getNil(name,class) for _,v in next, getnilinstances()do if v.ClassName==class and v.Name==name then return v;end end end\n\n"..output.."firesignal(getnil("..remote.remote.Name..", "..remote.remote.ClassName.."),unpack(args))"
-			return output	
-		end
-		local fullname = remote.remote:GetFullName()
-		output = output.."firesignal("
-		if game[fullname:split(".")[1]].ClassName == "Workspace" then
-			output = output.."workspace"
-		elseif game:GetService(game[fullname:split(".")[1]].ClassName) then
-			output = output.."game:GetService("..game[fullname:split(".")[1]].ClassName..")"
-		else
-			output = output.."game."..game[fullname:split(".")[1]]
-		end
-		output = output..string.sub(fullname, #fullname:split(".")[1], #fullname)..",unpack(args))"
-	elseif remote.method == "OnClientInvoke" then
-		if remote.remote.Parent == nil then
-			output = "function getNil(name,class) for _,v in next, getnilinstances()do if v.ClassName==class and v.Name==name then return v;end end end\n".."local func = getcallbackvalue(getnil("..remote.remote.Name..", "..remote.remote.ClassName.."))\n"..output.."\nfunc(unpack(args))"
-			return output	
-		end
-		local fullname = remote.remote:GetFullName()
-		local output2 = output
-		output = "local func = getcallbackvalue("
-		if game[fullname:split(".")[1]].ClassName == "Workspace" then
-			output = output.."workspace"
-		elseif game:GetService(game[fullname:split(".")[1]].ClassName) then
-			output = output.."game:GetService("..game[fullname:split(".")[1]].ClassName..")"
-		else
-			output = output.."game."..game[fullname:split(".")[1]]
-		end
-		output = output..string.sub(fullname, #fullname:split(".")[1], #fullname)..")\n"..output2.."\nfunc(unpack(args))"
-	end
-	return output
-end
-local functions = {}
-getgenv().loggedremotes = {
-	blockedremotes = {["All"]={},["Args"]={}},
-	ignoredremotes = {["All"]={},["Args"]={}},
-}
-local selectedremote = nil
-local selected = nil
-local logexample = script.Parent.Main.group.Remotespy.Logs.examplelog
-logexample.Parent = nil
-local callexample = script.Parent.Main.group.Remotespy.Args.example
-local argexample = callexample.Frame
-local lastselectedlog
-local lastselectedcall
-argexample.Parent = nil
-callexample.Parent = nil
-getgenv().checkcaller = false
-local ids = {
-	["Invoke"] = "rbxassetid://104496650657465",
-	["OnClientInvoke"] = "rbxassetid://81620962510087",
-	["FireServer"] = "rbxassetid://107881214525428",
-	["InvokeServer"] = "rbxassetid://78888324456423",
-	["Fire"] = "rbxassetid://96274652157241",
-	["OnClientEvent"] = "rbxassetid://133871620937064"
-}
-script.Parent.Main.group.Remotespy.Buttons.Blockargs:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		getgenv().loggedremotes.blockedremotes["Args"][(selected.remote.UniqueId)..selected.method] = selected.args
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Clearlogs:Connect(function()
-if script.Parent.Main.group.Remotespy.Visible == true and selected then
-	for i,v in pairs(script.Parent.Main.group.Remotespy.Logs:GetChildren()) do
-		if v:IsA("TextButton") then
-			v:Destroy()
-		end
-	end
-		for i,v in pairs(getgenv().loggedremotes) do
-			if i~="blockedremotes" and i ~= "ignoredremotes" then
-				getgenv().loggedremotes[i] = nil
-			end	
-		end
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Blockremote:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		getgenv().loggedremotes.blockedremotes["All"][(selected.remote.UniqueId)..selected.method] = selected
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Checkcaller:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		getgenv().checkcaller = not getgenv().checkcaller
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Clearblocks:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		getgenv().loggedremotes.blockedremotes = {["All"]={},["Args"]={}}
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Clearexclusions:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		getgenv().loggedremotes.ignoredremotes = {["All"]={},["Args"]={}}
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Copycode:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		toclipboard(codegenerator(selected))
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Copypath:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		toclipboard(selected.remote.Parent or "nil")
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Excluderemote:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		getgenv().loggedremotes.ignoredremotes["All"][(selected.remote.UniqueId)..selected.method] = selected
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Excludeargs:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		getgenv().loggedremotes.ignoredremotes["Args"][(selected.remote.UniqueId)..selected.method] = selected.args
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Excludeargs:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		getgenv().loggedremotes.ignoredremotes["Args"][(selected.remote.UniqueId)..selected.method] = selected.args
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Getfuncinfo:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		local func = selected.callingfunction
-		local funcinfo = selected:functioninfo()
-		local callingscript = selected.sourcescript
-		local sourcescript = getfenv(func, "script")
-		local functioninfo = {
-			["script"] = 
-				{
-					["sourcescript"] = sourcescript,
-					["callingscript"] = callingscript
-				},
-			["info"] = funcinfo,
-			["upvalues"] = debug.getupvalues(func),
-			["constants"] = debug.getconstants(func)
-		}
-		return toclipboard("local functioninfo = "..tableenc(functioninfo))
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.GetScript:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		return selected.sourcescript
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Runcode:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		loadstring(codegenerator(selected))
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Viewcode:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		print("not implemented")
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Viewfuncinfo:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		print("not implemented")
-	end
-end)
-script.Parent.Main.group.Remotespy.Buttons.Autoblock:Connect(function()
-	if script.Parent.Main.group.Remotespy.Visible == true and selected then
-		print("not implemented")
-	end
-end)
-function addcall(remote)
-	if not getgenv().loggedremotes[remote.remote] then
-		local newlog = logexample:Clone()
-		getgenv().loggedremotes[(remote.remote.UniqueId)..remote.method] = {}
-		getgenv().loggedremotes[(remote.remote.UniqueId)..remote.method][tonumber(newlog.Frame.calls)+1] = remote
-		newlog.Frame.calls.Text = tostring(tonumber(newlog.Frame.calls)+1)--aggiungere icone	
-		newlog.Frame.name.Text = remote.name
-		newlog.Parent = script.Parent.Main.group.Remotespy.Logs
-		newlog.Name = (remote.remote.UniqueId)..remote.method
-		newlog.Frame.ImageLabel.Image = ids[remote.method]
-		newlog.Activated:Connect(function()
-			if lastselectedlog then lastselectedlog.Transparency = 0.87 end
-			newlog.BackgroundTransparency = 0.75
-			lastselectedlog = newlog
-			if remote.remote == selectedremote then 
-				return 
-			else
-				for i,v in pairs(script.Parent.Main.group.Remotespy.Args) do
-					v:Destroy()
-				end
-			end
-			for a,b in pairs(getgenv().loggedremotes[(remote.remote.UniqueId)..remote.method]) do
-				script.Parent.Main.group.Remotespy.Args.Title = "Call"..tostring(a)
-				local newcall = callexample:Clone()
-				newcall.Activated:Connect(function() selected = b end)
-				for i,v in pairs(b.args) do
-					local newarg = argexample:Clone()
-					newarg.Index = typeenc(i)
-					if typeof(v) == "table" then
-						newarg.Key.Text = tostring(v)
-					else
-						newarg.Key.Text = typeenc(v)
-					end
-				end
-			end
-			selectedremote = remote.remote
-		end)
-	else
-		local remotelog = script.Parent.Main.group.Remotespy.Logs[(remote.remote.UniqueId)..remote.method]
-		remotelog.Frame.calls.Text = tonumber(remotelog.Frame.calls.Text)+1
-		getgenv().loggedremotes[(remote.remote.UniqueId)..remote.method][tonumber(remotelog.Frame.calls.Text)] = remote
-		if remote.remote == selectedremote then
-			script.Parent.Main.group.Remotespy.Args.Title = "Call"..remotelog.Frame.calls.Text
-			local newcall = callexample:Clone()
-			newcall.Activated:Connect(function() if lastselectedcall then lastselectedcall.BackgroundTransparency = 1 end newcall.BackgroundTransparency = 0.95; lastselectedcall = newcall; selected = remote end) 
-			for i,v in pairs(remote.args) do
-				local newarg = argexample:Clone()
-				newarg.Index = typeenc(i)
-				if typeof(v) == "table" then
-					newarg.Key.Text = tostring(v)
-				else
-					newarg.Key.Text = typeenc(v)
-				end
-			end
-		end
-		
-	end
-end
-return addcall
-end;
-};
-G2L_MODULES[G2L["cb"]] = {
-Closure = function()
-    local script = G2L["cb"];-- LuaEncode - Optimal Table Serialization for Native Luau/Lua 5.1+
+    local script = G2L["ca"];-- LuaEncode - Optimal Table Serialization for Native Luau/Lua 5.1+
 -- Copyright (c) 2022-2023 Reggie <reggie@latte.to> | MIT License
 -- https://github.com/regginator/LuaEncode
 
@@ -2919,9 +2670,9 @@ end
 return LuaEncode
 end;
 };
-G2L_MODULES[G2L["cc"]] = {
+G2L_MODULES[G2L["cb"]] = {
 Closure = function()
-    local script = G2L["cc"];-- LuaEncode - Optimal Table Serialization for Native Luau/Lua 5.1+
+    local script = G2L["cb"];-- LuaEncode - Optimal Table Serialization for Native Luau/Lua 5.1+
 -- Copyright (c) 2022-2023 Reggie <reggie@latte.to> | MIT License
 -- https://github.com/regginator/LuaEncode
 
@@ -3751,5 +3502,254 @@ local script = G2L["ba"];
 	end)
 end;
 task.spawn(C_ba);
+-- StarterGui.ScreenGui.Remotespymain
+local function C_cc()
+local script = G2L["cc"];
+	local getgenv = getgenv or function() return _G end
+	local typeenc = require(script.Parent.Luatypeencode)
+	local tableenc = require(script.Parent.LuaEncode)
+	local function codegenerator(remote)
+		local output = ""
+		output = output.."local args = "..tableenc(remote.args, {Prettify=true}).."\n"
+		if remote.method~="OnClientEvent" and remote.method~="OnClientInvoke" then
+			if remote.remote.Parent == nil then
+				output = "function getNil(name,class) for _,v in next, getnilinstances()do if v.ClassName==class and v.Name==name then return v;end end end\n\n"..output.."getnil("..remote.remote.Name..", "..remote.remote.ClassName.."):"..remote.method.."(unpack(args))"
+				return output	
+			end
+			local fullname = remote.remote:GetFullName()
+			if game[fullname:split(".")[1]].ClassName == "Workspace" then
+				output = output.."workspace"
+			elseif game:GetService(game[fullname:split(".")[1]].ClassName) then
+				output = output.."game:GetService("..game[fullname:split(".")[1]].ClassName..")"
+			else
+				output = output.."game."..game[fullname:split(".")[1]]
+			end
+			output = output..string.sub(fullname, #fullname:split(".")[1], #fullname)..":"..remote.method.."(unpack(args))"
+		elseif remote.method == "OnClientEvent" then
+			if remote.remote.Parent == nil then
+				output = "function getNil(name,class) for _,v in next, getnilinstances()do if v.ClassName==class and v.Name==name then return v;end end end\n\n"..output.."firesignal(getnil("..remote.remote.Name..", "..remote.remote.ClassName.."),unpack(args))"
+				return output	
+			end
+			local fullname = remote.remote:GetFullName()
+			output = output.."firesignal("
+			if game[fullname:split(".")[1]].ClassName == "Workspace" then
+				output = output.."workspace"
+			elseif game:GetService(game[fullname:split(".")[1]].ClassName) then
+				output = output.."game:GetService("..game[fullname:split(".")[1]].ClassName..")"
+			else
+				output = output.."game."..game[fullname:split(".")[1]]
+			end
+			output = output..string.sub(fullname, #fullname:split(".")[1], #fullname)..",unpack(args))"
+		elseif remote.method == "OnClientInvoke" then
+			if remote.remote.Parent == nil then
+				output = "function getNil(name,class) for _,v in next, getnilinstances()do if v.ClassName==class and v.Name==name then return v;end end end\n".."local func = getcallbackvalue(getnil("..remote.remote.Name..", "..remote.remote.ClassName.."))\n"..output.."\nfunc(unpack(args))"
+				return output	
+			end
+			local fullname = remote.remote:GetFullName()
+			local output2 = output
+			output = "local func = getcallbackvalue("
+			if game[fullname:split(".")[1]].ClassName == "Workspace" then
+				output = output.."workspace"
+			elseif game:GetService(game[fullname:split(".")[1]].ClassName) then
+				output = output.."game:GetService("..game[fullname:split(".")[1]].ClassName..")"
+			else
+				output = output.."game."..game[fullname:split(".")[1]]
+			end
+			output = output..string.sub(fullname, #fullname:split(".")[1], #fullname)..")\n"..output2.."\nfunc(unpack(args))"
+		end
+		return output
+	end
+	local functions = {}
+	getgenv().loggedremotes = {
+		blockedremotes = {["All"]={},["Args"]={}},
+		ignoredremotes = {["All"]={},["Args"]={}},
+	}
+	local selectedremote = nil
+	local selected = nil
+	local logexample = script.Parent.Main.group.Remotespy.Logs.examplelog
+	logexample.Parent = nil
+	local callexample = script.Parent.Main.group.Remotespy.Args.example
+	local argexample = callexample.Frame
+	local lastselectedlog
+	local lastselectedcall
+	argexample.Parent = nil
+	callexample.Parent = nil
+	getgenv().checkcaller = false
+	local ids = {
+		["Invoke"] = "rbxassetid://104496650657465",
+		["OnClientInvoke"] = "rbxassetid://81620962510087",
+		["FireServer"] = "rbxassetid://107881214525428",
+		["InvokeServer"] = "rbxassetid://78888324456423",
+		["Fire"] = "rbxassetid://96274652157241",
+		["OnClientEvent"] = "rbxassetid://133871620937064"
+	}
+	script.Parent.Main.group.Remotespy.Buttons.Blockargs:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			getgenv().loggedremotes.blockedremotes["Args"][(selected.remote.UniqueId)..selected.method] = selected.args
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Clearlogs:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			for i,v in pairs(script.Parent.Main.group.Remotespy.Logs:GetChildren()) do
+				if v:IsA("TextButton") then
+					v:Destroy()
+				end
+			end
+			for i,v in pairs(getgenv().loggedremotes) do
+				if i~="blockedremotes" and i ~= "ignoredremotes" then
+					getgenv().loggedremotes[i] = nil
+				end	
+			end
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Blockremote:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			getgenv().loggedremotes.blockedremotes["All"][(selected.remote.UniqueId)..selected.method] = selected
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Checkcaller:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			getgenv().checkcaller = not getgenv().checkcaller
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Clearblocks:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			getgenv().loggedremotes.blockedremotes = {["All"]={},["Args"]={}}
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Clearexclusions:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			getgenv().loggedremotes.ignoredremotes = {["All"]={},["Args"]={}}
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Copycode:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			toclipboard(codegenerator(selected))
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Copypath:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			toclipboard(selected.remote.Parent or "nil")
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Excluderemote:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			getgenv().loggedremotes.ignoredremotes["All"][(selected.remote.UniqueId)..selected.method] = selected
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Excludeargs:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			getgenv().loggedremotes.ignoredremotes["Args"][(selected.remote.UniqueId)..selected.method] = selected.args
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Excludeargs:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			getgenv().loggedremotes.ignoredremotes["Args"][(selected.remote.UniqueId)..selected.method] = selected.args
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Getfuncinfo:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			local func = selected.callingfunction
+			local funcinfo = selected:functioninfo()
+			local callingscript = selected.sourcescript
+			local sourcescript = getfenv(func, "script")
+			local functioninfo = {
+				["script"] = 
+					{
+						["sourcescript"] = sourcescript,
+						["callingscript"] = callingscript
+					},
+				["info"] = funcinfo,
+				["upvalues"] = debug.getupvalues(func),
+				["constants"] = debug.getconstants(func)
+			}
+			return toclipboard("local functioninfo = "..tableenc(functioninfo))
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.GetScript:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			return selected.sourcescript
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Runcode:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			loadstring(codegenerator(selected))
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Viewcode:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			print("not implemented")
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Viewfuncinfo:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			print("not implemented")
+		end
+	end)
+	script.Parent.Main.group.Remotespy.Buttons.Autoblock:Connect(function()
+		if script.Parent.Main.group.Remotespy.Visible == true and selected then
+			print("not implemented")
+		end
+	end)
+	function addcall(remote)
+		if not getgenv().loggedremotes[remote.remote] then
+			local newlog = logexample:Clone()
+			getgenv().loggedremotes[(remote.remote.UniqueId)..remote.method] = {}
+			getgenv().loggedremotes[(remote.remote.UniqueId)..remote.method][tonumber(newlog.Frame.calls)+1] = remote
+			newlog.Frame.calls.Text = tostring(tonumber(newlog.Frame.calls)+1)--aggiungere icone	
+			newlog.Frame.name.Text = remote.name
+			newlog.Parent = script.Parent.Main.group.Remotespy.Logs
+			newlog.Name = (remote.remote.UniqueId)..remote.method
+			newlog.Frame.ImageLabel.Image = ids[remote.method]
+			newlog.Activated:Connect(function()
+				if lastselectedlog then lastselectedlog.Transparency = 0.87 end
+				newlog.BackgroundTransparency = 0.75
+				lastselectedlog = newlog
+				if remote.remote == selectedremote then 
+					return 
+				else
+					for i,v in pairs(script.Parent.Main.group.Remotespy.Args) do
+						v:Destroy()
+					end
+				end
+				for a,b in pairs(getgenv().loggedremotes[(remote.remote.UniqueId)..remote.method]) do
+					script.Parent.Main.group.Remotespy.Args.Title = "Call"..tostring(a)
+					local newcall = callexample:Clone()
+					newcall.Activated:Connect(function() selected = b end)
+					for i,v in pairs(b.args) do
+						local newarg = argexample:Clone()
+						newarg.Index = typeenc(i)
+						if typeof(v) == "table" then
+							newarg.Key.Text = tostring(v)
+						else
+							newarg.Key.Text = typeenc(v)
+						end
+					end
+				end
+				selectedremote = remote.remote
+			end)
+		else
+			local remotelog = script.Parent.Main.group.Remotespy.Logs[(remote.remote.UniqueId)..remote.method]
+			remotelog.Frame.calls.Text = tonumber(remotelog.Frame.calls.Text)+1
+			getgenv().loggedremotes[(remote.remote.UniqueId)..remote.method][tonumber(remotelog.Frame.calls.Text)] = remote
+			if remote.remote == selectedremote then
+				script.Parent.Main.group.Remotespy.Args.Title = "Call"..remotelog.Frame.calls.Text
+				local newcall = callexample:Clone()
+				newcall.Activated:Connect(function() if lastselectedcall then lastselectedcall.BackgroundTransparency = 1 end newcall.BackgroundTransparency = 0.95; lastselectedcall = newcall; selected = remote end) 
+				for i,v in pairs(remote.args) do
+					local newarg = argexample:Clone()
+					newarg.Index = typeenc(i)
+					if typeof(v) == "table" then
+						newarg.Key.Text = tostring(v)
+					else
+						newarg.Key.Text = typeenc(v)
+					end
+				end
+			end
+	
+		end
+	end
+end;
+task.spawn(C_cc);
 
 return G2L["1"], require;
