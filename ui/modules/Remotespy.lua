@@ -1,9 +1,8 @@
-local getgenv = getgenv or function() return _G end
+local ui = getgenv().ui
 local typeenc = customrequire(ui.Luatypeencode)
 local tableenc = customrequire(ui.LuaEncode)
 local rendercode = customrequire(ui.Main.group.Codeviewer.ide)
 local ThreadGetDebugId = game.GetDebugId
-local ui = getgenv().ui
 local function castnumtobool(num)
 	if num == 1 then
 		return true
