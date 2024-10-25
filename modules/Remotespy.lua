@@ -1,4 +1,4 @@
-local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/modules/Remotespy.lua"))
+local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/modules/Remotespy.lua"))()
 local function comparetables(t1,t2)
     local t1string = customrequire(ui.LuaEncode)(t1)
     local t2string = customrequire(ui.LuaEncode)(t2)
