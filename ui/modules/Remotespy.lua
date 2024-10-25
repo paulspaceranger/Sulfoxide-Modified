@@ -1,4 +1,5 @@
 local ui = getgenv().ui
+local customrequire = getgenv().customrequire
 local typeenc = customrequire(ui.Luatypeencode)
 local tableenc = customrequire(ui.LuaEncode)
 local rendercode = customrequire(ui.Main.group.Codeviewer.ide)
