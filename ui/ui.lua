@@ -2458,7 +2458,8 @@ end
 
 G2L_MODULES[G2L["bb"]] = {
 Closure = function()
-    local script = G2L["bb"];local textService = game.GetService(game,"TextService");
+    local script = G2L["bb"];
+	local textService = cloneref(game.GetService(game,"TextService"));
 
 -- ui
 local scrolling = script.Parent.ScrollingFrame;
@@ -2506,8 +2507,9 @@ function render(text)
 	linesLab.Font = textbox.Font;
 	linesLab.Text = text;
 	-- set CanvasSize
-	local canvas = textService.GetTextSize(textService, text, textbox.TextSize, textbox.Font, Vector2.new());
-	scrolling.CanvasSize = UDim2.new(0, canvas.X + textbox.TextSize + 24, 0, canvas.Y + textbox.TextSize);
+	local canvasX = textService.GetTextSize(textService, code, textbox.TextSize, textbox.Font, Vector2.new());
+	local canvasY = textService.GetTextSize(textService, text, textbox.TextSize, textbox.Font, Vector2.new());
+	scrolling.CanvasSize = UDim2.new(0, canvasX.X + textbox.TextSize + 24, 0, canvasY.Y + textbox.TextSize);
 end
 
 return render
