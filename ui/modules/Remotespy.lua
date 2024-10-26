@@ -194,6 +194,7 @@ ui.Main.group.Remotespy.Buttons.Getscript.Activated:Connect(function()
 	end
 end)
 ui.Main.group.Remotespy.Buttons.Runcode.Activated:Connect(function()
+	setthreadidentity(8)--can't access instance missing capability plugin shit (idk why lmao)
 	if ui.Main.group.Remotespy.Visible == true and selected then
 		loadstring(codegenerator(selected))()
 	end
