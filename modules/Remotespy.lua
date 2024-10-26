@@ -27,7 +27,7 @@ local old; old = hookmetamethod(game, "__namecall", newcclosure(function(self, .
     local callingscript = getcallingscript()
     local iscaller = checkcaller()
 if typeof(self) == "Instance" and method == "FireServer" or method == "InvokeServer" or method == "Fire" or method == "Invoke" then
-    setthreadidentity(7)
+    setthreadidentity(8)
     if getgenv().loggedremotes.blockedremotes["All"][self.GetDebugId(self)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(self.GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(self.GetDebugId(self))..method].args,args)) then
         return 
     elseif getgenv().loggedremotes.ignoredremotes["All"][(self.GetDebugId(self))..method] or (getgenv().loggedremotes.ignoredremotes["Args"][(self.GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(self.GetDebugId(self))..method].args,args)) or getgenv().iscaller and iscaller
@@ -36,6 +36,7 @@ if typeof(self) == "Instance" and method == "FireServer" or method == "InvokeSer
     end
     local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
     addcall(remote)
+    setthreadidentity(2)
     return old(self,...)
 end
     return old(self,...)
@@ -48,7 +49,7 @@ for i,v in pairs(getinstances()) do
             addcall(remote)
             return true, ...
         end)]]
-        v.OnClientEvent:Connect(function(...)--detected, will be replaced with hooksignal soon
+        v.OnClientEvent:Connect(function(...)
             local method = "OnClientEvent"
             if getgenv().loggedremotes.blockedremotes["All"][v.GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(v.GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(v.GetDebugId(v))..method].args,args)) then
                 return 
@@ -61,7 +62,8 @@ for i,v in pairs(getinstances()) do
         end)
     elseif v:IsA("RemoteFunction") then
         if getcallbackvalue and pcall(getcallbackvalue,v, "OnClientInvoke") then
-        local old; old = hookfunction(getcallbackvalue(v, "OnClientInvoke"), function(...)
+        local old; 
+        local _,old = pcall(hookfunction,getcallbackvalue(v, "OnClientInvoke"), function(...)
             local method = "OnClientInvoke"
             if getgenv().loggedremotes.blockedremotes["All"][v.GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(v.GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(v.GetDebugId(v))..method].args,args)) then
                 return 
@@ -71,6 +73,7 @@ for i,v in pairs(getinstances()) do
             end
             local remote = remoteclass.new(v, method, {...}, nil, nil)
             addcall(remote)
+            setthreadidentity(2)
             return old(...)
         end)
         end
@@ -94,6 +97,7 @@ local old; old = hookfunction(fireserver,newcclosure(function(self,...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
+            setthreadidentity(2)
             return old(self,...)
         end))
 local old; old = hookfunction(invokeserver,newcclosure(function(self,...)
@@ -110,6 +114,7 @@ local old; old = hookfunction(invokeserver,newcclosure(function(self,...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
+            setthreadidentity(2)
             return old(self,...)
         end))
 local old; old = hookfunction(fire,newcclosure(function(self,...)
@@ -126,6 +131,7 @@ local old; old = hookfunction(fire,newcclosure(function(self,...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
+            setthreadidentity(2)
             return old(self,...)
         end))
 local old; old = hookfunction(invoke,newcclosure(function(self,...)
@@ -142,6 +148,7 @@ local old; old = hookfunction(invoke,newcclosure(function(self,...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
+            setthreadidentity(2)
             return old(self,...)
         end))
 game.DescendantAdded:Connect(function(v)
@@ -159,8 +166,10 @@ if typeof(v) == "Instance" then
             addcall(remote)
         end)
     elseif v:IsA("RemoteFunction") then
+        task.wait(0.01)
         if getcallbackvalue and pcall(getcallbackvalue,v, "OnClientInvoke") then
-        local old; old = hookfunction(getcallbackvalue(v, "OnClientInvoke"), function(...)
+        local old; 
+        local _,old = pcall(hookfunction,getcallbackvalue(v, "OnClientInvoke"), function(...)
             local method = "OnClientInvoke"
             if getgenv().loggedremotes.blockedremotes["All"][v.GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(v.GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(v.GetDebugId(v))..method].args,args)) then
                 return 
@@ -170,9 +179,11 @@ if typeof(v) == "Instance" then
             end
             local remote = remoteclass.new(v, method, {...}, nil, nil)
             addcall(remote)
+            setthreadidentity(2)
             return old(...)
         end)
         end
 end
 end
 end)
+
