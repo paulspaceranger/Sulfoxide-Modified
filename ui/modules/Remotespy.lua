@@ -1,8 +1,7 @@
-local ui = getgenv().ui
-local customrequire = getgenv().customrequire
+local getgenv = getgenv or function() return _G end
 local typeenc = customrequire(ui.Luatypeencode)
 local tableenc = customrequire(ui.LuaEncode)
-local rendercode = customrequire(ui.Main.group.Codeviewer.ide)
+local rendercode = customrequire(ui.Main.group.Codeviewer.ide)	
 local ThreadGetDebugId = game.GetDebugId
 local function castnumtobool(num)
 	if num == 1 then
@@ -83,14 +82,15 @@ getgenv().loggedremotes = {
 local selectedremote = nil
 local selected = nil
 local logexample = ui.Main.group.Remotespy.Logs.examplelog
-ui.Main.group.Remotespy.Logs.examplelog.Parent = nil
+logexample.Parent = nil
 local callexample = ui.Main.group.Remotespy.Args.example
 local argexample = callexample.Frame
 local lastselectedlog
 local lastselectedcall
-ui.Main.group.Remotespy.Args.example.Frame.Parent = nil
-ui.Main.group.Remotespy.Args.example.Parent = nil
+argexample.Parent = nil
+callexample.Parent = nil
 getgenv().iscaller = false
+getgenv().autoblockenabled = false
 local ids = {
 	["Invoke"] = "rbxassetid://104496650657465",
 	["OnClientInvoke"] = "rbxassetid://81620962510087",
@@ -129,8 +129,13 @@ ui.Main.group.Remotespy.Buttons.Blockremote.Activated:Connect(function()
 	end
 end)
 ui.Main.group.Remotespy.Buttons.Checkcaller.Activated:Connect(function()
-	if ui.Main.group.Remotespy.Visible == true and selected then
+	if ui.Main.group.Remotespy.Visible == true then
 		getgenv().iscaller = not getgenv().iscaller
+		if getgenv().iscaller == true then
+			ui.Main.group.Remotespy.Buttons.Checkcaller.UIStroke.Color = Color3.fromRGB(101, 236, 10)
+		else
+			ui.Main.group.Remotespy.Buttons.Checkcaller.UIStroke.Color = Color3.fromRGB(35, 35, 35)
+		end
 	end
 end)
 ui.Main.group.Remotespy.Buttons.Clearblocks.Activated:Connect(function()
@@ -220,12 +225,17 @@ ui.Main.group.Remotespy.Buttons.Viewfuncinfo.Activated:Connect(function()
 	end
 end)
 ui.Main.group.Remotespy.Buttons.Autoblock.Activated:Connect(function()
-	if ui.Main.group.Remotespy.Visible == true and selected then
-		print("not implemented")
+	if ui.Main.group.Remotespy.Visible == true then
+		getgenv().autoblockenabled = not getgenv().autoblockenabled
+		if getgenv().autoblockenabled == true then
+			ui.Main.group.Remotespy.Buttons.Autoblock.UIStroke.Color = Color3.fromRGB(101, 236, 10)
+		else
+			ui.Main.group.Remotespy.Buttons.Autoblock.UIStroke.Color = Color3.fromRGB(35, 35, 35)
+		end
 	end
 end)
 function addcall(remote)
-	setthreadidentity(7)
+	setthreadidentity(3)
 	local remoteinstance = remote.remote
 	if not getgenv().loggedremotes[(ThreadGetDebugId(remoteinstance))..remote.method] then
 		local newlog = logexample.Clone(logexample)
@@ -238,7 +248,7 @@ function addcall(remote)
 		newlog.Frame.ImageLabel.Image = ids[remote.method]
 		newlog.Visible = not castnumtobool(ui.Main.group.Remotespy.Filters[remote.method].ImageLabel.ImageTransparency)
 		newlog.Activated:Connect(function()
-			setthreadidentity(7)
+			setthreadidentity(3)
 			if ui.Main.group.Remotespy.Visible == true then
 				if not remote.remote then
 					warn("Remote is nil")
@@ -259,7 +269,7 @@ function addcall(remote)
 					local newcall = callexample.Clone(callexample)
 					newcall.Parent = ui.Main.group.Remotespy.Args
 					newcall.Title.Text = "Call "..tostring(a)
-					newcall.Activated:Connect(function() setthreadidentity(7) if ui.Main.group.Remotespy.Visible == true then if lastselectedcall then InstanceHandlerInvoke(InstanceHandler, lastselectedcall.BackgroundTransparency, 1) end InstanceHandlerInvoke(InstanceHandler, newcall.BackgroundTransparency, 0.95); lastselectedcall = newcall; selected = remote end end)
+					newcall.Activated:Connect(function() setthreadidentity(3) if ui.Main.group.Remotespy.Visible == true then if lastselectedcall then lastselectedcall.BackgroundTransparency = 1 end newcall.BackgroundTransparency = 0.95; lastselectedcall = newcall; selected = remote end end)
 					if #remote.args == 0 then local new = argexample.Clone(argexample) new.Parent = newcall end
 					for i,v in pairs(b.args) do
 						local newarg = argexample.Clone(argexample)
@@ -284,7 +294,7 @@ function addcall(remote)
 			local newcall = callexample.Clone(callexample)
 			newcall.Parent = ui.Main.group.Remotespy.Args
 			newcall.Title.Text = "Call "..remotelog.Frame.calls.Text
-			newcall.Activated:Connect(function() setthreadidentity(7) if ui.Main.group.Remotespy.Visible == true then if lastselectedcall then InstanceHandlerInvoke(InstanceHandler, lastselectedcall.BackgroundTransparency, 1) end InstanceHandlerInvoke(InstanceHandler, newcall.BackgroundTransparency, 0.95); lastselectedcall = newcall; selected = remote end end) 
+			newcall.Activated:Connect(function() setthreadidentity(3) if ui.Main.group.Remotespy.Visible == true then if lastselectedcall then lastselectedcall.BackgroundTransparency = 1 end newcall.BackgroundTransparency = 0.95; lastselectedcall = newcall; selected = remote end end) 
 			if #remote.args == 0 then local new = argexample:Clone() new.Parent = newcall end
 			for i,v in pairs(remote.args) do
 				local newarg = argexample.Clone(argexample)
