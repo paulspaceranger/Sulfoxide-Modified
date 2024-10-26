@@ -246,7 +246,7 @@ function addcall(remote)
 		newlog.Parent = ui.Main.group.Remotespy.Logs
 		newlog.Name = (ThreadGetDebugId(remoteinstance))..remote.method
 		newlog.Frame.ImageLabel.Image = ids[remote.method]
-		newlog.Visible = not castnumtobool(ui.Main.group.Remotespy.Filters[remote.method].ImageLabel.ImageTransparency)
+		newlog.Visible = not castnumtobool(ui.Main.group.Remotespy.Filters[remote.method].Frame.ImageLabel.ImageTransparency)
 		newlog.Activated:Connect(function()
 			setthreadidentity(3)
 			if ui.Main.group.Remotespy.Visible == true then
