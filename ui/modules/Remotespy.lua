@@ -194,7 +194,7 @@ ui.Main.group.Remotespy.Buttons.Getscript.Activated:Connect(function()
 	end
 end)
 ui.Main.group.Remotespy.Buttons.Runcode.Activated:Connect(function()
-	setthreadidentity(8)--can't access instance missing capability plugin shit (idk why lmao)
+	setthreadidentity(8)--idk why but i'm getting errors not sure why
 	if ui.Main.group.Remotespy.Visible == true and selected then
 		loadstring(codegenerator(selected))()
 	end
@@ -241,6 +241,7 @@ function addcall(remote)
 	if not getgenv().loggedremotes[(ThreadGetDebugId(remoteinstance))..remote.method] then
 		local newlog = logexample.Clone(logexample)
 		getgenv().loggedremotes[(ThreadGetDebugId(remoteinstance))..remote.method] = {}
+		getgenv().loggedremotes[(ThreadGetDebugId(remoteinstance))..remote.method].lastcall = tick()
 		getgenv().loggedremotes[(ThreadGetDebugId(remoteinstance))..remote.method][tonumber(newlog.Frame.calls.Text)+1] = remote
 		newlog.Frame.calls.Text = "1"
 		newlog.Frame.name.Text = remoteinstance.Name
@@ -267,6 +268,7 @@ function addcall(remote)
 					end
 				end
 				for a,b in pairs(getgenv().loggedremotes[(ThreadGetDebugId(remoteinstance))..remote.method]) do
+					if a ~= "lastcall" then
 					local newcall = callexample.Clone(callexample)
 					newcall.Parent = ui.Main.group.Remotespy.Args
 					newcall.Title.Text = "Call "..tostring(a)
@@ -285,8 +287,14 @@ function addcall(remote)
 				end
 				selectedremote = remote
 			end
+			end
 		end)
 	else
+		if getgenv().autoblockenabled and 0.5 > tick()-getgenv().loggedremotes[(ThreadGetDebugId(remoteinstance))..remote.method].lastcall then 
+			return
+		else
+			getgenv().loggedremotes[(ThreadGetDebugId(remoteinstance))..remote.method].lastcall = tick()
+		end
 		local remotelog = ui.Main.group.Remotespy.Logs[(ThreadGetDebugId(remoteinstance))..remote.method]
 		local newcalls = tostring(tonumber(remotelog.Frame.calls.Text)+1)
 		remotelog.Frame.calls.Text = newcalls
