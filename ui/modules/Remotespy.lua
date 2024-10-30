@@ -178,8 +178,8 @@ ui.Main.group.Remotespy.Buttons.Getfuncinfo.Activated:Connect(function()
 		local functioninfo = {
 			["script"] = 
 				{
-					["sourcescript"] = typeenc(sourcescript),
-					["callingscript"] = typeenc(callingscript)
+					["sourcescript"] = sourcescript,
+					["callingscript"] = callingscript
 				},
 			["info"] = funcinfo,
 			["upvalues"] = debug.getupvalues(func),
@@ -214,8 +214,8 @@ ui.Main.group.Remotespy.Buttons.Viewfuncinfo.Activated:Connect(function()
 		local functioninfo = {
 			["script"] = 
 				{
-					["sourcescript"] = typeenc(sourcescript),
-					["callingscript"] = typeenc(callingscript)
+					["sourcescript"] = sourcescript,
+					["callingscript"] = callingscript
 				},
 			["info"] = funcinfo,
 			["upvalues"] = debug.getupvalues(func),
