@@ -4281,7 +4281,11 @@ local EvaluateInstancePath do
 			local ObjectClassName = ObjectPointer.ClassName
 			local ObjectParent = ObjectPointer.Parent
 
-			if ObjectParent == game and IsService(ObjectPointer) then
+			if ObjectPointer == game:GetService("Players").LocalPlayer.Character then
+				return 'game:GetService("Players").LocalPlayer.Character'..Path
+			elseif ObjectPointer == game:GetService("Players").LocalPlayer then
+				Path = ".LocalPlayer"..Path
+			elseif ObjectParent == game and IsService(ObjectPointer) then
 				-- ^^ Then we'll use GetService directly, since it's actually a service under the DataModel
 
 				Path = ":GetService(" .. SerializeString(ObjectClassName) .. ")" .. Path
