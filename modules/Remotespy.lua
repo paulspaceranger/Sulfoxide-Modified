@@ -63,7 +63,7 @@ for i,v in pairs(getinstances()) do
     elseif v:IsA("RemoteFunction") then
         if getcallbackvalue and pcall(getcallbackvalue,v, "OnClientInvoke") then
         local old; 
-        local _,old = pcall(hookfunction,getcallbackvalue(v, "OnClientInvoke"), function(...)
+        local _,old = pcall(hookfunction,getcallbackvalue(v, "OnClientInvoke"), newcclosure(function(...)
             local method = "OnClientInvoke"
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method].args,args)) then
                 return 
@@ -75,7 +75,7 @@ for i,v in pairs(getinstances()) do
             addcall(remote)
             setthreadidentity(2)
             return old(...)
-        end)
+        end))
         end
 end
 end
@@ -171,7 +171,7 @@ if typeof(v) == "Instance" then
         task.wait(0.01)
         if getcallbackvalue and pcall(getcallbackvalue,v, "OnClientInvoke") then
         local old; 
-        local _,old = pcall(hookfunction,getcallbackvalue(v, "OnClientInvoke"), function(...)
+        local _,old = pcall(hookfunction,getcallbackvalue(v, "OnClientInvoke"), newcclosure(function(...)
             local method = "OnClientInvoke"
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method].args,args)) then
                 return 
@@ -183,7 +183,7 @@ if typeof(v) == "Instance" then
             addcall(remote)
             setthreadidentity(2)
             return old(...)
-        end)
+        end))
         end
 end
 end
