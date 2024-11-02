@@ -12,18 +12,12 @@ local class = {}
 class.remote, class.method, class.args, class.sourcescript, class.callingfunction = remote, method, args, sourcescript, callingfunction
 return setmetatable(class, remoteclass)
 end
-function remoteclass:getfunc()
-    return self.callingfunction
-end
 function remoteclass:functioninfo()
     if self.callingfunction == nil then
         warn("failed to get callingfunction, can't get function's info")
         return {}
     end
 return debug.getinfo(self.callingfunction)--convert info to string later
-end
-function remoteclass:getscript()
-return self.sourcescript
 end
 local GetDebugId = game.GetDebugId
 local old; old = hookmetamethod(game, "__namecall", newcclosure(function(...)
@@ -123,7 +117,7 @@ local old; old = hookfunction(invokeserver,newcclosure(function(...)
             setthreadidentity(2)
             return old(...)
         end))
-local old; old = hookfunction(fire,newcclosure(function(self,...)
+local old; old = hookfunction(fire,newcclosure(function(...)
             local self = ...
             local args = {select(2,...)}
             local callingscript = getcallingscript()
@@ -141,7 +135,7 @@ local old; old = hookfunction(fire,newcclosure(function(self,...)
             setthreadidentity(2)
             return old(...)
         end))
-local old; old = hookfunction(invoke,newcclosure(function(self,...)
+local old; old = hookfunction(invoke,newcclosure(function(...)
             local self = ...
             local args = {select(2,...)}
             local callingscript = getcallingscript()
