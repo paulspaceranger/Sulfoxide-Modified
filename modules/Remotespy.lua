@@ -17,7 +17,7 @@ function remoteclass:functioninfo()
         warn("failed to get callingfunction, can't get function's info")
         return {}
     end
-return debug.getinfo(self.callingfunction)--convert info to string later
+return debug.getinfo(self.callingfunction)
 end
 local GetDebugId = game.GetDebugId
 local old; old = hookmetamethod(game, "__namecall", newcclosure(function(...)
@@ -27,6 +27,7 @@ local old; old = hookmetamethod(game, "__namecall", newcclosure(function(...)
     local callingscript = getcallingscript()
     local iscaller = checkcaller()
 if typeof(self) == "Instance" and string.gsub(method, "^%l", string.upper) == "FireServer" or method == "InvokeServer" or method == "Fire" or method == "Invoke" then
+    local oldid = getthreadidentity()
     setthreadidentity(8)
     if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(self)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method].args,args)) then
         return 
@@ -36,8 +37,7 @@ if typeof(self) == "Instance" and string.gsub(method, "^%l", string.upper) == "F
     end
     local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
     addcall(remote)
-    setthreadidentity(2)
-    return old(...)
+    setthreadidentity(oldid)
 end
     return old(...)
 end))
@@ -64,6 +64,9 @@ for i,v in pairs(getinstances()) do
         if getcallbackvalue and pcall(getcallbackvalue,v, "OnClientInvoke") then
         local old; 
         local _,old = pcall(hookfunction,getcallbackvalue(v, "OnClientInvoke"), newcclosure(function(...)
+            local oldid = getthreadidentity()
+            setthreadidentity(8)
+            local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/modules/Remotespy.lua"))()--upvalue exceeded fix
             local method = "OnClientInvoke"
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method].args,args)) then
                 return 
@@ -73,7 +76,7 @@ for i,v in pairs(getinstances()) do
             end
             local remote = remoteclass.new(v, method, {...}, nil, nil)
             addcall(remote)
-            setthreadidentity(2)
+            setthreadidentity(oldid)
             return old(...)
         end))
         end
@@ -89,6 +92,7 @@ local old; old = hookfunction(fireserver,newcclosure(function(...)
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
             local method = "FireServer"
+            local oldid = getthreadidentity()
             setthreadidentity(8)
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(self)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method].args,args)) then
                 return 
@@ -98,13 +102,14 @@ local old; old = hookfunction(fireserver,newcclosure(function(...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
-            setthreadidentity(2)
+            setthreadidentity(oldid)
             return old(...)
         end))
 local old; old = hookfunction(invokeserver,newcclosure(function(...)
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
             local method = "InvokeServer"
+            local oldid = getthreadidentity()
             setthreadidentity(8)
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(self)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method].args,args)) then
                 return 
@@ -114,7 +119,7 @@ local old; old = hookfunction(invokeserver,newcclosure(function(...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
-            setthreadidentity(2)
+            setthreadidentity(oldid)
             return old(...)
         end))
 local old; old = hookfunction(fire,newcclosure(function(...)
@@ -123,6 +128,7 @@ local old; old = hookfunction(fire,newcclosure(function(...)
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
             local method = "Fire"
+            local oldid = getthreadidentity()
             setthreadidentity(8)
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(self)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method].args,args)) then
                 return 
@@ -132,7 +138,7 @@ local old; old = hookfunction(fire,newcclosure(function(...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
-            setthreadidentity(2)
+            setthreadidentity(oldid)
             return old(...)
         end))
 local old; old = hookfunction(invoke,newcclosure(function(...)
@@ -141,6 +147,7 @@ local old; old = hookfunction(invoke,newcclosure(function(...)
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
             local method = "Invoke"
+            local oldid = getthreadidentity()
             setthreadidentity(8)
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(self)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method].args,args)) then
                 return 
@@ -150,7 +157,7 @@ local old; old = hookfunction(invoke,newcclosure(function(...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
-            setthreadidentity(2)
+            setthreadidentity(oldid)
             return old(...)
         end))
 game.DescendantAdded:Connect(function(v)
@@ -172,6 +179,9 @@ if typeof(v) == "Instance" then
         if getcallbackvalue and pcall(getcallbackvalue,v, "OnClientInvoke") then
         local old; 
         local _,old = pcall(hookfunction,getcallbackvalue(v, "OnClientInvoke"), newcclosure(function(...)
+            local oldid = getthreadidentity()
+            setthreadidentity(8)
+            local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/modules/Remotespy.lua"))()--upvalue exceeded fix
             local method = "OnClientInvoke"
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method].args,args)) then
                 return 
@@ -181,7 +191,7 @@ if typeof(v) == "Instance" then
             end
             local remote = remoteclass.new(v, method, {...}, nil, function() end)
             addcall(remote)
-            setthreadidentity(2)
+            setthreadidentity(oldid)
             return old(...)
         end))
         end
