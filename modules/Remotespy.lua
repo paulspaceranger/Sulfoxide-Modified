@@ -61,8 +61,6 @@ for i,v in pairs(getinstances()) do
             addcall(remote)
         end)
     elseif v:IsA("RemoteFunction") then
-        print("got RF"..v.Name)
-        pcall(getcallbackvalue,v, "OnClientInvoke")
         if getcallbackvalue and pcall(getcallbackvalue,v, "OnClientInvoke") then
         local old; 
         local _,old = pcall(hookfunction,getcallbackvalue(v, "OnClientInvoke"), newcclosure(function(...)
