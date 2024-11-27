@@ -79,6 +79,8 @@ for i,v in pairs(getinstances()) do
             setthreadidentity(oldid)
             return old(...)
         end))
+        else
+            print(pcall(getcallbackvalue,v, "OnClientInvoke"))
         end
 end
 end
@@ -194,6 +196,8 @@ if typeof(v) == "Instance" then
             setthreadidentity(oldid)
             return old(...)
         end))
+                else
+                    print(pcall(getcallbackvalue,v, "OnClientInvoke"))
         end
 end
 end
