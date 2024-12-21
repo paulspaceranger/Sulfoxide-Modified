@@ -106,6 +106,7 @@ local old; old = hookfunction(fireserver,newcclosure(function(...)
             return old(...)
         end))
 local old; old = hookfunction(invokeserver,newcclosure(function(...)
+            local self = ...
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
             local method = "InvokeServer"
