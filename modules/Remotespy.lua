@@ -94,9 +94,9 @@ local old; old = hookfunction(fireserver,newcclosure(function(...)
             local method = "FireServer"
             local oldid = getthreadidentity()
             setthreadidentity(8)
-            if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(self)..method] --[[or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method].args,args))]] then
+            if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(self)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method].args,args)) then
                 return 
-            elseif getgenv().loggedremotes.ignoredremotes["All"][(GetDebugId(self))..method] --or (getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method].args,args)) or getgenv().iscaller and iscaller i commented becayse it's dtc idk why
+            elseif getgenv().loggedremotes.ignoredremotes["All"][(GetDebugId(self))..method] or (getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method].args,args)) or getgenv().iscaller and iscaller i commented becayse it's dtc idk why
                 then 
                 return old(...)
             end
@@ -113,9 +113,9 @@ local old; old = hookfunction(invokeserver,newcclosure(function(...)
             local method = "InvokeServer"
             local oldid = getthreadidentity()
             setthreadidentity(8)
-            if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(self)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method].args,args)) then
+            if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(self)..method] --[[or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method].args,args))]] then
                 return 
-            elseif getgenv().loggedremotes.ignoredremotes["All"][(GetDebugId(self))..method] or (getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method].args,args)) or getgenv().iscaller and iscaller
+            elseif getgenv().loggedremotes.ignoredremotes["All"][(GetDebugId(self))..method] --or (getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method].args,args)) or getgenv().iscaller and iscaller i commented becayse it's dtc idk why
                 then 
                 return old(...)
             end
