@@ -98,7 +98,7 @@ local old; old = hookfunction(fireserver,newcclosure(function(...)
                 return 
             elseif getgenv().loggedremotes.ignoredremotes["All"][(GetDebugId(self))..method] or (getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method].args,args)) or getgenv().iscaller and iscaller
                 then 
-                return old(self,...)
+                return old(...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
@@ -115,7 +115,7 @@ local old; old = hookfunction(invokeserver,newcclosure(function(...)
                 return 
             elseif getgenv().loggedremotes.ignoredremotes["All"][(GetDebugId(self))..method] or (getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method].args,args)) or getgenv().iscaller and iscaller
                 then 
-                return old(self,...)
+                return old(...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
@@ -134,7 +134,7 @@ local old; old = hookfunction(fire,newcclosure(function(...)
                 return 
             elseif getgenv().loggedremotes.ignoredremotes["All"][(GetDebugId(self))..method] or (getgenv().loggedremotes.ignoredremotes["Args"][(self.GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method].args,args)) or getgenv().iscaller and iscaller
                 then 
-                return old(self,...)
+                return old(...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
@@ -153,7 +153,7 @@ local old; old = hookfunction(invoke,newcclosure(function(...)
                 return 
             elseif getgenv().loggedremotes.ignoredremotes["All"][(GetDebugId(self))..method] or (getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(self))..method].args,args)) or getgenv().iscaller and iscaller
                 then 
-                return old(self,...)
+                return old(...)
             end
             local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
             addcall(remote)
