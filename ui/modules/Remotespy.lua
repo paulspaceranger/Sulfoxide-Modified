@@ -1,6 +1,6 @@
 local getgenv = getgenv or function() return _G end
-local typeenc = customrequire(ui.Luatypeencode)
-local tableenc = customrequire(ui.LuaEncode)
+local typeenc = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/modules/luaencode.lua"))()
+local tableenc = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/modules/luatypeencode.lua"))()
 local rendercode = customrequire(ui.Main.group.Codeviewer.ide)	
 local ThreadGetDebugId = game.GetDebugId
 local function castnumtobool(num)
