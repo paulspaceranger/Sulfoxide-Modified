@@ -9,6 +9,7 @@ if enterpressed then
         return
     end
     local mode = functionscannerpath.FiltersFrame.Name.ImageTransparency == 0 and "Name" or "Path"
+            print(functionscannerpath.FiltersFrame.Name.ImageTransparency == 0, functionscannerpath.FiltersFrame.Name.ImageTransparency, mode)
     for i,v in pairs(functionscannerpath.Results:GetChildren()) do
         if v.Name == "Func" then
             v:Destroy()
