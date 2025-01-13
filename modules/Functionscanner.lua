@@ -11,6 +11,7 @@ if mode == "Name" then
             newfuncframe.Protos.Text = tostring(#debug.getprotos(v))
             newfuncframe.Constants.Text = tostring(#debug.getconstants(v))
             newfuncframe.Upvalues.Text = tostring(#debug.getupvalues(v))
+            newfuncframe.ZIndex = 0
 
             local contextmenudata = {
                 {
