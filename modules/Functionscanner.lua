@@ -1,4 +1,5 @@
 local luaencode = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/modules/luaencode.lua"))()
+local luatypeenc = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/modules/luatypeencode.lua"))()
 local contextmenu = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/controls/Contextmenu.lua"))()
 local function searchfunctions(query, mode, funcframe)
 if mode == "Name" then
@@ -44,7 +45,7 @@ local constants = ]]..luaencode(reducedconstants, {Prettify = true})..[[
 
 local func = soaux.searchClosure(%s, %s, %s)]]
 local name = debug.getinfo(v).name or "Unnamed function"
-toclipboard(str:format(getfenv(v).script, tostring(debug.getinfo(v).name), "constants"))--again i'll change getfenv with getinfo because of people making their script's env nil
+toclipboard(str:format(luatypeenc(debug.getinfo(v).script), '"'..name..'"', "constants"))--again i'll change getfenv with getinfo because of people making their script's env nil
                     end
                 },
                 {
@@ -112,7 +113,8 @@ local soaux = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void23
 local constants = ]]..luaencode(reducedconstants, {Prettify = true})..[[
 
 local func = soaux.searchClosure(%s, %s, %s)]]
-toclipboard(str:format(debug.getinfo(v).script, debug.getinfo(v).name, "constants"))
+local name = debug.getinfo(v).name or "Unnamed function"
+toclipboard(str:format(luatypeenc(debug.getinfo(v).script), '"'..name..'"', "constants"))
                     end
                 },
                 {
