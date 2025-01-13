@@ -4,13 +4,18 @@ local userinputservice
 local Contextmenu = function(instance,content) --content structure example {{Text = "Decompile", Image = "rbxassetid", Func = function}}
 	instance.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton2 then
-			if instance:FindFirstChild("ContextMenu") then instance.ContextMenu:Destroy() end
+			for _, obj in pairs(instance.Parent:GetChildren()) do
+				if obj:FindFirstChild("ContextMenu") then 
+					obj.ContextMenu:Destroy()
+				end
+			end
 			local contextmenu = baseframe:Clone()
 			local mouseloc = uip:GetMouseLocation()
 			contextmenu.Visible = true
 			contextmenu.Position = UDim2.new(0, mouseloc.X-instance.AbsolutePosition.X, 0, mouseloc.Y-instance.AbsolutePosition.Y-60)
 			contextmenu.Parent = instance
-			contextmenu:WaitForChild("TextButton"):Destroy()
+			contextmenu:WaitForChild("TextButton"):Destroy()--destroy the button that comems with the contextmenu
+			contextmenu.ZIndex = 999 --renders above everything
 			for i,v in pairs(content) do
 				local button = baseframe.TextButton:Clone()
 				button.Parent = contextmenu
