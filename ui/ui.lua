@@ -7,11 +7,11 @@
  Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
 ]=]
 
--- Instances: 246 | Scripts: 4 | Modules: 6 | Tags: 0
+-- Instances: 293 | Scripts: 6 | Modules: 4 | Tags: 0
 local G2L = {};
 
 -- StarterGui.Sulfoxide
-G2L["1"] = Instance.new("ScreenGui", gethui());
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["DisplayOrder"] = 1923812938;
 G2L["1"]["Name"] = [[Sulfoxide]];
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
@@ -77,6 +77,7 @@ G2L["6"]["BackgroundTransparency"] = 1;
 
 -- StarterGui.Sulfoxide.Main.group.Remotespy
 G2L["7"] = Instance.new("ScrollingFrame", G2L["6"]);
+G2L["7"]["Visible"] = false;
 G2L["7"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
 G2L["7"]["BorderSizePixel"] = 0;
 G2L["7"]["CanvasSize"] = UDim2.new(0, 0, 0, 66);
@@ -90,7 +91,6 @@ G2L["7"]["Size"] = UDim2.new(1, 0, 1, 0);
 G2L["7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["7"]["ScrollBarThickness"] = 3;
 G2L["7"]["BackgroundTransparency"] = 1;
-G2L["7"]["Visible"] = false
 
 
 -- StarterGui.Sulfoxide.Main.group.Remotespy.Logs
@@ -1944,6 +1944,7 @@ G2L["c4"]["TextSize"] = 14;
 G2L["c4"]["TextYAlignment"] = Enum.TextYAlignment.Top;
 G2L["c4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["c4"]["FontFace"] = Font.new([[rbxasset://fonts/families/Inconsolata.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["c4"]["RichText"] = true;
 G2L["c4"]["Selectable"] = false;
 G2L["c4"]["AutomaticSize"] = Enum.AutomaticSize.X;
 G2L["c4"]["ClearTextOnFocus"] = false;
@@ -1954,491 +1955,988 @@ G2L["c4"]["Text"] = [[]];
 G2L["c4"]["BackgroundTransparency"] = 1;
 
 
--- StarterGui.Sulfoxide.Main.Tabs
-G2L["c5"] = Instance.new("Frame", G2L["4"]);
+-- StarterGui.Sulfoxide.Main.group.Functionscanner
+G2L["c5"] = Instance.new("ScrollingFrame", G2L["6"]);
+G2L["c5"]["Visible"] = false;
+G2L["c5"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
 G2L["c5"]["BorderSizePixel"] = 0;
+G2L["c5"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
+G2L["c5"]["TopImage"] = [[rbxassetid://6276641225]];
+G2L["c5"]["MidImage"] = [[rbxassetid://6889812721]];
 G2L["c5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["c5"]["ClipsDescendants"] = true;
-G2L["c5"]["Size"] = UDim2.new(0, 160, 1, -66);
-G2L["c5"]["Position"] = UDim2.new(0, 12, 0, 54);
+G2L["c5"]["Name"] = [[Functionscanner]];
+G2L["c5"]["ScrollBarImageTransparency"] = 0.95;
+G2L["c5"]["BottomImage"] = [[rbxassetid://6889812791]];
+G2L["c5"]["Size"] = UDim2.new(1, 0, 1, 0);
 G2L["c5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["c5"]["Name"] = [[Tabs]];
+G2L["c5"]["ScrollBarThickness"] = 3;
 G2L["c5"]["BackgroundTransparency"] = 1;
 
 
--- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Searchbar
 G2L["c6"] = Instance.new("ScrollingFrame", G2L["c5"]);
-G2L["c6"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+G2L["c6"]["Active"] = true;
 G2L["c6"]["BorderSizePixel"] = 0;
-G2L["c6"]["CanvasSize"] = UDim2.new(0, 0, 0, 72);
-G2L["c6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["c6"]["ScrollBarImageTransparency"] = 1;
-G2L["c6"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["c6"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
+G2L["c6"]["BackgroundColor3"] = Color3.fromRGB(121, 121, 121);
+G2L["c6"]["Name"] = [[Searchbar]];
+G2L["c6"]["Size"] = UDim2.new(0, 504, 0, 34);
 G2L["c6"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["c6"]["Position"] = UDim2.new(0.00595, 0, 0, 0);
 G2L["c6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["c6"]["ScrollBarThickness"] = 0;
-G2L["c6"]["BackgroundTransparency"] = 1;
+G2L["c6"]["ScrollBarThickness"] = 6;
+G2L["c6"]["BackgroundTransparency"] = 0.87;
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Searchbar.UIStroke
+G2L["c7"] = Instance.new("UIStroke", G2L["c6"]);
+G2L["c7"]["Transparency"] = 0.6;
+G2L["c7"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+G2L["c7"]["Color"] = Color3.fromRGB(36, 36, 36);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Searchbar.UICorner
+G2L["c8"] = Instance.new("UICorner", G2L["c6"]);
+G2L["c8"]["CornerRadius"] = UDim.new(0, 4);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Searchbar.Search
+G2L["c9"] = Instance.new("TextBox", G2L["c6"]);
+G2L["c9"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["c9"]["BorderSizePixel"] = 0;
+G2L["c9"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["c9"]["TextWrapped"] = true;
+G2L["c9"]["TextTruncate"] = Enum.TextTruncate.AtEnd;
+G2L["c9"]["TextSize"] = 18;
+G2L["c9"]["Name"] = [[Search]];
+G2L["c9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["c9"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["c9"]["PlaceholderText"] = [[Search functions...]];
+G2L["c9"]["Size"] = UDim2.new(0, 459, 0, 34);
+G2L["c9"]["Position"] = UDim2.new(0.01786, 0, 0, 0);
+G2L["c9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["c9"]["Text"] = [[]];
+G2L["c9"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Searchbar.Search.Frame
+G2L["ca"] = Instance.new("Frame", G2L["c9"]);
+G2L["ca"]["BorderSizePixel"] = 0;
+G2L["ca"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["ca"]["Size"] = UDim2.new(0, 468, 0, 34);
+G2L["ca"]["Position"] = UDim2.new(-0.01757, 0, 0, 0);
+G2L["ca"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["ca"]["BackgroundTransparency"] = 0.95;
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Searchbar.Search.Frame.UICorner
+G2L["cb"] = Instance.new("UICorner", G2L["ca"]);
+G2L["cb"]["CornerRadius"] = UDim.new(0, 4);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Searchbar.Search.Frame.UIStroke
+G2L["cc"] = Instance.new("UIStroke", G2L["ca"]);
+G2L["cc"]["Transparency"] = 0.6;
+G2L["cc"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+G2L["cc"]["Color"] = Color3.fromRGB(36, 36, 36);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Searchbar.Filters
+G2L["cd"] = Instance.new("ImageButton", G2L["c6"]);
+G2L["cd"]["BorderSizePixel"] = 0;
+G2L["cd"]["ScaleType"] = Enum.ScaleType.Crop;
+G2L["cd"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["cd"]["Image"] = [[rbxassetid://92940595725049]];
+G2L["cd"]["Size"] = UDim2.new(0, 35, 0, 34);
+G2L["cd"]["BackgroundTransparency"] = 1;
+G2L["cd"]["Name"] = [[Filters]];
+G2L["cd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["cd"]["Position"] = UDim2.new(0.93043, 0, 0, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Searchbar.Filters.LocalScript
+G2L["ce"] = Instance.new("LocalScript", G2L["cd"]);
+
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results
+G2L["cf"] = Instance.new("ScrollingFrame", G2L["c5"]);
+G2L["cf"]["Active"] = true;
+G2L["cf"]["BorderSizePixel"] = 0;
+G2L["cf"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
+G2L["cf"]["BackgroundColor3"] = Color3.fromRGB(121, 121, 121);
+G2L["cf"]["Name"] = [[Results]];
+G2L["cf"]["Size"] = UDim2.new(0, 504, 0, 257);
+G2L["cf"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["cf"]["Position"] = UDim2.new(0.00595, 0, 0.2087, 0);
+G2L["cf"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["cf"]["ScrollBarThickness"] = 6;
+G2L["cf"]["BackgroundTransparency"] = 0.87;
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.UIStroke
+G2L["d0"] = Instance.new("UIStroke", G2L["cf"]);
+G2L["d0"]["Transparency"] = 0.6;
+G2L["d0"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+G2L["d0"]["Color"] = Color3.fromRGB(36, 36, 36);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.UICorner
+G2L["d1"] = Instance.new("UICorner", G2L["cf"]);
+G2L["d1"]["CornerRadius"] = UDim.new(0, 4);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func
+G2L["d2"] = Instance.new("Frame", G2L["cf"]);
+G2L["d2"]["BorderSizePixel"] = 0;
+G2L["d2"]["BackgroundColor3"] = Color3.fromRGB(23, 23, 23);
+G2L["d2"]["Size"] = UDim2.new(0, 502, 0, 34);
+G2L["d2"]["Position"] = UDim2.new(0.001, 0, 0, 1);
+G2L["d2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["d2"]["Name"] = [[Func]];
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.Icon
+G2L["d3"] = Instance.new("ImageLabel", G2L["d2"]);
+G2L["d3"]["BorderSizePixel"] = 0;
+G2L["d3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d3"]["Image"] = [[rbxassetid://91967014423596]];
+G2L["d3"]["Size"] = UDim2.new(0, 19, 0, 19);
+G2L["d3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["d3"]["BackgroundTransparency"] = 1;
+G2L["d3"]["Name"] = [[Icon]];
+G2L["d3"]["Position"] = UDim2.new(0.01577, 0, 0.20588, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.Name
+G2L["d4"] = Instance.new("TextLabel", G2L["d2"]);
+G2L["d4"]["BorderSizePixel"] = 0;
+G2L["d4"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["d4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d4"]["TextSize"] = 15;
+G2L["d4"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["d4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d4"]["BackgroundTransparency"] = 1;
+G2L["d4"]["Size"] = UDim2.new(0, 270, 0, 34);
+G2L["d4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["d4"]["Text"] = [[Unnamed function]];
+G2L["d4"]["Name"] = [[Name]];
+G2L["d4"]["Position"] = UDim2.new(0.06759, 0, 0, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.UICorner
+G2L["d5"] = Instance.new("UICorner", G2L["d2"]);
+G2L["d5"]["CornerRadius"] = UDim.new(0, 4);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.UIStroke
+G2L["d6"] = Instance.new("UIStroke", G2L["d2"]);
+
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.Protos
+G2L["d7"] = Instance.new("TextLabel", G2L["d2"]);
+G2L["d7"]["BorderSizePixel"] = 0;
+G2L["d7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d7"]["TextSize"] = 14;
+G2L["d7"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["d7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d7"]["BackgroundTransparency"] = 1;
+G2L["d7"]["Size"] = UDim2.new(0, 44, 0, 34);
+G2L["d7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["d7"]["Text"] = [[0]];
+G2L["d7"]["Name"] = [[Protos]];
+G2L["d7"]["Position"] = UDim2.new(0.60359, 0, 0, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.Constants
+G2L["d8"] = Instance.new("TextLabel", G2L["d2"]);
+G2L["d8"]["BorderSizePixel"] = 0;
+G2L["d8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d8"]["TextSize"] = 14;
+G2L["d8"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["d8"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d8"]["BackgroundTransparency"] = 1;
+G2L["d8"]["Size"] = UDim2.new(0, 44, 0, 34);
+G2L["d8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["d8"]["Text"] = [[0]];
+G2L["d8"]["Name"] = [[Constants]];
+G2L["d8"]["Position"] = UDim2.new(0.73506, 0, 0, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.Upvalues
+G2L["d9"] = Instance.new("TextLabel", G2L["d2"]);
+G2L["d9"]["BorderSizePixel"] = 0;
+G2L["d9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d9"]["TextSize"] = 14;
+G2L["d9"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["d9"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d9"]["BackgroundTransparency"] = 1;
+G2L["d9"]["Size"] = UDim2.new(0, 44, 0, 34);
+G2L["d9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["d9"]["Text"] = [[0]];
+G2L["d9"]["Name"] = [[Upvalues]];
+G2L["d9"]["Position"] = UDim2.new(0.88247, 0, 0, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.UIListLayout
+G2L["da"] = Instance.new("UIListLayout", G2L["cf"]);
+G2L["da"]["Padding"] = UDim.new(0, 4);
+G2L["da"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.UIPadding
+G2L["db"] = Instance.new("UIPadding", G2L["cf"]);
+G2L["db"]["PaddingTop"] = UDim.new(0, 1);
+G2L["db"]["PaddingLeft"] = UDim.new(0, 1);
+G2L["db"]["PaddingBottom"] = UDim.new(0, 1);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.FiltersFrame
+G2L["dc"] = Instance.new("Frame", G2L["c5"]);
+G2L["dc"]["Visible"] = false;
+G2L["dc"]["ZIndex"] = 412;
+G2L["dc"]["BorderSizePixel"] = 0;
+G2L["dc"]["BackgroundColor3"] = Color3.fromRGB(17, 17, 17);
+G2L["dc"]["Size"] = UDim2.new(0, 100, 0, 67);
+G2L["dc"]["Position"] = UDim2.new(0.79029, 0, 0.09855, 0);
+G2L["dc"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["dc"]["Name"] = [[FiltersFrame]];
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.FiltersFrame.TextLabel
+G2L["dd"] = Instance.new("TextLabel", G2L["dc"]);
+G2L["dd"]["BorderSizePixel"] = 0;
+G2L["dd"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["dd"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["dd"]["TextSize"] = 16;
+G2L["dd"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["dd"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["dd"]["BackgroundTransparency"] = 1;
+G2L["dd"]["RichText"] = true;
+G2L["dd"]["Size"] = UDim2.new(0, 68, 0, 25);
+G2L["dd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["dd"]["Text"] = [[Name]];
+G2L["dd"]["Position"] = UDim2.new(0.32, 0, 0.03846, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.FiltersFrame.Name
+G2L["de"] = Instance.new("ImageButton", G2L["dc"]);
+G2L["de"]["BorderSizePixel"] = 0;
+G2L["de"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["de"]["Image"] = [[rbxassetid://71173545598185]];
+G2L["de"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["de"]["BackgroundTransparency"] = 0.95;
+G2L["de"]["Name"] = [[Name]];
+G2L["de"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["de"]["Position"] = UDim2.new(0.02, 0, 0.038, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.FiltersFrame.Name.UICorner
+G2L["df"] = Instance.new("UICorner", G2L["de"]);
+G2L["df"]["CornerRadius"] = UDim.new(0, 4);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.FiltersFrame.TextLabel
+G2L["e0"] = Instance.new("TextLabel", G2L["dc"]);
+G2L["e0"]["BorderSizePixel"] = 0;
+G2L["e0"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["e0"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e0"]["TextSize"] = 16;
+G2L["e0"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["e0"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e0"]["BackgroundTransparency"] = 1;
+G2L["e0"]["Size"] = UDim2.new(0, 68, 0, 25);
+G2L["e0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["e0"]["Text"] = [[Path]];
+G2L["e0"]["Position"] = UDim2.new(0.32, 0, 0.5664, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.FiltersFrame.Path
+G2L["e1"] = Instance.new("ImageButton", G2L["dc"]);
+G2L["e1"]["BorderSizePixel"] = 0;
+G2L["e1"]["ImageTransparency"] = 1;
+G2L["e1"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e1"]["Image"] = [[rbxassetid://71173545598185]];
+G2L["e1"]["Size"] = UDim2.new(0, 25, 0, 25);
+G2L["e1"]["BackgroundTransparency"] = 0.95;
+G2L["e1"]["Name"] = [[Path]];
+G2L["e1"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["e1"]["Position"] = UDim2.new(0.02, 0, 0.566, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.FiltersFrame.Path.UICorner
+G2L["e2"] = Instance.new("UICorner", G2L["e1"]);
+G2L["e2"]["CornerRadius"] = UDim.new(0, 4);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.FiltersFrame.LocalScript
+G2L["e3"] = Instance.new("LocalScript", G2L["dc"]);
+
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.FiltersFrame.UICorner
+G2L["e4"] = Instance.new("UICorner", G2L["dc"]);
+G2L["e4"]["CornerRadius"] = UDim.new(0, 4);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.FiltersFrame.UIStroke
+G2L["e5"] = Instance.new("UIStroke", G2L["dc"]);
+
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.TextLabel
+G2L["e6"] = Instance.new("TextLabel", G2L["c5"]);
+G2L["e6"]["BorderSizePixel"] = 0;
+G2L["e6"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["e6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e6"]["TextSize"] = 15;
+G2L["e6"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["e6"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e6"]["BackgroundTransparency"] = 1;
+G2L["e6"]["Size"] = UDim2.new(0, 123, 0, 30);
+G2L["e6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["e6"]["Text"] = [[Function Name]];
+G2L["e6"]["Position"] = UDim2.new(0.02136, 0, 0.11594, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.TextLabel
+G2L["e7"] = Instance.new("TextLabel", G2L["c5"]);
+G2L["e7"]["BorderSizePixel"] = 0;
+G2L["e7"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["e7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e7"]["TextSize"] = 15;
+G2L["e7"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["e7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e7"]["BackgroundTransparency"] = 1;
+G2L["e7"]["Size"] = UDim2.new(0, 44, 0, 30);
+G2L["e7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["e7"]["Text"] = [[Protos]];
+G2L["e7"]["Position"] = UDim2.new(0.59612, 0, 0.11594, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.TextLabel
+G2L["e8"] = Instance.new("TextLabel", G2L["c5"]);
+G2L["e8"]["BorderSizePixel"] = 0;
+G2L["e8"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["e8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e8"]["TextSize"] = 15;
+G2L["e8"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["e8"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e8"]["BackgroundTransparency"] = 1;
+G2L["e8"]["Size"] = UDim2.new(0, 66, 0, 30);
+G2L["e8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["e8"]["Text"] = [[Constants]];
+G2L["e8"]["Position"] = UDim2.new(0.70291, 0, 0.11594, 0);
+
+
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.TextLabel
+G2L["e9"] = Instance.new("TextLabel", G2L["c5"]);
+G2L["e9"]["BorderSizePixel"] = 0;
+G2L["e9"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["e9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e9"]["TextSize"] = 15;
+G2L["e9"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["e9"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e9"]["BackgroundTransparency"] = 1;
+G2L["e9"]["Size"] = UDim2.new(0, 66, 0, 30);
+G2L["e9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["e9"]["Text"] = [[Upvalues]];
+G2L["e9"]["Position"] = UDim2.new(0.85243, 0, 0.11594, 0);
+
+
+-- StarterGui.Sulfoxide.Main.Tabs
+G2L["ea"] = Instance.new("Frame", G2L["4"]);
+G2L["ea"]["BorderSizePixel"] = 0;
+G2L["ea"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["ea"]["ClipsDescendants"] = true;
+G2L["ea"]["Size"] = UDim2.new(0, 160, 1, -66);
+G2L["ea"]["Position"] = UDim2.new(0, 12, 0, 54);
+G2L["ea"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["ea"]["Name"] = [[Tabs]];
+G2L["ea"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame
+G2L["eb"] = Instance.new("ScrollingFrame", G2L["ea"]);
+G2L["eb"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+G2L["eb"]["BorderSizePixel"] = 0;
+G2L["eb"]["CanvasSize"] = UDim2.new(0, 0, 0, 72);
+G2L["eb"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["eb"]["ScrollBarImageTransparency"] = 1;
+G2L["eb"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["eb"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["eb"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["eb"]["ScrollBarThickness"] = 0;
+G2L["eb"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.UIListLayout
-G2L["c7"] = Instance.new("UIListLayout", G2L["c6"]);
-G2L["c7"]["Padding"] = UDim.new(0, 4);
-G2L["c7"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+G2L["ec"] = Instance.new("UIListLayout", G2L["eb"]);
+G2L["ec"]["Padding"] = UDim.new(0, 4);
+G2L["ec"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.LocalScript
-G2L["c8"] = Instance.new("LocalScript", G2L["c6"]);
+G2L["ed"] = Instance.new("LocalScript", G2L["eb"]);
 
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Remotespy
-G2L["c9"] = Instance.new("TextButton", G2L["c6"]);
-G2L["c9"]["AutoButtonColor"] = false;
-G2L["c9"]["TextSize"] = 14;
-G2L["c9"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["c9"]["BackgroundColor3"] = Color3.fromRGB(121, 121, 121);
-G2L["c9"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["c9"]["Size"] = UDim2.new(1, 0, 0, 34);
-G2L["c9"]["BackgroundTransparency"] = 1;
-G2L["c9"]["Name"] = [[Remotespy]];
-G2L["c9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["c9"]["Text"] = [[]];
+G2L["ee"] = Instance.new("TextButton", G2L["eb"]);
+G2L["ee"]["AutoButtonColor"] = false;
+G2L["ee"]["TextSize"] = 14;
+G2L["ee"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["ee"]["BackgroundColor3"] = Color3.fromRGB(121, 121, 121);
+G2L["ee"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["ee"]["Size"] = UDim2.new(1, 0, 0, 34);
+G2L["ee"]["BackgroundTransparency"] = 1;
+G2L["ee"]["Name"] = [[Remotespy]];
+G2L["ee"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["ee"]["Text"] = [[]];
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Remotespy.UICorner
-G2L["ca"] = Instance.new("UICorner", G2L["c9"]);
-G2L["ca"]["CornerRadius"] = UDim.new(0, 6);
+G2L["ef"] = Instance.new("UICorner", G2L["ee"]);
+G2L["ef"]["CornerRadius"] = UDim.new(0, 6);
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Remotespy.TextLabel
-G2L["cb"] = Instance.new("TextLabel", G2L["c9"]);
-G2L["cb"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["cb"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["cb"]["TextSize"] = 12;
-G2L["cb"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["cb"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["cb"]["BackgroundTransparency"] = 1;
-G2L["cb"]["RichText"] = true;
-G2L["cb"]["AnchorPoint"] = Vector2.new(0, 0.5);
-G2L["cb"]["Size"] = UDim2.new(1, -12, 1, 0);
-G2L["cb"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["cb"]["Text"] = [[RemoteSpy]];
-G2L["cb"]["Position"] = UDim2.new(0, 12, 0.5, 0);
+G2L["f0"] = Instance.new("TextLabel", G2L["ee"]);
+G2L["f0"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["f0"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["f0"]["TextSize"] = 12;
+G2L["f0"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["f0"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["f0"]["BackgroundTransparency"] = 1;
+G2L["f0"]["RichText"] = true;
+G2L["f0"]["AnchorPoint"] = Vector2.new(0, 0.5);
+G2L["f0"]["Size"] = UDim2.new(1, -12, 1, 0);
+G2L["f0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f0"]["Text"] = [[Remote Spy]];
+G2L["f0"]["Position"] = UDim2.new(0, 12, 0.5, 0);
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Remotespy.ImageLabel
-G2L["cc"] = Instance.new("ImageLabel", G2L["c9"]);
-G2L["cc"]["BorderSizePixel"] = 0;
-G2L["cc"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["cc"]["ImageColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["cc"]["AnchorPoint"] = Vector2.new(0, 0.5);
-G2L["cc"]["Size"] = UDim2.new(0, 16, 0, 16);
-G2L["cc"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["cc"]["BackgroundTransparency"] = 1;
-G2L["cc"]["Position"] = UDim2.new(0, 8, 0.5, 0);
+G2L["f1"] = Instance.new("ImageLabel", G2L["ee"]);
+G2L["f1"]["BorderSizePixel"] = 0;
+G2L["f1"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["f1"]["ImageColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["f1"]["AnchorPoint"] = Vector2.new(0, 0.5);
+G2L["f1"]["Size"] = UDim2.new(0, 16, 0, 16);
+G2L["f1"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f1"]["BackgroundTransparency"] = 1;
+G2L["f1"]["Position"] = UDim2.new(0, 8, 0.5, 0);
+
+
+-- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Functionscanner
+G2L["f2"] = Instance.new("TextButton", G2L["eb"]);
+G2L["f2"]["AutoButtonColor"] = false;
+G2L["f2"]["TextSize"] = 14;
+G2L["f2"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f2"]["BackgroundColor3"] = Color3.fromRGB(121, 121, 121);
+G2L["f2"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["f2"]["Size"] = UDim2.new(1, 0, 0, 34);
+G2L["f2"]["BackgroundTransparency"] = 1;
+G2L["f2"]["Name"] = [[Functionscanner]];
+G2L["f2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f2"]["Text"] = [[]];
+
+
+-- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Functionscanner.UICorner
+G2L["f3"] = Instance.new("UICorner", G2L["f2"]);
+G2L["f3"]["CornerRadius"] = UDim.new(0, 6);
+
+
+-- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Functionscanner.TextLabel
+G2L["f4"] = Instance.new("TextLabel", G2L["f2"]);
+G2L["f4"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["f4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["f4"]["TextSize"] = 12;
+G2L["f4"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["f4"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["f4"]["BackgroundTransparency"] = 1;
+G2L["f4"]["RichText"] = true;
+G2L["f4"]["AnchorPoint"] = Vector2.new(0, 0.5);
+G2L["f4"]["Size"] = UDim2.new(1, -12, 1, 0);
+G2L["f4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f4"]["Text"] = [[Function scanner]];
+G2L["f4"]["Position"] = UDim2.new(0, 12, 0.5, 0);
+
+
+-- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Functionscanner.ImageLabel
+G2L["f5"] = Instance.new("ImageLabel", G2L["f2"]);
+G2L["f5"]["BorderSizePixel"] = 0;
+G2L["f5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["f5"]["ImageColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["f5"]["AnchorPoint"] = Vector2.new(0, 0.5);
+G2L["f5"]["Size"] = UDim2.new(0, 16, 0, 16);
+G2L["f5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f5"]["BackgroundTransparency"] = 1;
+G2L["f5"]["Position"] = UDim2.new(0, 8, 0.5, 0);
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Codeviewer
-G2L["cd"] = Instance.new("TextButton", G2L["c6"]);
-G2L["cd"]["AutoButtonColor"] = false;
-G2L["cd"]["TextSize"] = 14;
-G2L["cd"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["cd"]["BackgroundColor3"] = Color3.fromRGB(121, 121, 121);
-G2L["cd"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["cd"]["Size"] = UDim2.new(1, 0, 0, 34);
-G2L["cd"]["BackgroundTransparency"] = 1;
-G2L["cd"]["Name"] = [[Codeviewer]];
-G2L["cd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["cd"]["Text"] = [[]];
+G2L["f6"] = Instance.new("TextButton", G2L["eb"]);
+G2L["f6"]["AutoButtonColor"] = false;
+G2L["f6"]["TextSize"] = 14;
+G2L["f6"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f6"]["BackgroundColor3"] = Color3.fromRGB(121, 121, 121);
+G2L["f6"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["f6"]["Size"] = UDim2.new(1, 0, 0, 34);
+G2L["f6"]["BackgroundTransparency"] = 1;
+G2L["f6"]["Name"] = [[Codeviewer]];
+G2L["f6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f6"]["Text"] = [[]];
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Codeviewer.UICorner
-G2L["ce"] = Instance.new("UICorner", G2L["cd"]);
-G2L["ce"]["CornerRadius"] = UDim.new(0, 6);
+G2L["f7"] = Instance.new("UICorner", G2L["f6"]);
+G2L["f7"]["CornerRadius"] = UDim.new(0, 6);
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Codeviewer.TextLabel
-G2L["cf"] = Instance.new("TextLabel", G2L["cd"]);
-G2L["cf"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["cf"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["cf"]["TextSize"] = 12;
-G2L["cf"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["cf"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["cf"]["BackgroundTransparency"] = 1;
-G2L["cf"]["RichText"] = true;
-G2L["cf"]["AnchorPoint"] = Vector2.new(0, 0.5);
-G2L["cf"]["Size"] = UDim2.new(1, -12, 1, 0);
-G2L["cf"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["cf"]["Text"] = [[Codeviewer]];
-G2L["cf"]["Position"] = UDim2.new(0, 12, 0.5, 0);
+G2L["f8"] = Instance.new("TextLabel", G2L["f6"]);
+G2L["f8"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["f8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["f8"]["TextSize"] = 12;
+G2L["f8"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["f8"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["f8"]["BackgroundTransparency"] = 1;
+G2L["f8"]["RichText"] = true;
+G2L["f8"]["AnchorPoint"] = Vector2.new(0, 0.5);
+G2L["f8"]["Size"] = UDim2.new(1, -12, 1, 0);
+G2L["f8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f8"]["Text"] = [[Code viewer]];
+G2L["f8"]["Position"] = UDim2.new(0, 12, 0.5, 0);
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Codeviewer.ImageLabel
-G2L["d0"] = Instance.new("ImageLabel", G2L["cd"]);
-G2L["d0"]["BorderSizePixel"] = 0;
-G2L["d0"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["d0"]["ImageColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["d0"]["AnchorPoint"] = Vector2.new(0, 0.5);
-G2L["d0"]["Size"] = UDim2.new(0, 16, 0, 16);
-G2L["d0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d0"]["BackgroundTransparency"] = 1;
-G2L["d0"]["Position"] = UDim2.new(0, 8, 0.5, 0);
+G2L["f9"] = Instance.new("ImageLabel", G2L["f6"]);
+G2L["f9"]["BorderSizePixel"] = 0;
+G2L["f9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["f9"]["ImageColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["f9"]["AnchorPoint"] = Vector2.new(0, 0.5);
+G2L["f9"]["Size"] = UDim2.new(0, 16, 0, 16);
+G2L["f9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f9"]["BackgroundTransparency"] = 1;
+G2L["f9"]["Position"] = UDim2.new(0, 8, 0.5, 0);
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Credits
-G2L["d1"] = Instance.new("TextButton", G2L["c6"]);
-G2L["d1"]["AutoButtonColor"] = false;
-G2L["d1"]["TextSize"] = 14;
-G2L["d1"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d1"]["BackgroundColor3"] = Color3.fromRGB(121, 121, 121);
-G2L["d1"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["d1"]["Size"] = UDim2.new(1, 0, 0, 34);
-G2L["d1"]["BackgroundTransparency"] = 0.89;
-G2L["d1"]["Name"] = [[Credits]];
-G2L["d1"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d1"]["Text"] = [[]];
+G2L["fa"] = Instance.new("TextButton", G2L["eb"]);
+G2L["fa"]["AutoButtonColor"] = false;
+G2L["fa"]["TextSize"] = 14;
+G2L["fa"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["fa"]["BackgroundColor3"] = Color3.fromRGB(121, 121, 121);
+G2L["fa"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["fa"]["Size"] = UDim2.new(1, 0, 0, 34);
+G2L["fa"]["BackgroundTransparency"] = 0.89;
+G2L["fa"]["Name"] = [[Credits]];
+G2L["fa"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["fa"]["Text"] = [[]];
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Credits.UICorner
-G2L["d2"] = Instance.new("UICorner", G2L["d1"]);
-G2L["d2"]["CornerRadius"] = UDim.new(0, 6);
+G2L["fb"] = Instance.new("UICorner", G2L["fa"]);
+G2L["fb"]["CornerRadius"] = UDim.new(0, 6);
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Credits.TextLabel
-G2L["d3"] = Instance.new("TextLabel", G2L["d1"]);
-G2L["d3"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["d3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["d3"]["TextSize"] = 12;
-G2L["d3"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["d3"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["d3"]["BackgroundTransparency"] = 1;
-G2L["d3"]["RichText"] = true;
-G2L["d3"]["AnchorPoint"] = Vector2.new(0, 0.5);
-G2L["d3"]["Size"] = UDim2.new(1, -12, 1, 0);
-G2L["d3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d3"]["Text"] = [[Credits]];
-G2L["d3"]["Position"] = UDim2.new(0, 30, 0.5, 0);
+G2L["fc"] = Instance.new("TextLabel", G2L["fa"]);
+G2L["fc"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["fc"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["fc"]["TextSize"] = 12;
+G2L["fc"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["fc"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["fc"]["BackgroundTransparency"] = 1;
+G2L["fc"]["RichText"] = true;
+G2L["fc"]["AnchorPoint"] = Vector2.new(0, 0.5);
+G2L["fc"]["Size"] = UDim2.new(1, -12, 1, 0);
+G2L["fc"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["fc"]["Text"] = [[Credits]];
+G2L["fc"]["Position"] = UDim2.new(0, 30, 0.5, 0);
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Credits.ImageLabel
-G2L["d4"] = Instance.new("ImageLabel", G2L["d1"]);
-G2L["d4"]["BorderSizePixel"] = 0;
-G2L["d4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["d4"]["ImageColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["d4"]["AnchorPoint"] = Vector2.new(0, 0.5);
-G2L["d4"]["Image"] = [[rbxassetid://10734950309]];
-G2L["d4"]["Size"] = UDim2.new(0, 16, 0, 16);
-G2L["d4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d4"]["BackgroundTransparency"] = 1;
-G2L["d4"]["Position"] = UDim2.new(0, 8, 0.5, 0);
+G2L["fd"] = Instance.new("ImageLabel", G2L["fa"]);
+G2L["fd"]["BorderSizePixel"] = 0;
+G2L["fd"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["fd"]["ImageColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["fd"]["AnchorPoint"] = Vector2.new(0, 0.5);
+G2L["fd"]["Image"] = [[rbxassetid://10734950309]];
+G2L["fd"]["Size"] = UDim2.new(0, 16, 0, 16);
+G2L["fd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["fd"]["BackgroundTransparency"] = 1;
+G2L["fd"]["Position"] = UDim2.new(0, 8, 0.5, 0);
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.Selected
-G2L["d5"] = Instance.new("Frame", G2L["c5"]);
-G2L["d5"]["BorderSizePixel"] = 0;
-G2L["d5"]["BackgroundColor3"] = Color3.fromRGB(97, 206, 255);
-G2L["d5"]["AnchorPoint"] = Vector2.new(0, 0.5);
-G2L["d5"]["Size"] = UDim2.new(0, 4, 0, 16);
-G2L["d5"]["Position"] = UDim2.new(0, 0, 0, 93);
-G2L["d5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d5"]["Name"] = [[Selected]];
+G2L["fe"] = Instance.new("Frame", G2L["ea"]);
+G2L["fe"]["BorderSizePixel"] = 0;
+G2L["fe"]["BackgroundColor3"] = Color3.fromRGB(97, 206, 255);
+G2L["fe"]["AnchorPoint"] = Vector2.new(0, 0.5);
+G2L["fe"]["Size"] = UDim2.new(0, 4, 0, 16);
+G2L["fe"]["Position"] = UDim2.new(0, 0, 0, 131);
+G2L["fe"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["fe"]["Name"] = [[Selected]];
 
 
 -- StarterGui.Sulfoxide.Main.Tabs.Selected.UICorner
-G2L["d6"] = Instance.new("UICorner", G2L["d5"]);
-G2L["d6"]["CornerRadius"] = UDim.new(0, 2);
+G2L["ff"] = Instance.new("UICorner", G2L["fe"]);
+G2L["ff"]["CornerRadius"] = UDim.new(0, 2);
 
 
 -- StarterGui.Sulfoxide.Main.Resize
-G2L["d7"] = Instance.new("Frame", G2L["4"]);
-G2L["d7"]["BorderSizePixel"] = 0;
-G2L["d7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["d7"]["Size"] = UDim2.new(0, 20, 0, 20);
-G2L["d7"]["Position"] = UDim2.new(1, -20, 1, -20);
-G2L["d7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d7"]["Name"] = [[Resize]];
-G2L["d7"]["BackgroundTransparency"] = 1;
+G2L["100"] = Instance.new("Frame", G2L["4"]);
+G2L["100"]["BorderSizePixel"] = 0;
+G2L["100"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["100"]["Size"] = UDim2.new(0, 20, 0, 20);
+G2L["100"]["Position"] = UDim2.new(1, -20, 1, -20);
+G2L["100"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["100"]["Name"] = [[Resize]];
+G2L["100"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Sulfoxide.Main.Topbar
-G2L["d8"] = Instance.new("Frame", G2L["4"]);
-G2L["d8"]["BorderSizePixel"] = 0;
-G2L["d8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["d8"]["Size"] = UDim2.new(1, 0, 0, 42);
-G2L["d8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d8"]["Name"] = [[Topbar]];
-G2L["d8"]["BackgroundTransparency"] = 1;
+G2L["101"] = Instance.new("Frame", G2L["4"]);
+G2L["101"]["BorderSizePixel"] = 0;
+G2L["101"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["101"]["Size"] = UDim2.new(1, 0, 0, 42);
+G2L["101"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["101"]["Name"] = [[Topbar]];
+G2L["101"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.Frame
-G2L["d9"] = Instance.new("Frame", G2L["d8"]);
-G2L["d9"]["BorderSizePixel"] = 0;
-G2L["d9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["d9"]["Size"] = UDim2.new(1, -16, 1, 0);
-G2L["d9"]["Position"] = UDim2.new(0, 16, 0, 0);
-G2L["d9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d9"]["BackgroundTransparency"] = 1;
+G2L["102"] = Instance.new("Frame", G2L["101"]);
+G2L["102"]["BorderSizePixel"] = 0;
+G2L["102"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["102"]["Size"] = UDim2.new(1, -16, 1, 0);
+G2L["102"]["Position"] = UDim2.new(0, 16, 0, 0);
+G2L["102"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["102"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.Frame.UIListLayout
-G2L["da"] = Instance.new("UIListLayout", G2L["d9"]);
-G2L["da"]["Padding"] = UDim.new(0, 5);
-G2L["da"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-G2L["da"]["FillDirection"] = Enum.FillDirection.Horizontal;
+G2L["103"] = Instance.new("UIListLayout", G2L["102"]);
+G2L["103"]["Padding"] = UDim.new(0, 5);
+G2L["103"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+G2L["103"]["FillDirection"] = Enum.FillDirection.Horizontal;
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.Frame.TextLabel
-G2L["db"] = Instance.new("TextLabel", G2L["d9"]);
-G2L["db"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["db"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["db"]["TextSize"] = 12;
-G2L["db"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["db"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["db"]["BackgroundTransparency"] = 1;
-G2L["db"]["RichText"] = true;
-G2L["db"]["Size"] = UDim2.new(0, 0, 1, 0);
-G2L["db"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["db"]["Text"] = [[Sulfoxide prerelease-1]];
-G2L["db"]["AutomaticSize"] = Enum.AutomaticSize.X;
+G2L["104"] = Instance.new("TextLabel", G2L["102"]);
+G2L["104"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["104"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["104"]["TextSize"] = 12;
+G2L["104"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["104"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["104"]["BackgroundTransparency"] = 1;
+G2L["104"]["RichText"] = true;
+G2L["104"]["Size"] = UDim2.new(0, 0, 1, 0);
+G2L["104"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["104"]["Text"] = [[Sulfoxide prerelease-2]];
+G2L["104"]["AutomaticSize"] = Enum.AutomaticSize.X;
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.Frame.TextLabel
-G2L["dc"] = Instance.new("TextLabel", G2L["d9"]);
-G2L["dc"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["dc"]["TextTransparency"] = 0.4;
-G2L["dc"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["dc"]["TextSize"] = 12;
-G2L["dc"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["dc"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["dc"]["BackgroundTransparency"] = 1;
-G2L["dc"]["RichText"] = true;
-G2L["dc"]["Size"] = UDim2.new(0, 0, 1, 0);
-G2L["dc"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["dc"]["Text"] = [[by 0_Void]];
-G2L["dc"]["AutomaticSize"] = Enum.AutomaticSize.X;
+G2L["105"] = Instance.new("TextLabel", G2L["102"]);
+G2L["105"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["105"]["TextTransparency"] = 0.4;
+G2L["105"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["105"]["TextSize"] = 12;
+G2L["105"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["105"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["105"]["BackgroundTransparency"] = 1;
+G2L["105"]["RichText"] = true;
+G2L["105"]["Size"] = UDim2.new(0, 0, 1, 0);
+G2L["105"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["105"]["Text"] = [[by 0_Void]];
+G2L["105"]["AutomaticSize"] = Enum.AutomaticSize.X;
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.Frame
-G2L["dd"] = Instance.new("Frame", G2L["d8"]);
-G2L["dd"]["BorderSizePixel"] = 0;
-G2L["dd"]["BackgroundColor3"] = Color3.fromRGB(76, 76, 76);
-G2L["dd"]["Size"] = UDim2.new(1, 0, 0, 1);
-G2L["dd"]["Position"] = UDim2.new(0, 0, 1, 0);
-G2L["dd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["dd"]["BackgroundTransparency"] = 0.5;
+G2L["106"] = Instance.new("Frame", G2L["101"]);
+G2L["106"]["BorderSizePixel"] = 0;
+G2L["106"]["BackgroundColor3"] = Color3.fromRGB(76, 76, 76);
+G2L["106"]["Size"] = UDim2.new(1, 0, 0, 1);
+G2L["106"]["Position"] = UDim2.new(0, 0, 1, 0);
+G2L["106"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["106"]["BackgroundTransparency"] = 0.5;
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.Close
-G2L["de"] = Instance.new("TextButton", G2L["d8"]);
-G2L["de"]["AutoButtonColor"] = false;
-G2L["de"]["TextSize"] = 14;
-G2L["de"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["de"]["BackgroundColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["de"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["de"]["AnchorPoint"] = Vector2.new(1, 0);
-G2L["de"]["Size"] = UDim2.new(0, 34, 1, -8);
-G2L["de"]["BackgroundTransparency"] = 1;
-G2L["de"]["Name"] = [[Close]];
-G2L["de"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["de"]["Text"] = [[]];
-G2L["de"]["Position"] = UDim2.new(1, -4, 0, 4);
+G2L["107"] = Instance.new("TextButton", G2L["101"]);
+G2L["107"]["AutoButtonColor"] = false;
+G2L["107"]["TextSize"] = 14;
+G2L["107"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["107"]["BackgroundColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["107"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["107"]["AnchorPoint"] = Vector2.new(1, 0);
+G2L["107"]["Size"] = UDim2.new(0, 34, 1, -8);
+G2L["107"]["BackgroundTransparency"] = 1;
+G2L["107"]["Name"] = [[Close]];
+G2L["107"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["107"]["Text"] = [[]];
+G2L["107"]["Position"] = UDim2.new(1, -4, 0, 4);
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.Close.UICorner
-G2L["df"] = Instance.new("UICorner", G2L["de"]);
-G2L["df"]["CornerRadius"] = UDim.new(0, 7);
+G2L["108"] = Instance.new("UICorner", G2L["107"]);
+G2L["108"]["CornerRadius"] = UDim.new(0, 7);
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.Close.Icon
-G2L["e0"] = Instance.new("ImageLabel", G2L["de"]);
-G2L["e0"]["BorderSizePixel"] = 0;
-G2L["e0"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["e0"]["ImageColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["e0"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-G2L["e0"]["Image"] = [[rbxassetid://9886659671]];
-G2L["e0"]["Size"] = UDim2.new(0, 16, 0, 16);
-G2L["e0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["e0"]["BackgroundTransparency"] = 1;
-G2L["e0"]["Name"] = [[Icon]];
-G2L["e0"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+G2L["109"] = Instance.new("ImageLabel", G2L["107"]);
+G2L["109"]["BorderSizePixel"] = 0;
+G2L["109"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["109"]["ImageColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["109"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+G2L["109"]["Image"] = [[rbxassetid://9886659671]];
+G2L["109"]["Size"] = UDim2.new(0, 16, 0, 16);
+G2L["109"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["109"]["BackgroundTransparency"] = 1;
+G2L["109"]["Name"] = [[Icon]];
+G2L["109"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.Minimize
-G2L["e1"] = Instance.new("TextButton", G2L["d8"]);
-G2L["e1"]["AutoButtonColor"] = false;
-G2L["e1"]["TextSize"] = 14;
-G2L["e1"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["e1"]["BackgroundColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["e1"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["e1"]["AnchorPoint"] = Vector2.new(1, 0);
-G2L["e1"]["Size"] = UDim2.new(0, 34, 1, -8);
-G2L["e1"]["BackgroundTransparency"] = 1;
-G2L["e1"]["Name"] = [[Minimize]];
-G2L["e1"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["e1"]["Text"] = [[]];
-G2L["e1"]["Position"] = UDim2.new(1, -40, 0, 4);
+G2L["10a"] = Instance.new("TextButton", G2L["101"]);
+G2L["10a"]["AutoButtonColor"] = false;
+G2L["10a"]["TextSize"] = 14;
+G2L["10a"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["10a"]["BackgroundColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["10a"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["10a"]["AnchorPoint"] = Vector2.new(1, 0);
+G2L["10a"]["Size"] = UDim2.new(0, 34, 1, -8);
+G2L["10a"]["BackgroundTransparency"] = 1;
+G2L["10a"]["Name"] = [[Minimize]];
+G2L["10a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["10a"]["Text"] = [[]];
+G2L["10a"]["Position"] = UDim2.new(1, -40, 0, 4);
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.Minimize.UICorner
-G2L["e2"] = Instance.new("UICorner", G2L["e1"]);
-G2L["e2"]["CornerRadius"] = UDim.new(0, 7);
+G2L["10b"] = Instance.new("UICorner", G2L["10a"]);
+G2L["10b"]["CornerRadius"] = UDim.new(0, 7);
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.Minimize.Icon
-G2L["e3"] = Instance.new("ImageLabel", G2L["e1"]);
-G2L["e3"]["BorderSizePixel"] = 0;
-G2L["e3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["e3"]["ImageColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["e3"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-G2L["e3"]["Image"] = [[rbxassetid://9886659276]];
-G2L["e3"]["Size"] = UDim2.new(0, 16, 0, 16);
-G2L["e3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["e3"]["BackgroundTransparency"] = 1;
-G2L["e3"]["Name"] = [[Icon]];
-G2L["e3"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+G2L["10c"] = Instance.new("ImageLabel", G2L["10a"]);
+G2L["10c"]["BorderSizePixel"] = 0;
+G2L["10c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["10c"]["ImageColor3"] = Color3.fromRGB(241, 241, 241);
+G2L["10c"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+G2L["10c"]["Image"] = [[rbxassetid://9886659276]];
+G2L["10c"]["Size"] = UDim2.new(0, 16, 0, 16);
+G2L["10c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["10c"]["BackgroundTransparency"] = 1;
+G2L["10c"]["Name"] = [[Icon]];
+G2L["10c"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.drag
-G2L["e4"] = Instance.new("LocalScript", G2L["d8"]);
-G2L["e4"]["Name"] = [[drag]];
+G2L["10d"] = Instance.new("LocalScript", G2L["101"]);
+G2L["10d"]["Name"] = [[drag]];
 
 
 -- StarterGui.Sulfoxide.Main.Topbar.buttonhandler
-G2L["e5"] = Instance.new("LocalScript", G2L["d8"]);
-G2L["e5"]["Name"] = [[buttonhandler]];
+G2L["10e"] = Instance.new("LocalScript", G2L["101"]);
+G2L["10e"]["Name"] = [[buttonhandler]];
 
 
 -- StarterGui.Sulfoxide.Main.Frame
-G2L["e6"] = Instance.new("Frame", G2L["4"]);
-G2L["e6"]["ZIndex"] = 0;
-G2L["e6"]["BorderSizePixel"] = 0;
-G2L["e6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["e6"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["e6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["e6"]["BackgroundTransparency"] = 0.9;
+G2L["10f"] = Instance.new("Frame", G2L["4"]);
+G2L["10f"]["ZIndex"] = 0;
+G2L["10f"]["BorderSizePixel"] = 0;
+G2L["10f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["10f"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["10f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["10f"]["BackgroundTransparency"] = 0.9;
 
 
 -- StarterGui.Sulfoxide.Main.Frame.UICorner
-G2L["e7"] = Instance.new("UICorner", G2L["e6"]);
+G2L["110"] = Instance.new("UICorner", G2L["10f"]);
 
 
 
 -- StarterGui.Sulfoxide.Main.Frame.Background
-G2L["e8"] = Instance.new("Frame", G2L["e6"]);
-G2L["e8"]["BorderSizePixel"] = 0;
-G2L["e8"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
-G2L["e8"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["e8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["e8"]["Name"] = [[Background]];
-G2L["e8"]["BackgroundTransparency"] = 0.45;
+G2L["111"] = Instance.new("Frame", G2L["10f"]);
+G2L["111"]["BorderSizePixel"] = 0;
+G2L["111"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
+G2L["111"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["111"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["111"]["Name"] = [[Background]];
+G2L["111"]["BackgroundTransparency"] = 0.45;
 
 
 -- StarterGui.Sulfoxide.Main.Frame.Background.UICorner
-G2L["e9"] = Instance.new("UICorner", G2L["e8"]);
+G2L["112"] = Instance.new("UICorner", G2L["111"]);
 
 
 
 -- StarterGui.Sulfoxide.Main.Frame.Frame
-G2L["ea"] = Instance.new("Frame", G2L["e6"]);
-G2L["ea"]["BorderSizePixel"] = 0;
-G2L["ea"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["ea"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["ea"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["ea"]["BackgroundTransparency"] = 0.4;
+G2L["113"] = Instance.new("Frame", G2L["10f"]);
+G2L["113"]["BorderSizePixel"] = 0;
+G2L["113"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["113"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["113"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["113"]["BackgroundTransparency"] = 0.4;
 
 
 -- StarterGui.Sulfoxide.Main.Frame.Frame.UICorner
-G2L["eb"] = Instance.new("UICorner", G2L["ea"]);
+G2L["114"] = Instance.new("UICorner", G2L["113"]);
 
 
 
 -- StarterGui.Sulfoxide.Main.Frame.Frame.UIGradient
-G2L["ec"] = Instance.new("UIGradient", G2L["ea"]);
-G2L["ec"]["Rotation"] = 90;
-G2L["ec"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(26, 26, 26)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(16, 16, 16))};
+G2L["115"] = Instance.new("UIGradient", G2L["113"]);
+G2L["115"]["Rotation"] = 90;
+G2L["115"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(26, 26, 26)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(16, 16, 16))};
 
 
 -- StarterGui.Sulfoxide.Main.Frame.Frame
-G2L["ed"] = Instance.new("Frame", G2L["e6"]);
-G2L["ed"]["ZIndex"] = 2;
-G2L["ed"]["BorderSizePixel"] = 0;
-G2L["ed"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["ed"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["ed"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["ed"]["BackgroundTransparency"] = 1;
+G2L["116"] = Instance.new("Frame", G2L["10f"]);
+G2L["116"]["ZIndex"] = 2;
+G2L["116"]["BorderSizePixel"] = 0;
+G2L["116"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["116"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["116"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["116"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Sulfoxide.Main.Frame.Frame.UICorner
-G2L["ee"] = Instance.new("UICorner", G2L["ed"]);
+G2L["117"] = Instance.new("UICorner", G2L["116"]);
 
 
 
 -- StarterGui.Sulfoxide.Main.Frame.Frame.UIStroke
-G2L["ef"] = Instance.new("UIStroke", G2L["ed"]);
-G2L["ef"]["Transparency"] = 0.5;
-G2L["ef"]["Color"] = Color3.fromRGB(61, 61, 61);
+G2L["118"] = Instance.new("UIStroke", G2L["116"]);
+G2L["118"]["Transparency"] = 0.5;
+G2L["118"]["Color"] = Color3.fromRGB(61, 61, 61);
 
 
 -- StarterGui.Sulfoxide.Main.Frame.ImageLabel
-G2L["f0"] = Instance.new("ImageLabel", G2L["e6"]);
-G2L["f0"]["BorderSizePixel"] = 0;
-G2L["f0"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["f0"]["ScaleType"] = Enum.ScaleType.Tile;
-G2L["f0"]["ImageTransparency"] = 1;
-G2L["f0"]["Image"] = [[rbxassetid://9968344227]];
-G2L["f0"]["TileSize"] = UDim2.new(0, 128, 0, 128);
-G2L["f0"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["f0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["f0"]["BackgroundTransparency"] = 1;
+G2L["119"] = Instance.new("ImageLabel", G2L["10f"]);
+G2L["119"]["BorderSizePixel"] = 0;
+G2L["119"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["119"]["ScaleType"] = Enum.ScaleType.Tile;
+G2L["119"]["ImageTransparency"] = 1;
+G2L["119"]["Image"] = [[rbxassetid://9968344227]];
+G2L["119"]["TileSize"] = UDim2.new(0, 128, 0, 128);
+G2L["119"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["119"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["119"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Sulfoxide.Main.Frame.ImageLabel.UICorner
-G2L["f1"] = Instance.new("UICorner", G2L["f0"]);
+G2L["11a"] = Instance.new("UICorner", G2L["119"]);
 
 
 
 -- StarterGui.Sulfoxide.Main.Frame.ImageLabel
-G2L["f2"] = Instance.new("ImageLabel", G2L["e6"]);
-G2L["f2"]["BorderSizePixel"] = 0;
-G2L["f2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["f2"]["ScaleType"] = Enum.ScaleType.Tile;
-G2L["f2"]["ImageTransparency"] = 1;
-G2L["f2"]["Image"] = [[rbxassetid://9968344105]];
-G2L["f2"]["TileSize"] = UDim2.new(0, 128, 0, 128);
-G2L["f2"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["f2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["f2"]["BackgroundTransparency"] = 1;
+G2L["11b"] = Instance.new("ImageLabel", G2L["10f"]);
+G2L["11b"]["BorderSizePixel"] = 0;
+G2L["11b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["11b"]["ScaleType"] = Enum.ScaleType.Tile;
+G2L["11b"]["ImageTransparency"] = 1;
+G2L["11b"]["Image"] = [[rbxassetid://9968344105]];
+G2L["11b"]["TileSize"] = UDim2.new(0, 128, 0, 128);
+G2L["11b"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["11b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["11b"]["BackgroundTransparency"] = 1;
 
 
 -- StarterGui.Sulfoxide.Main.Frame.ImageLabel.UICorner
-G2L["f3"] = Instance.new("UICorner", G2L["f2"]);
+G2L["11c"] = Instance.new("UICorner", G2L["11b"]);
 
 
 
 -- StarterGui.Sulfoxide.Main.Frame.ImageLabel
-G2L["f4"] = Instance.new("ImageLabel", G2L["e6"]);
-G2L["f4"]["BorderSizePixel"] = 0;
-G2L["f4"]["SliceCenter"] = Rect.new(99, 99, 99, 99);
-G2L["f4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["f4"]["ScaleType"] = Enum.ScaleType.Slice;
-G2L["f4"]["ImageTransparency"] = 0.25;
-G2L["f4"]["ImageColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["f4"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-G2L["f4"]["Image"] = [[rbxassetid://8992230677]];
-G2L["f4"]["Size"] = UDim2.new(1, 120, 1, 116);
-G2L["f4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["f4"]["BackgroundTransparency"] = 1;
-G2L["f4"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+G2L["11d"] = Instance.new("ImageLabel", G2L["10f"]);
+G2L["11d"]["BorderSizePixel"] = 0;
+G2L["11d"]["SliceCenter"] = Rect.new(99, 99, 99, 99);
+G2L["11d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["11d"]["ScaleType"] = Enum.ScaleType.Slice;
+G2L["11d"]["ImageTransparency"] = 0.25;
+G2L["11d"]["ImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["11d"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+G2L["11d"]["Image"] = [[rbxassetid://8992230677]];
+G2L["11d"]["Size"] = UDim2.new(1, 120, 1, 116);
+G2L["11d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["11d"]["BackgroundTransparency"] = 1;
+G2L["11d"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
--- StarterGui.Sulfoxide.Luatypeencode
-G2L["f5"] = Instance.new("ModuleScript", G2L["1"]);
-G2L["f5"]["Name"] = [[Luatypeencode]];
+-- StarterGui.Sulfoxide.Controls
+G2L["11e"] = Instance.new("Frame", G2L["1"]);
+G2L["11e"]["BorderSizePixel"] = 0;
+G2L["11e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["11e"]["Size"] = UDim2.new(0, 322, 0, 253);
+G2L["11e"]["Position"] = UDim2.new(0.12581, 0, 0.41198, 0);
+G2L["11e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["11e"]["Name"] = [[Controls]];
+G2L["11e"]["BackgroundTransparency"] = 1;
 
 
--- StarterGui.Sulfoxide.LuaEncode
-G2L["f6"] = Instance.new("ModuleScript", G2L["1"]);
-G2L["f6"]["Name"] = [[LuaEncode]];
+-- StarterGui.Sulfoxide.Controls.ContextMenu
+G2L["11f"] = Instance.new("Frame", G2L["11e"]);
+G2L["11f"]["Visible"] = false;
+G2L["11f"]["BorderSizePixel"] = 0;
+G2L["11f"]["BackgroundColor3"] = Color3.fromRGB(41, 41, 41);
+G2L["11f"]["AutomaticSize"] = Enum.AutomaticSize.XY;
+G2L["11f"]["Size"] = UDim2.new(0, 139, 0, 25);
+G2L["11f"]["Position"] = UDim2.new(0, 1000, 0, 0);
+G2L["11f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["11f"]["Name"] = [[ContextMenu]];
+
+
+-- StarterGui.Sulfoxide.Controls.ContextMenu.TextButton
+G2L["120"] = Instance.new("TextButton", G2L["11f"]);
+G2L["120"]["BorderSizePixel"] = 0;
+G2L["120"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["120"]["TextSize"] = 14;
+G2L["120"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["120"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["120"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["120"]["AutomaticSize"] = Enum.AutomaticSize.Y;
+G2L["120"]["Size"] = UDim2.new(0, 140, 0, 25);
+G2L["120"]["BackgroundTransparency"] = 1;
+G2L["120"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["120"]["Text"] = [[Decompile]];
+G2L["120"]["Position"] = UDim2.new(0.09353, 0, 0, 0);
+
+
+-- StarterGui.Sulfoxide.Controls.ContextMenu.TextButton.ImageLabel
+G2L["121"] = Instance.new("ImageLabel", G2L["120"]);
+G2L["121"]["BorderSizePixel"] = 0;
+G2L["121"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["121"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+G2L["121"]["Size"] = UDim2.new(0, 20, 0, 20);
+G2L["121"]["Visible"] = false;
+G2L["121"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["121"]["Position"] = UDim2.new(-0.23, 0, 0.065, 0);
+
+
+-- StarterGui.Sulfoxide.Controls.ContextMenu.TextButton.UIPadding
+G2L["122"] = Instance.new("UIPadding", G2L["120"]);
+G2L["122"]["PaddingLeft"] = UDim.new(0, 28);
+
+
+-- StarterGui.Sulfoxide.Controls.ContextMenu.UIListLayout
+G2L["123"] = Instance.new("UIListLayout", G2L["11f"]);
+G2L["123"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.Sulfoxide.Controls.ContextMenu.UIStroke
+G2L["124"] = Instance.new("UIStroke", G2L["11f"]);
+
+
+
+-- StarterGui.Sulfoxide.Controls.ContextMenu.UICorner
+G2L["125"] = Instance.new("UICorner", G2L["11f"]);
+G2L["125"]["CornerRadius"] = UDim.new(0, 4);
 
 
 -- Require G2L wrapper
@@ -2458,8 +2956,7 @@ end
 
 G2L_MODULES[G2L["bb"]] = {
 Closure = function()
-    local script = G2L["bb"];
-	local textService = cloneref(game.GetService(game,"TextService"));
+    local script = G2L["bb"];local textService = game.GetService(game,"TextService");
 
 -- ui
 local scrolling = script.Parent.ScrollingFrame;
@@ -3439,1434 +3936,6 @@ Closure = function()
 
 end;
 };
-G2L_MODULES[G2L["f5"]] = {
-Closure = function()
-    local script = G2L["f5"];-- LuaEncode - Optimal Table Serialization for Native Luau/Lua 5.1+
--- Copyright (c) 2022-2023 Reggie <reggie@latte.to> | MIT License
--- https://github.com/regginator/LuaEncode
-
---!nocheck
---!optimize 2
-
--- Localizing certain libraries/variables used throughout for runtime efficiency (not specific to Luau)
-local table, ipairs, string, next, pcall, game, workspace, tostring, tonumber, getmetatable = table, ipairs, string, next, pcall, game, workspace, tostring, tonumber, getmetatable
-
-local string_format = string.format
-local string_char = string.char
-local string_gsub = string.gsub
-local string_match = string.match
-local string_rep = string.rep
-local string_sub = string.sub
-local string_gmatch = string.gmatch
-
-local table_find = table.find
-local table_concat = table.concat
-local table_insert = table.insert
-
--- For custom Roblox engine data-type support via `typeof`, if it exists
-local Type = typeof or type
-
--- Used for checking direct getfield syntax; Lua keywords can't be used as keys without being a str
--- FYI; `continue` is Luau only (in Lua it's actually a global function), but we're including it
--- here anyway to be safe
-local LuaKeywords do
-	local LuaKeywordsArray = {
-		"and", "break", "do", "else",
-		"elseif", "end", "false", "for",
-		"function", "if", "in", "local",
-		"nil", "not", "or", "repeat",
-		"return", "then", "true", "until",
-		"while", "continue"
-	}
-
-	-- We're now setting each keyword str to a weak key, so it's faster at runtime for `SerializeString()`
-	LuaKeywords = setmetatable({}, {__mode = "k"})
-
-	for _, Keyword in next, LuaKeywordsArray do
-		LuaKeywords[Keyword] = true
-	end
-end
-
--- Lua 5.1 doesn't have table.find
-table_find = table_find or function(inputTable, valueToFind) -- Ignoring the `init` arg, unneeded for us
-	for Key, Value in ipairs(inputTable) do
-		if Value == valueToFind then
-			return Key -- Return the key idx
-		end
-	end
-
-	return
-end
-
--- Simple function for directly checking the type on values, with their input, variable name,
--- and desired type name(s) to check
-local function CheckType(inputData, dataName, ...)
-	local DesiredTypes = {...}
-	local InputDataType = Type(inputData)
-
-	if not table_find(DesiredTypes, InputDataType) then
-		error(string_format(
-			"LuaEncode: Incorrect type for `%s`: `%s` expected, got `%s`",
-			dataName,
-			table_concat(DesiredTypes, ", "), -- For if multiple types are accepted
-			InputDataType
-			), 0)
-	end
-
-	return inputData -- Return back input directly
-end
-
--- This re-serializes a string back into Lua, for the interpreter AND humans to read. This fixes
--- `string_format("%q")` only outputting in system encoding, instead of explicit Lua byte escapes
-local SerializeString do
-	-- These are control characters to be encoded in a certain way in Lua rather than just a byte
-	-- escape (e.g. "\n" -> "\10")
-	local SpecialCharacters = {
-		["\""] = "\\\"", -- Double-Quote
-		["\\"] = "\\\\", -- (Literal) Backslash
-		-- Special ASCII control char codes
-		["\a"] = "\\a", -- Bell; ASCII #7
-		["\b"] = "\\b", -- Backspace; ASCII #8
-		["\t"] = "\\t", -- Horizontal-Tab; ASCII #9
-		["\n"] = "\\n", -- Newline; ASCII #10
-		["\v"] = "\\v", -- Vertical-Tab; ASCII #11
-		["\f"] = "\\f", -- Form-Feed; ASCII #12
-		["\r"] = "\\r", -- Carriage-Return; ASCII #13
-	}
-
-	-- We need to assign all extra normal byte escapes for runtime optimization
-	for Index = 0, 255 do
-		local Character = string_char(Index)
-
-		if not SpecialCharacters[Character] and (Index < 32 or Index > 126) then
-			SpecialCharacters[Character] = "\\" .. Index
-		end
-	end
-
-	function SerializeString(inputString)
-		-- FYI; We can't do "\0-\31" in Lua 5.1 (Only Luau/Lua 5.2+) due to an embedded zeros in pattern
-		-- issue. See: https://stackoverflow.com/a/22962409
-		return "\"" .. string_gsub(inputString, "[%z\\\"\1-\31\127-\255]", SpecialCharacters) .. "\""
-	end
-end
-
--- We need to occasionally construct valid comment blocks from external input, with proper escapes etc
-local function CommentBlock(inputString)
-	local Padding = ""
-	for Match in string_gmatch(inputString, "%](=*)%]") do
-		if #Match >= #Padding then
-			Padding = Match .. "="
-		end
-	end
-
-	return "--[" .. Padding .. "[" .. inputString .. "]" .. Padding .. "]"
-end
-
-local EvaluateInstancePath do
-	-- VERY simple function to get if an object is a service, used in instance path eval
-	local function IsService(object)
-		-- Logically, if an object is actually under a service, that service *has* to already exist, as we've
-		-- presumably evaluated to said path
-		local FindServiceSuccess, ServiceObject = pcall(game.FindService, game, object.ClassName)
-
-		if FindServiceSuccess and ServiceObject then
-			return true
-		end
-
-		return false
-	end
-
-	-- Evaluating an instances' accessable "path" with just it's ref, and if the root parent is nil/isn't
-	-- under `game` or `workspace`, returns nil.
-	function EvaluateInstancePath(object)
-		-- "Recursive" eval
-		local ObjectPointer = object
-
-		-- Input itself doesn't exist?
-		if not ObjectPointer then
-			return
-		end
-
-		local Path = ""
-
-		while ObjectPointer do
-			local ObjectName = ObjectPointer.Name
-			local ObjectClassName = ObjectPointer.ClassName
-			local ObjectParent = ObjectPointer.Parent
-
-			if ObjectPointer == game:GetService("Players").LocalPlayer.Character then
-				return 'game:GetService("Players").LocalPlayer.Character'..Path
-			elseif ObjectPointer == game:GetService("Players").LocalPlayer then
-				Path = ".LocalPlayer"..Path
-			elseif ObjectParent == game and IsService(ObjectPointer) then
-				-- ^^ Then we'll use GetService directly, since it's actually a service under the DataModel
-
-				Path = ":GetService(" .. SerializeString(ObjectClassName) .. ")" .. Path
-			elseif not LuaKeywords[ObjectName] and string_match(ObjectName, "^[A-Za-z_][A-Za-z0-9_]*$") then
-				-- ^^ Like the `string` DataType, this means means we can index the name directly in Lua
-				-- without an explicit string
-				Path = "." .. ObjectName .. Path
-			else
-				Path = "[" .. SerializeString(ObjectName) .. "]" .. Path
-			end
-
-			if ObjectParent == game then
-				Path = "game" .. Path
-				return Path
-			elseif ObjectParent == workspace then
-				Path = "workspace" .. Path
-				return Path
-			end
-
-			-- Advance ObjectPointer, whether it exists or not (JUMPBACK)
-			ObjectPointer = ObjectParent
-		end
-
-		-- Fall back to no ret.. Only objects parented under game/workspace will be serialized
-		return
-	end
-end
-
---[[
-LuaEncode(inputTable: {[any]: any}, options: {[string]:any}): string
-
-    ---------- OPTIONS: ----------
-
-    Prettify <boolean?:false> | Whether or not the output should use pretty printing.
-
-    IndentCount <number?:0> | The amount of "spaces" that should be indented per entry. (*Note:
-    If `Prettify` is set to true and this is unspecified, it'll be set to `4` automatically.*)
-
-    OutputWarnings <boolean?:true> | If "warnings" should be placed to the output (as
-    comments); It's recommended to keep this enabled, however this can be disabled at ease.
-
-    StackLimit <number?:500> | The limit to the stack level before recursive encoding cuts
-    off, and stops execution. This is used to prevent stack overflow errors and such. You
-    could use `math.huge` here if you really wanted.
-
-    FunctionsReturnRaw <boolean?:false> | If functions in said table return back a "raw"
-    value to place in the output as the key/value.
-
-    UseInstancePaths <boolean?:true> | If `Instance` reference objects should return their
-    Lua-accessable path for encoding. If the instance is parented under `nil` or isn't under
-    `game`/`workspace`, it'll always fall back to `Instance.new(ClassName)` as before.
-
-    SerializeMathHuge <boolean?:true> | If numbers calculated as "infinite" (or negative-inf)
-    numbers should be serialized with "math.huge". (uses the `math` import, as opposed to just
-    a direct data type) If false, "`1/0`" or "`-1/0`" will be serialized, which is supported
-    on all target versions.
-
-]]
-
-local function LuaEncode(inputTable, options)
-	-- Check all arg and option types
-	CheckType(options, "options", "table", "nil") -- `options` is an optional arg
-
-	-- Options
-	if options then
-		CheckType(options.Prettify, "options.Prettify", "boolean", "nil")
-		CheckType(options.PrettyPrinting, "options.PrettyPrinting", "boolean", "nil") -- Alias for `Options.Prettify`
-		CheckType(options.IndentCount, "options.IndentCount", "number", "nil")
-		CheckType(options.OutputWarnings, "options.OutputWarnings", "boolean", "nil")
-		CheckType(options.StackLimit, "options.StackLimit", "number", "nil")
-		CheckType(options.FunctionsReturnRaw, "options.FunctionsReturnRaw", "boolean", "nil")
-		CheckType(options.UseInstancePaths, "options.UseInstancePaths", "boolean", "nil")
-		CheckType(options.SerializeMathHuge, "options.SerializeMathHuge", "boolean", "nil")
-
-		-- Internal options:
-		CheckType(options._StackLevel, "options._StackLevel", "number", "nil")
-		CheckType(options._VisitedTables, "options._StackLevel", "table", "nil")
-	end
-
-	options = options or {}
-
-	-- Because no if-else-then exp. in Lua 5.1+ (only Luau), for optional boolean values we need to check
-	-- if it's nil first, THEN fall back to whatever it's actually set to if it's not nil
-	local Prettify = (options.Prettify == nil and options.PrettyPrinting == nil and false) or (options.Prettify ~= nil and options.Prettify) or (options.PrettyPrinting and options.PrettyPrinting)
-	local IndentCount = options.IndentCount or (Prettify and 4) or 0
-	local OutputWarnings = (options.OutputWarnings == nil and true) or options.OutputWarnings
-	local StackLimit = options.StackLimit or 500
-	local FunctionsReturnRaw = (options.FunctionsReturnRaw == nil and false) or options.FunctionsReturnRaw
-	local UseInstancePaths = (options.UseInstancePaths == nil and true) or options.UseInstancePaths
-	local SerializeMathHuge = (options.SerializeMathHuge == nil and true) or options.SerializeMathHuge
-
-	-- Internal options:
-
-	-- Internal stack level for depth checks and indenting
-	local StackLevel = options._StackLevel or 1
-	-- Set root as visited; cyclic detection
-	local VisitedTables = options._VisitedTables or {[inputTable] = true} -- [`visitedTable <table>`] = `isVisited <boolean>`
-
-	-- Stack overflow/output abuse etc; default StackLimit is 500
-	if StackLevel >= StackLimit then
-		return "{--[[LuaEncode: Stack level limit of `" .. StackLimit .. "` reached]]}"
-	end
-
-	-- For +/- inf num serialization
-	local PositiveInf = (SerializeMathHuge and "math.huge") or "1/0"
-	local NegativeInf = (SerializeMathHuge and "-math.huge") or "-1/0"
-
-	-- Easy-to-reference values for specific args
-	local NewEntryString = (Prettify and "\n") or ""
-	local ValueSeperator = (Prettify and ", ") or ","
-	local BlankSeperator = (Prettify and " ") or ""
-
-	-- For pretty printing (which is optional, and false by default) we need to keep track
-	-- of the current stack, then repeat IndentString by that count
-	local IndentString = string_rep(" ", IndentCount) -- If 0 this will just be ""
-	IndentString = (Prettify and string_rep(IndentString, StackLevel)) or IndentString
-
-	local EndingIndentString = (#IndentString > 0 and string_sub(IndentString, 1, -IndentCount - 1)) or ""
-
-	-- For number key values, incrementing the current internal index
-	local KeyIndex = 1
-
-	-- Cases (C-Like) for encoding values, then end setup. Using cases so no elseif bs!
-	-- Functions are all expected to return a (<string> EncodedKey, <boolean?> EncloseInBrackets)
-	local TypeCases = {} do
-		-- Basic func for getting the direct value of an encoded type without weird table.pack()[1] syntax
-		local function TypeCase(typeName, value)
-			-- Each of these funcs return a tuple, so it'd be annoying to do case-by-case
-			local EncodedValue = TypeCases[typeName](value, false) -- False to label as NOT `isKey`
-			return EncodedValue
-		end
-
-		-- For "tuple" args specifically, so there isn't a bunch of re-used code
-		local function Args(...)
-			local EncodedValues = {}
-
-			for _, Arg in next, {...} do
-				table_insert(EncodedValues, TypeCase(
-					Type(Arg),
-					Arg
-					))
-			end
-
-			return table_concat(EncodedValues, ValueSeperator)
-		end
-
-		-- For certain Roblox DataTypes, we use a custom serialization method for filling out params etc
-		local function Params(newData, params)
-			return "(function(v, p) for pn, pv in next, p do v[pn] = pv end return v end)(" ..
-				table_concat({newData, TypeCase("table", params)}, ValueSeperator) ..
-				")"
-		end
-
-		TypeCases["number"] = function(value, isKey)
-			-- If the number isn't the current real index of the table, we DO want to
-			-- explicitly define it in the serialization no matter what for accuracy
-			if isKey and value == KeyIndex then
-				-- ^^ What's EXPECTED unless otherwise explicitly defined, if so, return no encoded num
-				KeyIndex = KeyIndex + 1
-				return nil, true
-			end
-
-			-- Lua's internal `tostring` handling will denote positive/negativie-infinite number TValues as "inf", which
-			-- makes certain numbers not encode properly. We also just want to make the output precise
-			if value == 1/0 then
-				return PositiveInf
-			elseif value == -1/0 then
-				return NegativeInf
-			end
-
-			-- Return fixed-formatted precision num
-			return string_format("%.14g", value)
-		end
-
-		TypeCases["string"] = function(value, isKey)
-			if isKey and not LuaKeywords[value] and string_match(value, "^[A-Za-z_][A-Za-z0-9_]*$") then
-				-- ^^ Then it's a syntaxically-correct variable, doesn't need explicit string def
-				return value, true
-			end
-
-			return SerializeString(value)
-		end
-
-		TypeCases["table"] = function(value, isKey)
-			-- Check duplicate/cyclic references
-			do
-				local VisitedTable = VisitedTables[value]
-				if VisitedTable then
-					return string_format(
-						"{--[[LuaEncode: Duplicate reference%s]]}",
-						(value == inputTable and " (of parent)") or ""
-					)
-				end
-
-				VisitedTables[value] = true
-			end
-
-			-- *Point index not set by NewOptions to original
-			local NewOptions = setmetatable({}, {__index = options}) do
-				-- Overriding if key because it'd look worse pretty printed in a key
-				NewOptions.Prettify = (isKey and false) or Prettify
-
-				-- If Prettify is already false in the real args, set the indent to whatever
-				-- the REAL IndentCount is set to
-				NewOptions.IndentCount = (isKey and ((not Prettify and IndentCount) or 1)) or IndentCount
-
-				-- Internal options
-				NewOptions._StackLevel = (isKey and 1) or StackLevel + 1 -- If isKey, stack lvl is set to the **LOWEST** because it's the key to a value
-				NewOptions._VisitedTables = VisitedTables
-			end
-
-			return LuaEncode(value, NewOptions)
-		end
-
-		TypeCases["boolean"] = function(value)
-			return value and "true" or "false"
-		end
-
-		TypeCases["nil"] = function(value)
-			return "nil"
-		end
-
-		TypeCases["function"] = function(value)
-			-- If `FunctionsReturnRaw` is set as true, we'll call the function here itself, expecting
-			-- a raw value for FunctionsReturnRaw to add as the key/value, you may want to do this for custom userdata or
-			-- function closures. Thank's for listening to my Ted Talk!
-			if FunctionsReturnRaw then
-				return value()
-			end
-
-			-- If all else, force key func to return nil; can't handle a func val..
-			return "function() --[[LuaEncode: `options.FunctionsReturnRaw` false; can't serialize functions]] return end"
-		end
-
-		---------- ROBLOX CUSTOM DATATYPES BELOW ----------
-
-		TypeCases["Axes"] = function(value)
-			local EncodedArgs = {}
-			local EnumValues = {
-				["Enum.Axis.X"] = value.X,
-				["Enum.Axis.Y"] = value.Y,
-				["Enum.Axis.Z"] = value.Z,
-			}
-
-			for EnumValue, IsEnabled in next, EnumValues do
-				if IsEnabled then
-					table_insert(EncodedArgs, EnumValue)
-				end
-			end
-
-			return "Axes.new(" .. table_concat(EncodedArgs, ValueSeperator) .. ")"
-		end
-
-		TypeCases["BrickColor"] = function(value)
-			-- BrickColor.Number (Its enum ID) will be slightly more efficient in all cases in deser,
-			-- so we'll use it if Options.Prettify is false
-			return "BrickColor.new(" ..
-				(Prettify and TypeCase("string", value.Name)) or value.Number ..
-				")"
-		end
-
-		TypeCases["CFrame"] = function(value)
-			return "CFrame.new(" .. Args(value:components()) .. ")"
-		end
-
-		TypeCases["CatalogSearchParams"] = function(value)
-			return Params("CatalogSearchParams.new()", {
-				SearchKeyword = value.SearchKeyword,
-				MinPrice = value.MinPrice,
-				MaxPrice = value.MaxPrice,
-				SortType = value.SortType, -- EnumItem
-				CategoryFilter = value.CategoryFilter, -- EnumItem
-				BundleTypes = value.BundleTypes, -- table
-				AssetTypes = value.AssetTypes -- table
-			})
-		end
-
-		TypeCases["Color3"] = function(value)
-			-- Using floats for RGB values, most accurate for direct serialization
-			return "Color3.new(" .. Args(value.R, value.G, value.B)
-		end
-
-		TypeCases["ColorSequence"] = function(value)
-			return "ColorSequence.new(" .. TypeCase("table", value.Keypoints) .. ")"
-		end
-
-		TypeCases["ColorSequenceKeypoint"] = function(value)
-			return "ColorSequenceKeypoint.new(" .. Args(value.Time, value.Value) .. ")"
-		end
-
-		-- We're using fromUnixTimestamp to serialize the object
-		TypeCases["DateTime"] = function(value)
-			-- Always an int, we don't need to do anything special
-			return "DateTime.fromUnixTimestamp(" .. value.UnixTimestamp .. ")"
-		end
-
-		-- Properties seem to throw an error on index if the scope isn't a Studio plugin, so we're
-		-- directly getting values! (so fun!!!!)
-		TypeCases["DockWidgetPluginGuiInfo"] = function(value)
-			-- e.g.: "InitialDockState:Right InitialEnabled:0 InitialEnabledShouldOverrideRestore:0 FloatingXSize:0 FloatingYSize:0 MinWidth:0 MinHeight:0"
-			local ValueString = tostring(value)
-
-			return "DockWidgetPluginGuiInfo.new(" ..
-				Args(
-					-- InitialDockState (Enum.InitialDockState)
-					Enum.InitialDockState[string_match(ValueString, "InitialDockState:(%w+)")], -- Enum.InitialDockState.Right
-					-- InitialEnabled and InitialEnabledShouldOverrideRestore (boolean as number; `0` or `1`)
-					string_match(ValueString, "InitialEnabled:(%w+)") == "1", -- false
-					string_match(ValueString, "InitialEnabledShouldOverrideRestore:(%w+)") == "1", -- false
-					-- FloatingXSize/FloatingYSize (numbers)
-					tonumber(string_match(ValueString, "FloatingXSize:(%w+)")), -- 0
-					tonumber(string_match(ValueString, "FloatingYSize:(%w+)")), -- 0
-					-- MinWidth/MinHeight (numbers)
-					tonumber(string_match(ValueString, "MinWidth:(%w+)")), -- 0
-					tonumber(string_match(ValueString, "MinHeight:(%w+)")) -- 0
-				) ..
-				")"
-		end
-
-		-- e.g. `Enum.UserInputType`
-		TypeCases["Enum"] = function(value)
-			return "Enum." .. tostring(value) -- For now, this is the behavior of enums in tostring.. I have no other choice atm
-		end
-
-		-- e.g. `Enum.UserInputType.Gyro`
-		TypeCases["EnumItem"] = function(value)
-			return tostring(value) -- Returns the full enum index for now (e.g. "Enum.UserInputType.Gyro")
-		end
-
-		-- i.e. the `Enum` global return
-		TypeCases["Enums"] = function(value)
-			return "Enum"
-		end
-
-		TypeCases["Faces"] = function(value)
-			local EncodedArgs = {}
-			local EnumValues = {
-				["Enum.NormalId.Top"] = value.Top, -- These return bools
-				["Enum.NormalId.Bottom"] = value.Bottom,
-				["Enum.NormalId.Left"] = value.Left,
-				["Enum.NormalId.Right"] = value.Right,
-				["Enum.NormalId.Back"] = value.Back,
-				["Enum.NormalId.Front"] = value.Front,
-			}
-
-			for EnumValue, IsEnabled in next, EnumValues do
-				if IsEnabled then
-					table_insert(EncodedArgs, EnumValue)
-				end
-			end
-
-			return "Faces.new(" .. table_concat(EncodedArgs, ValueSeperator) .. ")"
-		end
-
-		TypeCases["FloatCurveKey"] = function(value)
-			return "FloatCurveKey.new(" .. Args(value.Time, value.Value, value.Interpolation) .. ")"
-		end
-
-		TypeCases["Font"] = function(value)
-			return "Font.new(" .. Args(value.Family, value.Weight, value.Style) .. ")"
-		end
-
-		-- Instance refs can be evaluated to their paths (optional), but if parented to
-		-- nil or some DataModel not under `game`, it'll just return nil
-		TypeCases["Instance"] = function(value)
-			if UseInstancePaths then
-				local InstancePath = EvaluateInstancePath(value)
-				if InstancePath then
-					return InstancePath
-				end
-
-				-- ^^ Now, if the path isn't accessable, falls back to the return below anyway
-			end
-
-			return "nil" .. BlankSeperator .. CommentBlock("Instance.new(" .. TypeCase("string", value.ClassName) .. ")")
-		end
-
-		TypeCases["NumberRange"] = function(value)
-			return "NumberRange.new(" .. Args(value.Min, value.Max) .. ")"
-		end
-
-		TypeCases["NumberSequence"] = function(value)
-			return "NumberSequence.new(" .. TypeCase("table", value.Keypoints) .. ")"
-		end
-
-		TypeCases["NumberSequenceKeypoint"] = function(value)
-			return "NumberSequenceKeypoint.new(" .. Args(value.Time, value.Value, value.Envelope) .. ")"
-		end
-
-		TypeCases["OverlapParams"] = function(value)
-			return Params("OverlapParams.new()", {
-				FilterDescendantsInstances = value.FilterDescendantsInstances,
-				FilterType = value.FilterType,
-				MaxParts = value.MaxParts,
-				CollisionGroup = value.CollisionGroup,
-				RespectCanCollide = value.RespectCanCollide
-			})
-		end
-
-		TypeCases["PathWaypoint"] = function(value)
-			return "PathWaypoint.new(" .. Args(value.Position, value.Action, value.Label) .. ")"
-		end
-
-		TypeCases["PhysicalProperties"] = function(value)
-			return "PhysicalProperties.new(" ..
-				Args(
-					value.Density,
-					value.Friction,
-					value.Elasticity,
-					value.FrictionWeight,
-					value.ElasticityWeight
-				) ..
-				")"
-		end
-
-		TypeCases["Random"] = function()
-			return "Random.new()"
-		end
-
-		TypeCases["Ray"] = function(value)
-			return "Ray.new(" .. Args(value.Origin, value.Direction) .. ")"
-		end
-
-		TypeCases["RaycastParams"] = function(value)
-			return Params("RaycastParams.new()", {
-				FilterDescendantsInstances = value.FilterDescendantsInstances,
-				FilterType = value.FilterType,
-				IgnoreWater = value.IgnoreWater,
-				CollisionGroup = value.CollisionGroup,
-				RespectCanCollide = value.RespectCanCollide
-			})
-		end
-
-		TypeCases["Rect"] = function(value)
-			return "Rect.new(" .. Args(value.Min, value.Max) .. ")"
-		end
-
-		-- Roblox doesn't provide read properties for min/max on `Region3`, but they do on Region3int16.. Anyway,
-		-- we CAN calculate the min/max of a Region3 from just .CFrame and .Size.. Thanks to wally for linking me
-		-- the thread for this method lol
-		TypeCases["Region3"] = function(value)
-			local ValueCFrame = value.CFrame
-			local ValueSize = value.Size
-
-			return "Region3.new(" ..
-				Args(
-					ValueCFrame * CFrame.new(-ValueSize / 2), -- Minimum
-					ValueCFrame * CFrame.new(ValueSize / 2) -- Maximum
-				) ..
-				")"
-		end
-
-		TypeCases["Region3int16"] = function(value)
-			return "Region3int16.new(" .. Args(value.Min, value.Max) .. ")"
-		end
-
-		TypeCases["TweenInfo"] = function(value)
-			return "TweenInfo.new(" ..
-				Args(
-					value.Time,
-					value.EasingStyle,
-					value.EasingDirection,
-					value.RepeatCount,
-					value.Reverses,
-					value.DelayTime
-				) ..
-				")"
-		end
-
-		-- CURRENTLY UNDOCUMENTED*
-		TypeCases["RotationCurveKey"] = function(value)
-			return "RotationCurveKey.new(" .. Args(value.Time, value.Value, value.Interpolation) .. ")"
-		end
-
-		TypeCases["UDim"] = function(value)
-			return "UDim.new(" .. Args(value.Scale, value.Offset) .. ")"
-		end
-
-		TypeCases["UDim2"] = function(value)
-			return "UDim2.new(" ..
-				Args(
-					-- Not directly using X and Y UDims for better output (i.e. would be
-					-- UDim2.new(UDim.new(1, 0), UDim.new(1, 0)) if I did)
-					value.X.Scale,
-					value.X.Offset,
-					value.Y.Scale,
-					value.Y.Offset
-				) ..
-				")"
-		end
-
-		TypeCases["Vector2"] = function(value)
-			return "Vector2.new(" .. Args(value.X, value.Y) .. ")"
-		end
-
-		TypeCases["Vector2int16"] = function(value)
-			return "Vector2int16.new(" .. Args(value.X, value.Y) .. ")"
-		end
-
-		TypeCases["Vector3"] = function(value)
-			return "Vector3.new(" .. Args(value.X, value.Y, value.Z) .. ")"
-		end
-
-		TypeCases["Vector3int16"] = function(value)
-			return "Vector3int16.new(" .. Args(value.X, value.Y, value.Z) .. ")"
-		end
-
-		-- With userdata, just encode directly
-		TypeCases["userdata"] = function(value)
-			if getmetatable(value) then -- Has mt
-				return "newproxy(true)"
-			else
-				return "newproxy()" -- newproxy() defaults to false (no mt)
-			end
-		end
-	end
-
-	-- Setup output tbl
-		local ValueType = Type(inputTable)
-			-- Ignoring 2nd arg (`DontEncloseInBrackets`) because this isn't the key
-			local ValueEncodedSuccess, EncodedValueOrError = pcall(TypeCases[ValueType], inputTable, false) -- `false` because it's NOT the key, it's the value
-		return EncodedValueOrError
-end
-
-return LuaEncode
-end;
-};
-G2L_MODULES[G2L["f6"]] = {
-Closure = function()
-    local script = G2L["f6"];-- LuaEncode - Optimal Table Serialization for Native Luau/Lua 5.1+
--- Copyright (c) 2022-2023 Reggie <reggie@latte.to> | MIT License
--- https://github.com/regginator/LuaEncode
-
---!nocheck
---!optimize 2
-
--- Localizing certain libraries/variables used throughout for runtime efficiency (not specific to Luau)
-local table, ipairs, string, next, pcall, game, workspace, tostring, tonumber, getmetatable = table, ipairs, string, next, pcall, game, workspace, tostring, tonumber, getmetatable
-
-local string_format = string.format
-local string_char = string.char
-local string_gsub = string.gsub
-local string_match = string.match
-local string_rep = string.rep
-local string_sub = string.sub
-local string_gmatch = string.gmatch
-
-local table_find = table.find
-local table_concat = table.concat
-local table_insert = table.insert
-
--- For custom Roblox engine data-type support via `typeof`, if it exists
-local Type = typeof or type
-
--- Used for checking direct getfield syntax; Lua keywords can't be used as keys without being a str
--- FYI; `continue` is Luau only (in Lua it's actually a global function), but we're including it
--- here anyway to be safe
-local LuaKeywords do
-	local LuaKeywordsArray = {
-		"and", "break", "do", "else",
-		"elseif", "end", "false", "for",
-		"function", "if", "in", "local",
-		"nil", "not", "or", "repeat",
-		"return", "then", "true", "until",
-		"while", "continue"
-	}
-
-	-- We're now setting each keyword str to a weak key, so it's faster at runtime for `SerializeString()`
-	LuaKeywords = setmetatable({}, {__mode = "k"})
-
-	for _, Keyword in next, LuaKeywordsArray do
-		LuaKeywords[Keyword] = true
-	end
-end
-
--- Lua 5.1 doesn't have table.find
-table_find = table_find or function(inputTable, valueToFind) -- Ignoring the `init` arg, unneeded for us
-	for Key, Value in ipairs(inputTable) do
-		if Value == valueToFind then
-			return Key -- Return the key idx
-		end
-	end
-
-	return
-end
-
--- Simple function for directly checking the type on values, with their input, variable name,
--- and desired type name(s) to check
-local function CheckType(inputData, dataName, ...)
-	local DesiredTypes = {...}
-	local InputDataType = Type(inputData)
-
-	if not table_find(DesiredTypes, InputDataType) then
-		error(string_format(
-			"LuaEncode: Incorrect type for `%s`: `%s` expected, got `%s`",
-			dataName,
-			table_concat(DesiredTypes, ", "), -- For if multiple types are accepted
-			InputDataType
-			), 0)
-	end
-
-	return inputData -- Return back input directly
-end
-
--- This re-serializes a string back into Lua, for the interpreter AND humans to read. This fixes
--- `string_format("%q")` only outputting in system encoding, instead of explicit Lua byte escapes
-local SerializeString do
-	-- These are control characters to be encoded in a certain way in Lua rather than just a byte
-	-- escape (e.g. "\n" -> "\10")
-	local SpecialCharacters = {
-		["\""] = "\\\"", -- Double-Quote
-		["\\"] = "\\\\", -- (Literal) Backslash
-		-- Special ASCII control char codes
-		["\a"] = "\\a", -- Bell; ASCII #7
-		["\b"] = "\\b", -- Backspace; ASCII #8
-		["\t"] = "\\t", -- Horizontal-Tab; ASCII #9
-		["\n"] = "\\n", -- Newline; ASCII #10
-		["\v"] = "\\v", -- Vertical-Tab; ASCII #11
-		["\f"] = "\\f", -- Form-Feed; ASCII #12
-		["\r"] = "\\r", -- Carriage-Return; ASCII #13
-	}
-
-	-- We need to assign all extra normal byte escapes for runtime optimization
-	for Index = 0, 255 do
-		local Character = string_char(Index)
-
-		if not SpecialCharacters[Character] and (Index < 32 or Index > 126) then
-			SpecialCharacters[Character] = "\\" .. Index
-		end
-	end
-
-	function SerializeString(inputString)
-		-- FYI; We can't do "\0-\31" in Lua 5.1 (Only Luau/Lua 5.2+) due to an embedded zeros in pattern
-		-- issue. See: https://stackoverflow.com/a/22962409
-		return "\"" .. string_gsub(inputString, "[%z\\\"\1-\31\127-\255]", SpecialCharacters) .. "\""
-	end
-end
-
--- We need to occasionally construct valid comment blocks from external input, with proper escapes etc
-local function CommentBlock(inputString)
-	local Padding = ""
-	for Match in string_gmatch(inputString, "%](=*)%]") do
-		if #Match >= #Padding then
-			Padding = Match .. "="
-		end
-	end
-
-	return "--[" .. Padding .. "[" .. inputString .. "]" .. Padding .. "]"
-end
-
-local EvaluateInstancePath do
-	-- VERY simple function to get if an object is a service, used in instance path eval
-	local function IsService(object)
-		-- Logically, if an object is actually under a service, that service *has* to already exist, as we've
-		-- presumably evaluated to said path
-		local FindServiceSuccess, ServiceObject = pcall(game.FindService, game, object.ClassName)
-
-		if FindServiceSuccess and ServiceObject then
-			return true
-		end
-
-		return false
-	end
-
-	-- Evaluating an instances' accessable "path" with just it's ref, and if the root parent is nil/isn't
-	-- under `game` or `workspace`, returns nil.
-	function EvaluateInstancePath(object)
-		-- "Recursive" eval
-		local ObjectPointer = object
-
-		-- Input itself doesn't exist?
-		if not ObjectPointer then
-			return
-		end
-
-		local Path = ""
-
-		while ObjectPointer do
-			local ObjectName = ObjectPointer.Name
-			local ObjectClassName = ObjectPointer.ClassName
-			local ObjectParent = ObjectPointer.Parent
-
-			if ObjectPointer == game:GetService("Players").LocalPlayer.Character then
-				return 'game:GetService("Players").LocalPlayer.Character'..Path
-			elseif ObjectPointer == game:GetService("Players").LocalPlayer then
-				Path = ".LocalPlayer"..Path
-			elseif ObjectParent == game and IsService(ObjectPointer) then
-				-- ^^ Then we'll use GetService directly, since it's actually a service under the DataModel
-
-				Path = ":GetService(" .. SerializeString(ObjectClassName) .. ")" .. Path
-			elseif not LuaKeywords[ObjectName] and string_match(ObjectName, "^[A-Za-z_][A-Za-z0-9_]*$") then
-				-- ^^ Like the `string` DataType, this means means we can index the name directly in Lua
-				-- without an explicit string
-				Path = "." .. ObjectName .. Path
-			else
-				Path = "[" .. SerializeString(ObjectName) .. "]" .. Path
-			end
-
-			if ObjectParent == game then
-				Path = "game" .. Path
-				return Path
-			elseif ObjectParent == workspace then
-				Path = "workspace" .. Path
-				return Path
-			end
-
-			-- Advance ObjectPointer, whether it exists or not (JUMPBACK)
-			ObjectPointer = ObjectParent
-		end
-
-		-- Fall back to no ret.. Only objects parented under game/workspace will be serialized
-		return
-	end
-end
-
---[[
-LuaEncode(inputTable: {[any]: any}, options: {[string]:any}): string
-
-    ---------- OPTIONS: ----------
-
-    Prettify <boolean?:false> | Whether or not the output should use pretty printing.
-
-    IndentCount <number?:0> | The amount of "spaces" that should be indented per entry. (*Note:
-    If `Prettify` is set to true and this is unspecified, it'll be set to `4` automatically.*)
-
-    OutputWarnings <boolean?:true> | If "warnings" should be placed to the output (as
-    comments); It's recommended to keep this enabled, however this can be disabled at ease.
-
-    StackLimit <number?:500> | The limit to the stack level before recursive encoding cuts
-    off, and stops execution. This is used to prevent stack overflow errors and such. You
-    could use `math.huge` here if you really wanted.
-
-    FunctionsReturnRaw <boolean?:false> | If functions in said table return back a "raw"
-    value to place in the output as the key/value.
-
-    UseInstancePaths <boolean?:true> | If `Instance` reference objects should return their
-    Lua-accessable path for encoding. If the instance is parented under `nil` or isn't under
-    `game`/`workspace`, it'll always fall back to `Instance.new(ClassName)` as before.
-
-    SerializeMathHuge <boolean?:true> | If numbers calculated as "infinite" (or negative-inf)
-    numbers should be serialized with "math.huge". (uses the `math` import, as opposed to just
-    a direct data type) If false, "`1/0`" or "`-1/0`" will be serialized, which is supported
-    on all target versions.
-
-]]
-
-local function LuaEncode(inputTable, options)
-	-- Check all arg and option types
-	CheckType(inputTable, "inputTable", "table") -- Required*, nil not allowed
-	CheckType(options, "options", "table", "nil") -- `options` is an optional arg
-
-	-- Options
-	if options then
-		CheckType(options.Prettify, "options.Prettify", "boolean", "nil")
-		CheckType(options.PrettyPrinting, "options.PrettyPrinting", "boolean", "nil") -- Alias for `Options.Prettify`
-		CheckType(options.IndentCount, "options.IndentCount", "number", "nil")
-		CheckType(options.OutputWarnings, "options.OutputWarnings", "boolean", "nil")
-		CheckType(options.StackLimit, "options.StackLimit", "number", "nil")
-		CheckType(options.FunctionsReturnRaw, "options.FunctionsReturnRaw", "boolean", "nil")
-		CheckType(options.UseInstancePaths, "options.UseInstancePaths", "boolean", "nil")
-		CheckType(options.SerializeMathHuge, "options.SerializeMathHuge", "boolean", "nil")
-
-		-- Internal options:
-		CheckType(options._StackLevel, "options._StackLevel", "number", "nil")
-		CheckType(options._VisitedTables, "options._StackLevel", "table", "nil")
-	end
-
-	options = options or {}
-
-	-- Because no if-else-then exp. in Lua 5.1+ (only Luau), for optional boolean values we need to check
-	-- if it's nil first, THEN fall back to whatever it's actually set to if it's not nil
-	local Prettify = (options.Prettify == nil and options.PrettyPrinting == nil and false) or (options.Prettify ~= nil and options.Prettify) or (options.PrettyPrinting and options.PrettyPrinting)
-	local IndentCount = options.IndentCount or (Prettify and 4) or 0
-	local OutputWarnings = (options.OutputWarnings == nil and true) or options.OutputWarnings
-	local StackLimit = options.StackLimit or 500
-	local FunctionsReturnRaw = (options.FunctionsReturnRaw == nil and false) or options.FunctionsReturnRaw
-	local UseInstancePaths = (options.UseInstancePaths == nil and true) or options.UseInstancePaths
-	local SerializeMathHuge = (options.SerializeMathHuge == nil and true) or options.SerializeMathHuge
-
-	-- Internal options:
-
-	-- Internal stack level for depth checks and indenting
-	local StackLevel = options._StackLevel or 1
-	-- Set root as visited; cyclic detection
-	local VisitedTables = options._VisitedTables or {[inputTable] = true} -- [`visitedTable <table>`] = `isVisited <boolean>`
-
-	-- Stack overflow/output abuse etc; default StackLimit is 500
-	if StackLevel >= StackLimit then
-		return "{--[[LuaEncode: Stack level limit of `" .. StackLimit .. "` reached]]}"
-	end
-
-	-- For +/- inf num serialization
-	local PositiveInf = (SerializeMathHuge and "math.huge") or "1/0"
-	local NegativeInf = (SerializeMathHuge and "-math.huge") or "-1/0"
-
-	-- Easy-to-reference values for specific args
-	local NewEntryString = (Prettify and "\n") or ""
-	local ValueSeperator = (Prettify and ", ") or ","
-	local BlankSeperator = (Prettify and " ") or ""
-
-	-- For pretty printing (which is optional, and false by default) we need to keep track
-	-- of the current stack, then repeat IndentString by that count
-	local IndentString = string_rep(" ", IndentCount) -- If 0 this will just be ""
-	IndentString = (Prettify and string_rep(IndentString, StackLevel)) or IndentString
-
-	local EndingIndentString = (#IndentString > 0 and string_sub(IndentString, 1, -IndentCount - 1)) or ""
-
-	-- For number key values, incrementing the current internal index
-	local KeyIndex = 1
-
-	-- Cases (C-Like) for encoding values, then end setup. Using cases so no elseif bs!
-	-- Functions are all expected to return a (<string> EncodedKey, <boolean?> EncloseInBrackets)
-	local TypeCases = {} do
-		-- Basic func for getting the direct value of an encoded type without weird table.pack()[1] syntax
-		local function TypeCase(typeName, value)
-			-- Each of these funcs return a tuple, so it'd be annoying to do case-by-case
-			local EncodedValue = TypeCases[typeName](value, false) -- False to label as NOT `isKey`
-			return EncodedValue
-		end
-
-		-- For "tuple" args specifically, so there isn't a bunch of re-used code
-		local function Args(...)
-			local EncodedValues = {}
-
-			for _, Arg in next, {...} do
-				table_insert(EncodedValues, TypeCase(
-					Type(Arg),
-					Arg
-					))
-			end
-
-			return table_concat(EncodedValues, ValueSeperator)
-		end
-
-		-- For certain Roblox DataTypes, we use a custom serialization method for filling out params etc
-		local function Params(newData, params)
-			return "(function(v, p) for pn, pv in next, p do v[pn] = pv end return v end)(" ..
-				table_concat({newData, TypeCase("table", params)}, ValueSeperator) ..
-				")"
-		end
-
-		TypeCases["number"] = function(value, isKey)
-			-- If the number isn't the current real index of the table, we DO want to
-			-- explicitly define it in the serialization no matter what for accuracy
-			if isKey and value == KeyIndex then
-				-- ^^ What's EXPECTED unless otherwise explicitly defined, if so, return no encoded num
-				KeyIndex = KeyIndex + 1
-				return nil, true
-			end
-
-			-- Lua's internal `tostring` handling will denote positive/negativie-infinite number TValues as "inf", which
-			-- makes certain numbers not encode properly. We also just want to make the output precise
-			if value == 1/0 then
-				return PositiveInf
-			elseif value == -1/0 then
-				return NegativeInf
-			end
-
-			-- Return fixed-formatted precision num
-			return string_format("%.14g", value)
-		end
-
-		TypeCases["string"] = function(value, isKey)
-			if isKey and not LuaKeywords[value] and string_match(value, "^[A-Za-z_][A-Za-z0-9_]*$") then
-				-- ^^ Then it's a syntaxically-correct variable, doesn't need explicit string def
-				return value, true
-			end
-
-			return SerializeString(value)
-		end
-
-		TypeCases["table"] = function(value, isKey)
-			-- Check duplicate/cyclic references
-			do
-				local VisitedTable = VisitedTables[value]
-				if VisitedTable then
-					return string_format(
-						"{--[[LuaEncode: Duplicate reference%s]]}",
-						(value == inputTable and " (of parent)") or ""
-					)
-				end
-
-				VisitedTables[value] = true
-			end
-
-			-- *Point index not set by NewOptions to original
-			local NewOptions = setmetatable({}, {__index = options}) do
-				-- Overriding if key because it'd look worse pretty printed in a key
-				NewOptions.Prettify = (isKey and false) or Prettify
-
-				-- If Prettify is already false in the real args, set the indent to whatever
-				-- the REAL IndentCount is set to
-				NewOptions.IndentCount = (isKey and ((not Prettify and IndentCount) or 1)) or IndentCount
-
-				-- Internal options
-				NewOptions._StackLevel = (isKey and 1) or StackLevel + 1 -- If isKey, stack lvl is set to the **LOWEST** because it's the key to a value
-				NewOptions._VisitedTables = VisitedTables
-			end
-
-			return LuaEncode(value, NewOptions)
-		end
-
-		TypeCases["boolean"] = function(value)
-			return value and "true" or "false"
-		end
-
-		TypeCases["nil"] = function(value)
-			return "nil"
-		end
-
-		TypeCases["function"] = function(value)
-			-- If `FunctionsReturnRaw` is set as true, we'll call the function here itself, expecting
-			-- a raw value for FunctionsReturnRaw to add as the key/value, you may want to do this for custom userdata or
-			-- function closures. Thank's for listening to my Ted Talk!
-			if FunctionsReturnRaw then
-				return value()
-			end
-
-			-- If all else, force key func to return nil; can't handle a func val..
-			return "function() --[[LuaEncode: `options.FunctionsReturnRaw` false; can't serialize functions]] return end"
-		end
-
-		---------- ROBLOX CUSTOM DATATYPES BELOW ----------
-
-		TypeCases["Axes"] = function(value)
-			local EncodedArgs = {}
-			local EnumValues = {
-				["Enum.Axis.X"] = value.X,
-				["Enum.Axis.Y"] = value.Y,
-				["Enum.Axis.Z"] = value.Z,
-			}
-
-			for EnumValue, IsEnabled in next, EnumValues do
-				if IsEnabled then
-					table_insert(EncodedArgs, EnumValue)
-				end
-			end
-
-			return "Axes.new(" .. table_concat(EncodedArgs, ValueSeperator) .. ")"
-		end
-
-		TypeCases["BrickColor"] = function(value)
-			-- BrickColor.Number (Its enum ID) will be slightly more efficient in all cases in deser,
-			-- so we'll use it if Options.Prettify is false
-			return "BrickColor.new(" ..
-				(Prettify and TypeCase("string", value.Name)) or value.Number ..
-				")"
-		end
-
-		TypeCases["CFrame"] = function(value)
-			return "CFrame.new(" .. Args(value:components()) .. ")"
-		end
-
-		TypeCases["CatalogSearchParams"] = function(value)
-			return Params("CatalogSearchParams.new()", {
-				SearchKeyword = value.SearchKeyword,
-				MinPrice = value.MinPrice,
-				MaxPrice = value.MaxPrice,
-				SortType = value.SortType, -- EnumItem
-				CategoryFilter = value.CategoryFilter, -- EnumItem
-				BundleTypes = value.BundleTypes, -- table
-				AssetTypes = value.AssetTypes -- table
-			})
-		end
-
-		TypeCases["Color3"] = function(value)
-			-- Using floats for RGB values, most accurate for direct serialization
-			return "Color3.new(" .. Args(value.R, value.G, value.B)..")"
-		end
-
-		TypeCases["ColorSequence"] = function(value)
-			return "ColorSequence.new(" .. TypeCase("table", value.Keypoints) .. ")"
-		end
-
-		TypeCases["ColorSequenceKeypoint"] = function(value)
-			return "ColorSequenceKeypoint.new(" .. Args(value.Time, value.Value) .. ")"
-		end
-
-		-- We're using fromUnixTimestamp to serialize the object
-		TypeCases["DateTime"] = function(value)
-			-- Always an int, we don't need to do anything special
-			return "DateTime.fromUnixTimestamp(" .. value.UnixTimestamp .. ")"
-		end
-
-		-- Properties seem to throw an error on index if the scope isn't a Studio plugin, so we're
-		-- directly getting values! (so fun!!!!)
-		TypeCases["DockWidgetPluginGuiInfo"] = function(value)
-			-- e.g.: "InitialDockState:Right InitialEnabled:0 InitialEnabledShouldOverrideRestore:0 FloatingXSize:0 FloatingYSize:0 MinWidth:0 MinHeight:0"
-			local ValueString = tostring(value)
-
-			return "DockWidgetPluginGuiInfo.new(" ..
-				Args(
-					-- InitialDockState (Enum.InitialDockState)
-					Enum.InitialDockState[string_match(ValueString, "InitialDockState:(%w+)")], -- Enum.InitialDockState.Right
-					-- InitialEnabled and InitialEnabledShouldOverrideRestore (boolean as number; `0` or `1`)
-					string_match(ValueString, "InitialEnabled:(%w+)") == "1", -- false
-					string_match(ValueString, "InitialEnabledShouldOverrideRestore:(%w+)") == "1", -- false
-					-- FloatingXSize/FloatingYSize (numbers)
-					tonumber(string_match(ValueString, "FloatingXSize:(%w+)")), -- 0
-					tonumber(string_match(ValueString, "FloatingYSize:(%w+)")), -- 0
-					-- MinWidth/MinHeight (numbers)
-					tonumber(string_match(ValueString, "MinWidth:(%w+)")), -- 0
-					tonumber(string_match(ValueString, "MinHeight:(%w+)")) -- 0
-				) ..
-				")"
-		end
-
-		-- e.g. `Enum.UserInputType`
-		TypeCases["Enum"] = function(value)
-			return "Enum." .. tostring(value) -- For now, this is the behavior of enums in tostring.. I have no other choice atm
-		end
-
-		-- e.g. `Enum.UserInputType.Gyro`
-		TypeCases["EnumItem"] = function(value)
-			return tostring(value) -- Returns the full enum index for now (e.g. "Enum.UserInputType.Gyro")
-		end
-
-		-- i.e. the `Enum` global return
-		TypeCases["Enums"] = function(value)
-			return "Enum"
-		end
-
-		TypeCases["Faces"] = function(value)
-			local EncodedArgs = {}
-			local EnumValues = {
-				["Enum.NormalId.Top"] = value.Top, -- These return bools
-				["Enum.NormalId.Bottom"] = value.Bottom,
-				["Enum.NormalId.Left"] = value.Left,
-				["Enum.NormalId.Right"] = value.Right,
-				["Enum.NormalId.Back"] = value.Back,
-				["Enum.NormalId.Front"] = value.Front,
-			}
-
-			for EnumValue, IsEnabled in next, EnumValues do
-				if IsEnabled then
-					table_insert(EncodedArgs, EnumValue)
-				end
-			end
-
-			return "Faces.new(" .. table_concat(EncodedArgs, ValueSeperator) .. ")"
-		end
-
-		TypeCases["FloatCurveKey"] = function(value)
-			return "FloatCurveKey.new(" .. Args(value.Time, value.Value, value.Interpolation) .. ")"
-		end
-
-		TypeCases["Font"] = function(value)
-			return "Font.new(" .. Args(value.Family, value.Weight, value.Style) .. ")"
-		end
-
-		-- Instance refs can be evaluated to their paths (optional), but if parented to
-		-- nil or some DataModel not under `game`, it'll just return nil
-		TypeCases["Instance"] = function(value)
-			if UseInstancePaths then
-				local InstancePath = EvaluateInstancePath(value)
-				if InstancePath then
-					return InstancePath
-				end
-
-				-- ^^ Now, if the path isn't accessable, falls back to the return below anyway
-			end
-
-			return "nil" .. BlankSeperator .. CommentBlock("Instance.new(" .. TypeCase("string", value.ClassName) .. ")")
-		end
-
-		TypeCases["NumberRange"] = function(value)
-			return "NumberRange.new(" .. Args(value.Min, value.Max) .. ")"
-		end
-
-		TypeCases["NumberSequence"] = function(value)
-			return "NumberSequence.new(" .. TypeCase("table", value.Keypoints) .. ")"
-		end
-
-		TypeCases["NumberSequenceKeypoint"] = function(value)
-			return "NumberSequenceKeypoint.new(" .. Args(value.Time, value.Value, value.Envelope) .. ")"
-		end
-
-		TypeCases["OverlapParams"] = function(value)
-			return Params("OverlapParams.new()", {
-				FilterDescendantsInstances = value.FilterDescendantsInstances,
-				FilterType = value.FilterType,
-				MaxParts = value.MaxParts,
-				CollisionGroup = value.CollisionGroup,
-				RespectCanCollide = value.RespectCanCollide
-			})
-		end
-
-		TypeCases["PathWaypoint"] = function(value)
-			return "PathWaypoint.new(" .. Args(value.Position, value.Action, value.Label) .. ")"
-		end
-
-		TypeCases["PhysicalProperties"] = function(value)
-			return "PhysicalProperties.new(" ..
-				Args(
-					value.Density,
-					value.Friction,
-					value.Elasticity,
-					value.FrictionWeight,
-					value.ElasticityWeight
-				) ..
-				")"
-		end
-
-		TypeCases["Random"] = function()
-			return "Random.new()"
-		end
-
-		TypeCases["Ray"] = function(value)
-			return "Ray.new(" .. Args(value.Origin, value.Direction) .. ")"
-		end
-
-		TypeCases["RaycastParams"] = function(value)
-			return Params("RaycastParams.new()", {
-				FilterDescendantsInstances = value.FilterDescendantsInstances,
-				FilterType = value.FilterType,
-				IgnoreWater = value.IgnoreWater,
-				CollisionGroup = value.CollisionGroup,
-				RespectCanCollide = value.RespectCanCollide
-			})
-		end
-
-		TypeCases["Rect"] = function(value)
-			return "Rect.new(" .. Args(value.Min, value.Max) .. ")"
-		end
-
-		-- Roblox doesn't provide read properties for min/max on `Region3`, but they do on Region3int16.. Anyway,
-		-- we CAN calculate the min/max of a Region3 from just .CFrame and .Size.. Thanks to wally for linking me
-		-- the thread for this method lol
-		TypeCases["Region3"] = function(value)
-			local ValueCFrame = value.CFrame
-			local ValueSize = value.Size
-
-			return "Region3.new(" ..
-				Args(
-					ValueCFrame * CFrame.new(-ValueSize / 2), -- Minimum
-					ValueCFrame * CFrame.new(ValueSize / 2) -- Maximum
-				) ..
-				")"
-		end
-
-		TypeCases["Region3int16"] = function(value)
-			return "Region3int16.new(" .. Args(value.Min, value.Max) .. ")"
-		end
-
-		TypeCases["TweenInfo"] = function(value)
-			return "TweenInfo.new(" ..
-				Args(
-					value.Time,
-					value.EasingStyle,
-					value.EasingDirection,
-					value.RepeatCount,
-					value.Reverses,
-					value.DelayTime
-				) ..
-				")"
-		end
-
-		-- CURRENTLY UNDOCUMENTED*
-		TypeCases["RotationCurveKey"] = function(value)
-			return "RotationCurveKey.new(" .. Args(value.Time, value.Value, value.Interpolation) .. ")"
-		end
-
-		TypeCases["UDim"] = function(value)
-			return "UDim.new(" .. Args(value.Scale, value.Offset) .. ")"
-		end
-
-		TypeCases["UDim2"] = function(value)
-			return "UDim2.new(" ..
-				Args(
-					-- Not directly using X and Y UDims for better output (i.e. would be
-					-- UDim2.new(UDim.new(1, 0), UDim.new(1, 0)) if I did)
-					value.X.Scale,
-					value.X.Offset,
-					value.Y.Scale,
-					value.Y.Offset
-				) ..
-				")"
-		end
-
-		TypeCases["Vector2"] = function(value)
-			return "Vector2.new(" .. Args(value.X, value.Y) .. ")"
-		end
-
-		TypeCases["Vector2int16"] = function(value)
-			return "Vector2int16.new(" .. Args(value.X, value.Y) .. ")"
-		end
-
-		TypeCases["Vector3"] = function(value)
-			return "Vector3.new(" .. Args(value.X, value.Y, value.Z) .. ")"
-		end
-
-		TypeCases["Vector3int16"] = function(value)
-			return "Vector3int16.new(" .. Args(value.X, value.Y, value.Z) .. ")"
-		end
-
-		-- With userdata, just encode directly
-		TypeCases["userdata"] = function(value)
-			if getmetatable(value) then -- Has mt
-				return "newproxy(true)"
-			else
-				return "newproxy()" -- newproxy() defaults to false (no mt)
-			end
-		end
-	end
-
-	-- Setup output tbl
-	local Output = ""
-
-	for Key, Value in next, inputTable do
-		local KeyType = Type(Key)
-		local ValueType = Type(Value)
-
-		if TypeCases[KeyType] and TypeCases[ValueType] then
-			local EntryOutput = (Prettify and NewEntryString .. IndentString) or ""
-			local ValueWasEncoded = false -- Keeping track of this for adding a "," to the EntryOutput if needed
-
-			-- Go through and get key val
-			local KeyEncodedSuccess, EncodedKeyOrError, DontEncloseInBrackets = pcall(TypeCases[KeyType], Key, true) -- The `true` represents if it's a key or not, here it is
-
-			-- Ignoring 2nd arg (`DontEncloseInBrackets`) because this isn't the key
-			local ValueEncodedSuccess, EncodedValueOrError = pcall(TypeCases[ValueType], Value, false) -- `false` because it's NOT the key, it's the value
-
-			-- Im sorry for this logic chain here, I can't use `continue`/`continue()`.. :sob:
-			-- Ignoring `if EncodedKeyOrError` because the key doesn't actually need to ALWAYS
-			-- be explicitly encoded, like if it's a number of the current key index!
-			if KeyEncodedSuccess and ValueEncodedSuccess and EncodedValueOrError then
-				-- NOW we'll check for if the key was explicitly encoded, because we don't to stop
-				-- the value from encoding, since we've already checked that and it *has* been
-				local KeyValue = EncodedKeyOrError and ((DontEncloseInBrackets and EncodedKeyOrError) or string_format("[%s]", EncodedKeyOrError)) .. ((Prettify and " = ") or "=") or ""
-
-				-- Encode key/value together, we've already checked if `EncodedValueOrError` was returned
-				EntryOutput = EntryOutput .. KeyValue .. EncodedValueOrError
-				ValueWasEncoded = true
-			elseif OutputWarnings then -- Then `Encoded(Key/Value)OrError` is the error msg
-				-- ^^ Then either the key or value wasn't properly checked or encoded, and there
-				-- was an error we need to log!
-				local ErrorMessage = string_format(
-					"LuaEncode: Failed to encode %s of DataType `%s`: %s",
-					(not KeyEncodedSuccess and "key") or (not ValueEncodedSuccess and "value") or "key/value", -- "key/value" for bool type fallback
-					ValueType,
-					(not KeyEncodedSuccess and SerializeString(EncodedKeyOrError)) or (not ValueEncodedSuccess and SerializeString(EncodedValueOrError)) or "(Failed to get error message)"
-				)
-
-				EntryOutput = EntryOutput .. CommentBlock(ErrorMessage)
-			end
-
-			-- If there isn't another value after the current index, add ending formatting
-			if next(inputTable, Key) then
-				-- Yes.. The nesting here is deliberate
-				if ValueWasEncoded then
-					EntryOutput = EntryOutput .. ","
-				end
-			else
-				-- If there isn't another value after the current index, add ending formatting
-				EntryOutput = EntryOutput .. NewEntryString .. EndingIndentString
-			end
-
-			Output = Output .. EntryOutput
-		end
-	end
-
-	Output = "{" .. Output .. "}"
-	return Output
-end
-
-return LuaEncode
-end;
-};
 -- StarterGui.Sulfoxide.Main.group.Remotespy.Filters.LocalScript
 local function C_a0()
 local script = G2L["a0"];
@@ -4902,9 +3971,33 @@ local script = G2L["a0"];
 	end
 end;
 task.spawn(C_a0);
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.Searchbar.Filters.LocalScript
+local function C_ce()
+local script = G2L["ce"];
+	script.Parent.Activated:Connect(function()
+		script.Parent.Parent.Parent.FiltersFrame.Visible = not script.Parent.Parent.Parent.FiltersFrame.Visible
+	end)
+end;
+task.spawn(C_ce);
+-- StarterGui.Sulfoxide.Main.group.Functionscanner.FiltersFrame.LocalScript
+local function C_e3()
+local script = G2L["e3"];
+	local name = script.Parent:WaitForChild("Name")
+	local path = script.Parent:WaitForChild("Path")
+	print(name,path)
+	script.Parent:WaitForChild("Name").Activated:Connect(function()
+		path.ImageTransparency = path.ImageTransparency == 0 and 1 or 1
+		name.ImageTransparency = 0
+	end) 
+	script.Parent:WaitForChild("Path").Activated:Connect(function()
+		name.ImageTransparency = name.ImageTransparency == 0 and 1 or 1
+		path.ImageTransparency = 0
+	end)
+end;
+task.spawn(C_e3);
 -- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.LocalScript
-local function C_c8()
-local script = G2L["c8"];
+local function C_ed()
+local script = G2L["ed"];
 	local previouslyselected = script.Parent.Credits
 	local initpos = {}
 	for _,v in pairs(script.Parent:GetChildren()) do
@@ -4922,16 +4015,16 @@ local script = G2L["c8"];
 				end
 				v.Transparency = 0.89
 				script.Parent.Parent.Parent.group[v.Name].Visible = true
-				script.Parent.Parent.Parent.Title.Text = v.Name
+				script.Parent.Parent.Parent.Title.Text = v.TextLabel.Text
 				previouslyselected = v
 			end)
 		end
 	end
 end;
-task.spawn(C_c8);
+task.spawn(C_ed);
 -- StarterGui.Sulfoxide.Main.Topbar.drag
-local function C_e4()
-local script = G2L["e4"];
+local function C_10d()
+local script = G2L["10d"];
 	local UserInputService = game:GetService("UserInputService")
 	
 	local gui = script.Parent.Parent
@@ -4972,10 +4065,10 @@ local script = G2L["e4"];
 		end
 	end)--credits devforum
 end;
-task.spawn(C_e4);
+task.spawn(C_10d);
 -- StarterGui.Sulfoxide.Main.Topbar.buttonhandler
-local function C_e5()
-local script = G2L["e5"];
+local function C_10e()
+local script = G2L["10e"];
 	local UserInputService = game:GetService("UserInputService")
 	local function hasProperty(object, prop)
 		local t = object[prop] --this is just done to check if the property existed, if it did nothing would happen, if it didn't an error will pop, the object[prop] is a different way of writing object.prop, (object.Transparency or object["Transparency"])
@@ -4996,6 +4089,6 @@ local script = G2L["e5"];
 		end)
 	end)
 end;
-task.spawn(C_e5);
+task.spawn(C_10e);
 
 return G2L["1"], require;
