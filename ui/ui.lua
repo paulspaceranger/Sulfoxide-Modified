@@ -148,7 +148,7 @@ G2L["d"]["BackgroundTransparency"] = 1;
 G2L["d"]["Position"] = UDim2.new(0, 8, 0.5, 0);
 
 
--- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.Functionscanner
+-- StarterGui.Sulfoxide.Main.Tabs.ScrollingFrame.tionscanner
 G2L["e"] = Instance.new("TextButton", G2L["7"]);
 G2L["e"]["AutoButtonColor"] = false;
 G2L["e"]["TextSize"] = 14;
@@ -1075,99 +1075,6 @@ G2L["69"] = Instance.new("UIPadding", G2L["5d"]);
 G2L["69"]["PaddingTop"] = UDim.new(0, 1);
 G2L["69"]["PaddingLeft"] = UDim.new(0, 1);
 G2L["69"]["PaddingBottom"] = UDim.new(0, 1);
-
-
--- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func
-G2L["6a"] = Instance.new("Frame", G2L["5d"]);
-G2L["6a"]["BorderSizePixel"] = 0;
-G2L["6a"]["BackgroundColor3"] = Color3.fromRGB(23, 23, 23);
-G2L["6a"]["Size"] = UDim2.new(0, 502, 0, 34);
-G2L["6a"]["Position"] = UDim2.new(0.001, 0, 0, 1);
-G2L["6a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["6a"]["Name"] = [[Func]];
-
-
--- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.Icon
-G2L["6b"] = Instance.new("ImageLabel", G2L["6a"]);
-G2L["6b"]["BorderSizePixel"] = 0;
-G2L["6b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["6b"]["Image"] = [[rbxassetid://91967014423596]];
-G2L["6b"]["Size"] = UDim2.new(0, 19, 0, 19);
-G2L["6b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["6b"]["BackgroundTransparency"] = 1;
-G2L["6b"]["Name"] = [[Icon]];
-G2L["6b"]["Position"] = UDim2.new(0.01577, 0, 0.20588, 0);
-
-
--- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.Name
-G2L["6c"] = Instance.new("TextLabel", G2L["6a"]);
-G2L["6c"]["BorderSizePixel"] = 0;
-G2L["6c"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["6c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["6c"]["TextSize"] = 15;
-G2L["6c"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["6c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["6c"]["BackgroundTransparency"] = 1;
-G2L["6c"]["Size"] = UDim2.new(0, 270, 0, 34);
-G2L["6c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["6c"]["Text"] = [[Unnamed function]];
-G2L["6c"]["Name"] = [[Name]];
-G2L["6c"]["Position"] = UDim2.new(0.06759, 0, 0, 0);
-
-
--- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.UICorner
-G2L["6d"] = Instance.new("UICorner", G2L["6a"]);
-G2L["6d"]["CornerRadius"] = UDim.new(0, 4);
-
-
--- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.UIStroke
-G2L["6e"] = Instance.new("UIStroke", G2L["6a"]);
-
-
-
--- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.Protos
-G2L["6f"] = Instance.new("TextLabel", G2L["6a"]);
-G2L["6f"]["BorderSizePixel"] = 0;
-G2L["6f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["6f"]["TextSize"] = 14;
-G2L["6f"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["6f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["6f"]["BackgroundTransparency"] = 1;
-G2L["6f"]["Size"] = UDim2.new(0, 44, 0, 34);
-G2L["6f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["6f"]["Text"] = [[0]];
-G2L["6f"]["Name"] = [[Protos]];
-G2L["6f"]["Position"] = UDim2.new(0.60359, 0, 0, 0);
-
-
--- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.Constants
-G2L["70"] = Instance.new("TextLabel", G2L["6a"]);
-G2L["70"]["BorderSizePixel"] = 0;
-G2L["70"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["70"]["TextSize"] = 14;
-G2L["70"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["70"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["70"]["BackgroundTransparency"] = 1;
-G2L["70"]["Size"] = UDim2.new(0, 44, 0, 34);
-G2L["70"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["70"]["Text"] = [[0]];
-G2L["70"]["Name"] = [[Constants]];
-G2L["70"]["Position"] = UDim2.new(0.73506, 0, 0, 0);
-
-
--- StarterGui.Sulfoxide.Main.group.Functionscanner.Results.Func.Upvalues
-G2L["71"] = Instance.new("TextLabel", G2L["6a"]);
-G2L["71"]["BorderSizePixel"] = 0;
-G2L["71"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["71"]["TextSize"] = 14;
-G2L["71"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["71"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["71"]["BackgroundTransparency"] = 1;
-G2L["71"]["Size"] = UDim2.new(0, 44, 0, 34);
-G2L["71"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["71"]["Text"] = [[0]];
-G2L["71"]["Name"] = [[Upvalues]];
-G2L["71"]["Position"] = UDim2.new(0.88247, 0, 0, 0);
 
 
 -- StarterGui.Sulfoxide.Main.group.Functionscanner.Searchbar
