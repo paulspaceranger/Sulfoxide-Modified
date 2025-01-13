@@ -26,7 +26,7 @@ local old; old = hookmetamethod(game, "__namecall", newcclosure(function(...)
     local method = getnamecallmethod()
     local callingscript = getcallingscript()
     local iscaller = checkcaller()
-if typeof(self) == "Instance" and string.gsub(method, "^%l", string.upper) == "FireServer" or method == "InvokeServer" or method == "Fire" or method == "Invoke" then
+if typeof(self) == "Instance" and (string.gsub(method, "^%l", string.upper) == "FireServer" or method == "InvokeServer" or method == "Fire" or method == "Invoke") and (self.ClassName and self.ClassName == "RemoteEvent" or self.ClassName == "RemoteFunction" or self.ClassName == "BindableEvent" or self.ClassName == "BindableFunction" then
     local oldid = getthreadidentity()
     setthreadidentity(8)
     if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(self)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(self))..method].args,args)) then
@@ -35,8 +35,8 @@ if typeof(self) == "Instance" and string.gsub(method, "^%l", string.upper) == "F
         then
             return old(...)
     end
-    local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
-    addcall(remote)
+    local remote = remoteclass.new(cloneref(self),method,args,callingscript,debug.info(3,"f"))
+    task.spawn(addcall,remote)
     setthreadidentity(oldid)
 end
     return old(...)
@@ -57,8 +57,8 @@ for i,v in pairs(getinstances()) do
                 then
                     return
             end
-            local remote = remoteclass.new(v, method, {...}, nil, nil)
-            addcall(remote)
+            local remote = remoteclass.new(cloneref(v), method, {...}, nil, nil)
+            task.spawn(addcall,remote)
         end)
     elseif v:IsA("RemoteFunction") then
         if getcallbackvalue and pcall(getcallbackvalue,v, "OnClientInvoke") then
@@ -74,8 +74,8 @@ for i,v in pairs(getinstances()) do
                 then
                     return
             end
-            local remote = remoteclass.new(v, method, {...}, nil, nil)
-            addcall(remote)
+            local remote = remoteclass.new(cloneref(v), method, {...}, nil, nil)
+            task.spawn(addcall,remote)
             setthreadidentity(oldid)
             return old(...)
         end))
@@ -100,8 +100,8 @@ local old; old = hookfunction(fireserver,newcclosure(function(...)
                 then 
                 return old(...)
             end
-            local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
-            addcall(remote)
+            local remote = remoteclass.new(cloneref(self),method,args,callingscript,debug.info(3,"f"))
+            task.spawn(addcall,remote)
             setthreadidentity(oldid)
             return old(...)
         end))
@@ -122,8 +122,8 @@ local old; old = hookfunction(invokeserver,newcclosure(function(...)
             end
             I decided to comment because it's dtc idk why
             ]]
-            local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
-            addcall(remote)
+            local remote = remoteclass.new(cloneref(self),method,args,callingscript,debug.info(3,"f"))
+            task.spawn(addcall,remote)
             setthreadidentity(oldid)
             return old(...)
         end))
@@ -141,8 +141,8 @@ local old; old = hookfunction(fire,newcclosure(function(...)
                 then 
                 return old(...)
             end
-            local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
-            addcall(remote)
+            local remote = remoteclass.new(cloneref(self),method,args,callingscript,debug.info(3,"f"))
+            task.spawn(addcall,remote)
             setthreadidentity(oldid)
             return old(...)
         end))
@@ -160,8 +160,8 @@ local old; old = hookfunction(invoke,newcclosure(function(...)
                 then 
                 return old(...)
             end
-            local remote = remoteclass.new(self,method,args,callingscript,debug.info(3,"f"))
-            addcall(remote)
+            local remote = remoteclass.new(cloneref(self),method,args,callingscript,debug.info(3,"f"))
+            task.spawn(addcall,remote)
             setthreadidentity(oldid)
             return old(...)
         end))
@@ -176,7 +176,7 @@ if typeof(v) == "Instance" then
                 then
                     return
             end
-            local remote = remoteclass.new(v, method, {...}, nil, function() end)
+            local remote = remoteclass.new(cloneref(v), method, {...}, nil, function() end)
             addcall(remote)
         end)
     elseif v:IsA("RemoteFunction") then
@@ -194,8 +194,8 @@ if typeof(v) == "Instance" then
                 then
                     return
             end
-            local remote = remoteclass.new(v, method, {...}, nil, function() end)
-            addcall(remote)
+            local remote = remoteclass.new(cloneref(v), method, {...}, nil, function() end)
+            task.spawn(addcall,remote)
             setthreadidentity(oldid)
             return old(...)
         end))
