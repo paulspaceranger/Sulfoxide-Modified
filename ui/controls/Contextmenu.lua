@@ -5,7 +5,8 @@ local Contextmenu = function(instance,content) --content structure example {{Tex
 	instance.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton2 then
 			for _, obj in pairs(instance.Parent:GetChildren()) do
-				if obj:FindFirstChild("ContextMenu") then 
+				if obj:FindFirstChild("ContextMenu") then
+					obj.ZIndex = 1
 					obj.ContextMenu:Destroy()
 				end
 			end
