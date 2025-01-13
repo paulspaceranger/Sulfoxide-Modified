@@ -89,7 +89,7 @@ elseif mode == "Path" then
                 },
                 {
                     ["Text"] = "Get script",
-                    ["Func"] = function() toclipboard(debug.getinfo(v).source) end
+                    ["Func"] = function() toclipboard("local script="..debug.getinfo(v).source) end
                 },
                 {
                     ["Text"] = "Get info",
@@ -124,11 +124,11 @@ toclipboard(str:format(luatypeenc(getfenv(v).script), '"'..name..'"', "constants
                 },
                 {
                     ["Text"] = "Get Constants",
-                    ["Func"] = function() toclipboard("local upvals = "..luaencode(debug.getconstants(v), {Prettify = true})) end
+                    ["Func"] = function() toclipboard("local constants = "..luaencode(debug.getconstants(v), {Prettify = true})) end
                 },
                                 {
                     ["Text"] = "Get Protos",
-                    ["Func"] = function() toclipboard("local upvals = "..luaencode(debug.getprotos(v), {Prettify = true})) end
+                    ["Func"] = function() toclipboard("local protos = "..luaencode(debug.getprotos(v), {Prettify = true})) end
                 },
                 {
                     ["Text"] = "Save bytecode",
