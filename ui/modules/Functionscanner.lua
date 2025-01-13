@@ -8,7 +8,7 @@ if enterpressed then
         warn("query is too short!")
         return
     end
-    local mode = functionscannerpath.FiltersFrame.Name.Transparency == 0 and "Name" or "Path"
+    local mode = functionscannerpath.FiltersFrame.Name.ImageTransparency == 0 and "Name" or "Path"
     for i,v in pairs(functionscannerpath.Results:GetChildren()) do
         if v.Name == "Func" then
             v:Destroy()
