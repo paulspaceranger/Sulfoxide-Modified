@@ -67,8 +67,9 @@ toclipboard(str:format(debug.getinfo(v).script, debug.getinfo(v).name, "constant
         end
     end
 elseif mode == "Path" then 
-    local instance = loadstring("return "..query)()
-    if instance then
+    local returninstance = loadstring("return "..query)
+    if returninstance then
+        local instance = returninstance() --gotta do it like that in case people people pass stuff like "a a" which causes the loadstring to return nil instead of a function
         for i,v in pairs(getgc()) do
             if typeof(v) == "function" and not iscclosure(v) and not isourclosure(v) and debug.getinfo(v) and compareinstances(debug.getinfo(v).source, instance) then
             local newfuncframe = funcframe:Clone()
@@ -133,6 +134,8 @@ toclipboard(str:format(debug.getinfo(v).script, debug.getinfo(v).name, "constant
             contextmenu(newfuncframe, contextmenudata)
             end
         end
+        else
+            warn("invalid query! (didn't receive a valid path)")
     end
 end
 end
