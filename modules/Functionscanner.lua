@@ -18,7 +18,7 @@ if mode == "Name" then
                 },
                 {
                     ["Text"] = "Get script",
-                    ["Func"] = function() toclipboard(debug.getinfo(v).source) end
+                    ["Func"] = function() toclipboard("local script"..debug.getinfo(v).source) end
                 },
                 {
                     ["Text"] = "Get info",
@@ -43,7 +43,8 @@ local soaux = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void23
 local constants = ]]..luaencode(reducedconstants, {Prettify = true})..[[
 
 local func = soaux.searchClosure(%s, %s, %s)]]
-toclipboard(str:format(debug.getinfo(v).script, debug.getinfo(v).name, "constants"))
+local name = debug.getinfo(v).name or "Unnamed function"
+toclipboard(str:format(getfenv(v).script, tostring(debug.getinfo(v).name), "constants"))--again i'll change getfenv with getinfo because of people making their script's env nil
                     end
                 },
                 {
@@ -52,11 +53,11 @@ toclipboard(str:format(debug.getinfo(v).script, debug.getinfo(v).name, "constant
                 },
                 {
                     ["Text"] = "Get Constants",
-                    ["Func"] = function() toclipboard("local upvals = "..luaencode(debug.getconstants(v), {Prettify = true})) end
+                    ["Func"] = function() toclipboard("local constants = "..luaencode(debug.getconstants(v), {Prettify = true})) end
                 },
                                 {
                     ["Text"] = "Get Protos",
-                    ["Func"] = function() toclipboard("local upvals = "..luaencode(debug.getprotos(v), {Prettify = true})) end
+                    ["Func"] = function() toclipboard("local protos = "..luaencode(debug.getprotos(v), {Prettify = true})) end
                 },
                 {
                     ["Text"] = "Save bytecode",
