@@ -71,7 +71,7 @@ elseif mode == "Path" then
     if returninstance then
         local instance = returninstance() --gotta do it like that in case people people pass stuff like "a a" which causes the loadstring to return nil instead of a function
         for i,v in pairs(getgc()) do
-            if typeof(v) == "function" and not iscclosure(v) and not isourclosure(v) and debug.getinfo(v) and compareinstances(debug.getinfo(v).source, instance) then
+            if typeof(v) == "function" and not iscclosure(v) and not isourclosure(v) and debug.getinfo(v) and compareinstances(getfenv(v).script, instance) then --using getfenv because it returns an instance but i could loadstring the instance string returned by getinfo later on
             local newfuncframe = funcframe:Clone()
             newfuncframe.Parent = ui.Main.group.Functionscanner.Results
             newfuncframe.Name.Text = debug.getinfo(v).name or "Unnamed function"
