@@ -13,8 +13,8 @@ local Contextmenu = function(instance,content) --content structure example {{Tex
 			local contextmenu = baseframe:Clone()
 			local mouseloc = uip:GetMouseLocation()
 			contextmenu.Visible = true
-			contextmenu.Position = UDim2.new(0, mouseloc.X-instance.AbsolutePosition.X, 0, mouseloc.Y-instance.AbsolutePosition.Y-60)
-			contextmenu.Parent = instance
+			contextmenu.Parent = instance.Parent.Parent
+			contextmenu.Position = UDim2.new(0, mouseloc.X-instance.Parent.Parent.AbsolutePosition.X, 0, mouseloc.Y-instance.Parent.Parent.AbsolutePosition.Y-60)
 			contextmenu:WaitForChild("TextButton"):Destroy()--destroy the button that comems with the contextmenu
 			instance.ZIndex = 2
 			for i,v in pairs(content) do
