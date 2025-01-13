@@ -721,7 +721,6 @@ G2L["46"]["BackgroundTransparency"] = 1;
 
 -- StarterGui.Sulfoxide.Main.group.Credits
 G2L["47"] = Instance.new("ScrollingFrame", G2L["3a"]);
-G2L["47"]["Visible"] = false;
 G2L["47"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
 G2L["47"]["BorderSizePixel"] = 0;
 G2L["47"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
@@ -833,6 +832,7 @@ G2L["51"]["AutomaticSize"] = Enum.AutomaticSize.Y;
 
 -- StarterGui.Sulfoxide.Main.group.Functionscanner
 G2L["52"] = Instance.new("ScrollingFrame", G2L["3a"]);
+G2L["52"]["Visible"] = false;
 G2L["52"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
 G2L["52"]["BorderSizePixel"] = 0;
 G2L["52"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
