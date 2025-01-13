@@ -2899,7 +2899,6 @@ G2L["11f"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["11f"]["Position"] = UDim2.new(0.27864, 0, 0.37753, 0);
 G2L["11f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["11f"]["ScrollBarThickness"] = 6;
-G2L["11f"]["Rotation"] = 0.001;
 
 
 -- StarterGui.Sulfoxide.Controls.ContextMenu.UIListLayout
