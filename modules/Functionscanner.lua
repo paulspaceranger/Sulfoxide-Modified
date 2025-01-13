@@ -1,8 +1,6 @@
 local luaencode = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/modules/luaencode.lua"))()
 local contextmenu = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/controls/Contextmenu.lua"))()
-local funcframe = ui.Main.group.Functionscanner.Results.Func
-funcframe.Parent = nil
-local function searchfunctions(query, mode)
+local function searchfunctions(query, mode, funcframe)
 if mode == "Name" then
     for i,v in pairs(getgc()) do
         if typeof(v) == "function" and not iscclosure(v) and not isourclosure(v) and debug.getinfo(v) and ((debug.getinfo(v).name and string.find(string.lower(debug.getinfo(v).name), string.lower(query))) or not debug.getinfo(v).name and string.find(string.lower(query), "unnamed")) then
