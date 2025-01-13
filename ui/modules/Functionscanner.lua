@@ -1,6 +1,6 @@
 local searchfunctions = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/modules/Functionscanner.lua"))()
 local functionscannerpath = ui.Main.group.Functionscanner
-local funcframe = ui.Main.group.Functionscanner.Results.Func
+local funcframe = functionscannerpath.Results.Func
 funcframe.Parent = nil
 functionscannerpath.Searchbar.Search.FocusLost:Connect(function(enterpressed)
 if enterpressed then
@@ -8,8 +8,7 @@ if enterpressed then
         warn("query is too short!")
         return
     end
-    local mode = functionscannerpath.FiltersFrame.Name.ImageTransparency == 0 and "Name" or "Path"
-            print(functionscannerpath.FiltersFrame.Name.ImageTransparency == 0, functionscannerpath.FiltersFrame.Name.ImageTransparency, mode)
+    local mode = functionscannerpath.FiltersFrame:FindFirstChild("Name").ImageTransparency == 0 and "Name" or "Path"
     for i,v in pairs(functionscannerpath.Results:GetChildren()) do
         if v.Name == "Func" then
             v:Destroy()
