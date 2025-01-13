@@ -59,7 +59,14 @@ toclipboard(str:format(luatypeenc(getfenv(v).script), '"'..name..'"', "constants
                 },
                                 {
                     ["Text"] = "Get Protos",
-                    ["Func"] = function() toclipboard("local protos = "..luaencode(debug.getprotos(v), {Prettify = true})) end
+                    ["Func"] = function()
+                            local protos = debug.getprotos(v)
+                            local finaltable = {}
+                            for i,v in pairs(protos) do
+                                local name = debug.getinfo(v).name or "Unnamed Function"..i
+                                finaltable[name] = debug.getinfo(v)
+                            end
+                            toclipboard("local protos = "..luaencode(finaltable, {Prettify = true})) end
                 },
                 {
                     ["Text"] = "Save bytecode",
@@ -128,7 +135,15 @@ toclipboard(str:format(luatypeenc(getfenv(v).script), '"'..name..'"', "constants
                 },
                                 {
                     ["Text"] = "Get Protos",
-                    ["Func"] = function() toclipboard("local protos = "..luaencode(debug.getprotos(v), {Prettify = true})) end
+                    ["Func"] = function()
+                            local protos = debug.getprotos(v)
+                            local finaltable = {}
+                            for i,v in pairs(protos) do
+                                local name = debug.getinfo(v).name or "Unnamed Function"..i
+                                finaltable[name] = debug.getinfo(v)
+                            end
+                            toclipboard("local protos = "..luaencode(finaltable, {Prettify = true})) 
+                            end
                 },
                 {
                     ["Text"] = "Save bytecode",
