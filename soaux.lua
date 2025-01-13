@@ -30,7 +30,7 @@ end
 
 local function searchClosure(script, name, constants)
     for _i, v in pairs(getGc()) do
-    if type(v) == "function" and isLClosure(v) and not isXClosure(v)
+    if type(v) == "function" and isLClosure(v) and not isXClosure(v) then
         local parentScript = rawget(getfenv(v), "script") or debug.getinfo(v).source
         if
             (
