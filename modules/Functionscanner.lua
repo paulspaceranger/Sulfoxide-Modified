@@ -11,7 +11,7 @@ if mode == "Name" then
             newfuncframe.Protos.Text = tostring(#debug.getprotos(v))
             newfuncframe.Constants.Text = tostring(#debug.getconstants(v))
             newfuncframe.Upvalues.Text = tostring(#debug.getupvalues(v))
-            newfuncframe.ZIndex = 0
+            newfuncframe.ZIndex = -1
 
             local contextmenudata = {
                 {
@@ -46,7 +46,7 @@ local constants = ]]..luaencode(reducedconstants, {Prettify = true})..[[
 
 local func = soaux.searchClosure(%s, %s, %s)]]
 local name = debug.getinfo(v).name or "Unnamed function"
-toclipboard(str:format(luatypeenc(debug.getinfo(v).script), '"'..name..'"', "constants"))--again i'll change getfenv with getinfo because of people making their script's env nil
+toclipboard(str:format(luatypeenc(getfenv(v).script), '"'..name..'"', "constants"))--again i'll change getfenv with getinfo because of people making their script's env nil
                     end
                 },
                 {
@@ -115,7 +115,7 @@ local constants = ]]..luaencode(reducedconstants, {Prettify = true})..[[
 
 local func = soaux.searchClosure(%s, %s, %s)]]
 local name = debug.getinfo(v).name or "Unnamed function"
-toclipboard(str:format(luatypeenc(debug.getinfo(v).script), '"'..name..'"', "constants"))
+toclipboard(str:format(luatypeenc(getfenv(v).script), '"'..name..'"', "constants"))
                     end
                 },
                 {
