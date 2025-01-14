@@ -20,7 +20,7 @@ end]]
 local function codegenerator(remote)
 	local output = ""
 	if #remote.args ~= 0 then
-		output = output.."local args = "..tableenc(remote.args, {Prettify=true, IncludeNilValues=true}).."\n"
+		output = output.."local args = "..tableenc(remote.args, {Prettify=true, IncludeNilValues=true, _VisitedTables={[{}]=true).."\n"
 	end
 	if remote.method~="OnClientEvent" and remote.method~="OnClientInvoke" then
 		if remote.remote.Parent == nil then
