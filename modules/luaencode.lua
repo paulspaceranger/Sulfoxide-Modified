@@ -730,7 +730,7 @@ local function LuaEncode(inputTable, options)
 		end
 	end
 	if options.IncludeNilValues then --only use this if you're sure that the table that you're analyzing doesn't contain indexes that are different from numbers
-		for i = 1, #Value do	
+		for i = 1, #inputTable do	
 			iterate(i, inputTable[i])
 		end
 	else
