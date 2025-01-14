@@ -20,7 +20,7 @@ end]]
 local function codegenerator(remote)
 	local output = ""
 	if #remote.args ~= 0 then
-		output = output.."local args = "..tableenc(remote.args, {Prettify=true}).."\n"
+		output = output.."local args = "..tableenc(remote.args, {Prettify=true, IncludeNilValues=true}).."\n"
 	end
 	if remote.method~="OnClientEvent" and remote.method~="OnClientInvoke" then
 		if remote.remote.Parent == nil then
@@ -274,14 +274,14 @@ function addcall(remote)
 					newcall.Title.Text = "Call "..tostring(a)
 					newcall.Activated:Connect(function() setthreadidentity(3) if ui.Main.group.Remotespy.Visible == true then if lastselectedcall then lastselectedcall.BackgroundTransparency = 1 end newcall.BackgroundTransparency = 0.95; lastselectedcall = newcall; selected = remote end end)
 					if #remote.args == 0 then local new = argexample.Clone(argexample) new.Parent = newcall end
-					for i,v in pairs(b.args) do
+					for i = 1, #b.args do
 						local newarg = argexample.Clone(argexample)
 						newarg.Parent = newcall
-						newarg.Index.Text = typeenc(i)
+						newarg.Index.Text = tostring(i)
 						if typeof(v) == "table" then
-							newarg.Key.Text = tostring(v)
+							newarg.Key.Text = tostring(b.args[i])
 						else
-							newarg.Key.Text = typeenc(v)
+							newarg.Key.Text = typeenc(b.args[i])
 						end
 					end
 				end
