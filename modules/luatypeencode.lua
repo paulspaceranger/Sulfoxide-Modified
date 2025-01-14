@@ -252,7 +252,7 @@ local function LuaEncode(inputTable, options)
 	-- Internal stack level for depth checks and indenting
 	local StackLevel = options._StackLevel or 1
 	-- Set root as visited; cyclic detection
-	local VisitedTables = options._VisitedTables or {[inputTable] = true} -- [`visitedTable <table>`] = `isVisited <boolean>`
+	local VisitedTables = options._VisitedTables or (not inputTable == nil and {[inputTable] = true}) or "nil" -- [`visitedTable <table>`] = `isVisited <boolean>`
 
 	-- Stack overflow/output abuse etc; default StackLimit is 500
 	if StackLevel >= StackLimit then
