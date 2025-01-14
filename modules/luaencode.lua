@@ -227,7 +227,7 @@ local function LuaEncode(inputTable, options)
 		CheckType(options.FunctionsReturnRaw, "options.FunctionsReturnRaw", "boolean", "nil")
 		CheckType(options.UseInstancePaths, "options.UseInstancePaths", "boolean", "nil")
 		CheckType(options.SerializeMathHuge, "options.SerializeMathHuge", "boolean", "nil")
-
+		CheckType(options.IncludeNilValues, "options.IncludeNilValues", "boolean", "nil")
 		-- Internal options:
 		CheckType(options._StackLevel, "options._StackLevel", "number", "nil")
 		CheckType(options._VisitedTables, "options._StackLevel", "table", "nil")
@@ -244,6 +244,7 @@ local function LuaEncode(inputTable, options)
 	local FunctionsReturnRaw = (options.FunctionsReturnRaw == nil and false) or options.FunctionsReturnRaw
 	local UseInstancePaths = (options.UseInstancePaths == nil and true) or options.UseInstancePaths
 	local SerializeMathHuge = (options.SerializeMathHuge == nil and true) or options.SerializeMathHuge
+	local IncludeNilValues = (options.IncludeNilValues == nil and false) or options.IncludeNilValues
 
 	-- Internal options:
 
@@ -669,12 +670,14 @@ local function LuaEncode(inputTable, options)
 				return "newproxy()" -- newproxy() defaults to false (no mt)
 			end
 		end
+		TypeCases["nil"] = function()
+			return "nil"
+		end
 	end
 
 	-- Setup output tbl
 	local Output = ""
-
-	for Key, Value in next, inputTable do
+	local function iterate(Key,Value)
 		local KeyType = Type(Key)
 		local ValueType = Type(Value)
 
@@ -724,6 +727,15 @@ local function LuaEncode(inputTable, options)
 			end
 
 			Output = Output .. EntryOutput
+		end
+	end
+	if options.IncludeNilValues then --only use this if you're sure that the table that you're analyzing doesn't contain indexes that are different from numbers
+		for i = 1, #Value do	
+			iterate(i, inputTable[i])
+		end
+	else
+		for Key, Value in next, inputTable do
+			iterate(Key, Value)
 		end
 	end
 
