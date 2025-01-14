@@ -671,6 +671,9 @@ local function LuaEncode(inputTable, options)
 				return "newproxy()" -- newproxy() defaults to false (no mt)
 			end
 		end
+		TypeCases["nil"] = function(value)
+			return "nil"
+		end
 	end
 
 	-- Setup output tbl
