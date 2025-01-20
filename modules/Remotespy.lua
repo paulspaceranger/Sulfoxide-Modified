@@ -48,10 +48,10 @@ end
 local GetDebugId = game.GetDebugId
 local old; old = hookmetamethod(game, "__namecall", newcclosure(function(...)
     local self = ...
-    local initialargs = {select(2,...)}
+    local initialargs = {...}
     local args = createtablewithnil()
     for i = 2, select("#",...) do
-        args[i] = initialargs[i]
+        args[i-1] = initialargs[i]
     end
     local method = getnamecallmethod()
     local callingscript = getcallingscript()
@@ -89,7 +89,7 @@ for i,v in pairs(getinstances()) do
             end
             local initialargs = {...}
             local args = createtablewithnil()
-            for i = 2, select("#",...) do
+            for i = 1, select("#",...) do
                 args[i] = initialargs[i]
             end
             local remote = remoteclass.new(cloneref(v), method, args, nil, nil)
@@ -105,7 +105,7 @@ for i,v in pairs(getinstances()) do
             local method = "OnClientInvoke"
             local initialargs = {...}
             local args = createtablewithnil()
-            for i = 2, select("#",...) do
+            for i = 1, select("#",...) do
                 args[i] = initialargs[i]
             end
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method].args,args)) then
@@ -128,10 +128,10 @@ local fire = Instance.new("BindableEvent").Fire
 local invoke = Instance.new("BindableFunction").Invoke
 local old; old = hookfunction(fireserver,newcclosure(function(...)
             local self = ...
-            local initialargs = {select(2,...)}
+            local initialargs = {...}
             local args = createtablewithnil()
             for i = 2, select("#",...) do
-                args[i] = initialargs[i]
+                args[i-1] = initialargs[i]
             end
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
@@ -151,10 +151,10 @@ local old; old = hookfunction(fireserver,newcclosure(function(...)
         end))
 local old; old = hookfunction(invokeserver,newcclosure(function(...)
             local self = ...
-            local initialargs = {select(2,...)}
+            local initialargs = {...}
             local args = createtablewithnil()
             for i = 2, select("#",...) do
-                args[i] = initialargs[i]
+                args[i-1] = initialargs[i]
             end
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
@@ -177,10 +177,10 @@ local old; old = hookfunction(invokeserver,newcclosure(function(...)
         end))
 local old; old = hookfunction(fire,newcclosure(function(...)
             local self = ...
-            local initialargs = {select(2,...)}
+            local initialargs = {...}
             local args = createtablewithnil()
             for i = 2, select("#",...) do
-                args[i] = initialargs[i]
+                args[i-1] = initialargs[i]
             end
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
@@ -200,10 +200,10 @@ local old; old = hookfunction(fire,newcclosure(function(...)
         end))
 local old; old = hookfunction(invoke,newcclosure(function(...)
             local self = ...
-            local initialargs = {select(2,...)}
+            local initialargs = {...}
             local args = createtablewithnil()
             for i = 2, select("#",...) do
-                args[i] = initialargs[i]
+                args[i-1] = initialargs[i]
             end
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
@@ -228,7 +228,7 @@ if typeof(v) == "Instance" then
             local method = "OnClientEvent"
             local initialargs = {...}
             local args = createtablewithnil()
-            for i = 2, select("#",...) do
+            for i = 1, select("#",...) do
                 args[i] = initialargs[i]
             end
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method].args,args)) then
@@ -251,7 +251,7 @@ if typeof(v) == "Instance" then
             local method = "OnClientInvoke"
             local initialargs = {...}
             local args = createtablewithnil()
-            for i = 2, select("#",...) do
+            for i = 1, select("#",...) do
                 args[i] = initialargs[i]
             end
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method].args,args)) then
