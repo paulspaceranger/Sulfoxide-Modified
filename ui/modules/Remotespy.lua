@@ -20,7 +20,7 @@ end]]
 local function codegenerator(remote)
 	local output = ""
 	if #remote.args ~= 0 then
-		output = output.."local args = "..tableenc(remote.args, {Prettify=true, IncludeNilValues=true, _VisitedTables={[{}]=true}}).."\n"
+		output = output.."local args = "..tableenc(remote.args, {Prettify=true, Pairs=getrawmetatable(remote.args).__pairs}).."\n"
 	end
 	if remote.method~="OnClientEvent" and remote.method~="OnClientInvoke" then
 		if remote.remote.Parent == nil then
@@ -221,7 +221,7 @@ ui.Main.group.Remotespy.Buttons.Viewfuncinfo.Activated:Connect(function()
 			["upvalues"] = debug.getupvalues(func),
 			["constants"] = result
 		}
-		local code = "local functioninfo = "..tableenc(functioninfo,{Prettify=true})
+		local code = "local functioninfo = "..(functioninfo,{Prettify=true})
 		rendercode(code)
 	end
 end)
