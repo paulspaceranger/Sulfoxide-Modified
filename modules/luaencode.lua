@@ -734,7 +734,6 @@ local function LuaEncode(inputTable, options)
 		for Key, Value in Pairs(inputTable) do
 			iterate(Key, Value)
 		end
-	end
 
 	Output = "{" .. Output .. "}"
 	return Output
