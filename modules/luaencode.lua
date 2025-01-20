@@ -247,7 +247,7 @@ local function LuaEncode(inputTable, options)
 	local UseInstancePaths = (options.UseInstancePaths == nil and true) or options.UseInstancePaths
 	local SerializeMathHuge = (options.SerializeMathHuge == nil and true) or options.SerializeMathHuge
 	local IncludeNilValues = (options.IncludeNilValues == nil and false) or options.IncludeNilValues
-	local Pairs = (options.CustomPairs == nil and pairs) or options.CustomPairs
+	local Pairs = (options.Pairs == nil and pairs) or options.Pairs
 	-- Internal options:
 
 	-- Internal stack level for depth checks and indenting
@@ -725,15 +725,16 @@ local function LuaEncode(inputTable, options)
 				end
 			else
 				-- If there isn't another value after the current index, add ending formatting
-				EntryOutput = EntryOutput .. NewEntryString .. EndingIndentString
+				EntryOutput = EntryOutput .. NewEntryString .. EndingIndeantString
 			end
 
 			Output = Output .. EntryOutput
 		end
 	end
-		for Key, Value in options.Pairs(inputTable) do
+		for Key, Value in Pairs(inputTable) do
 			iterate(Key, Value)
 		end
+	end
 
 	Output = "{" .. Output .. "}"
 	return Output
