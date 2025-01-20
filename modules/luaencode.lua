@@ -718,7 +718,7 @@ local function LuaEncode(inputTable, options)
 			end
 
 			-- If there isn't another value after the current index, add ending formatting
-			if next(inputTable, Key) then
+			if Pairs(inputTable)(inputTable, Key) then --getting the next returned by pairs
 				-- Yes.. The nesting here is deliberate
 				if ValueWasEncoded then
 					EntryOutput = EntryOutput .. ","
