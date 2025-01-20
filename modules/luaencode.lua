@@ -725,7 +725,7 @@ local function LuaEncode(inputTable, options)
 				end
 			else
 				-- If there isn't another value after the current index, add ending formatting
-				EntryOutput = EntryOutput .. NewEntryString .. EndingIndeantString
+				EntryOutput = EntryOutput .. NewEntryString .. EndingIndentString
 			end
 
 			Output = Output .. EntryOutput
