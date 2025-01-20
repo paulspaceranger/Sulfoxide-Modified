@@ -22,6 +22,9 @@ local function createtablewithnil()
                 end
             end
         end,
+        __len = function()
+            return #storage
+        end
     })
     return list
 end
