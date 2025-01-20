@@ -221,7 +221,7 @@ ui.Main.group.Remotespy.Buttons.Viewfuncinfo.Activated:Connect(function()
 			["upvalues"] = debug.getupvalues(func),
 			["constants"] = result
 		}
-		local code = "local functioninfo = "..(functioninfo,{Prettify=true})
+		local code = "local functioninfo = "..tableenc(functioninfo,{Prettify=true})
 		rendercode(code)
 	end
 end)
