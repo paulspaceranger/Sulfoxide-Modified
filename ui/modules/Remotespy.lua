@@ -305,7 +305,7 @@ function addcall(remote)
 			newcall.Title.Text = "Call "..remotelog.Frame.calls.Text
 			newcall.Activated:Connect(function() setthreadidentity(3) if ui.Main.group.Remotespy.Visible == true then if lastselectedcall then lastselectedcall.BackgroundTransparency = 1 end newcall.BackgroundTransparency = 0.95; lastselectedcall = newcall; selected = remote end end) 
 			if #remote.args == 0 then local new = argexample:Clone() new.Parent = newcall end
-			for i,v in pairs(remote.args) do
+			for i,v in getrawmetatable(remote.args).__pairs(remote.args) do
 				local newarg = argexample.Clone(argexample)
 				newarg.Parent = newcall
 				newarg.Index.Text = typeenc(i)
