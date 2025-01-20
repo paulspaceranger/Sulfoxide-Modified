@@ -209,6 +209,8 @@ LuaEncode(inputTable: {[any]: any}, options: {[string]:any}): string
     numbers should be serialized with "math.huge". (uses the `math` import, as opposed to just
     a direct data type) If false, "`1/0`" or "`-1/0`" will be serialized, which is supported
     on all target versions.
+	
+    Pairs <function?:function> | Allows you to iterate in the table with a custom pairs function
 
 ]]
 
@@ -227,7 +229,7 @@ local function LuaEncode(inputTable, options)
 		CheckType(options.FunctionsReturnRaw, "options.FunctionsReturnRaw", "boolean", "nil")
 		CheckType(options.UseInstancePaths, "options.UseInstancePaths", "boolean", "nil")
 		CheckType(options.SerializeMathHuge, "options.SerializeMathHuge", "boolean", "nil")
-		CheckType(options.IncludeNilValues, "options.IncludeNilValues", "boolean", "nil")
+		CheckType(options.Pairs, "options.Pairs", "function", "nil")
 		-- Internal options:
 		CheckType(options._StackLevel, "options._StackLevel", "number", "nil")
 		CheckType(options._VisitedTables, "options._StackLevel", "table", "nil")
@@ -245,7 +247,7 @@ local function LuaEncode(inputTable, options)
 	local UseInstancePaths = (options.UseInstancePaths == nil and true) or options.UseInstancePaths
 	local SerializeMathHuge = (options.SerializeMathHuge == nil and true) or options.SerializeMathHuge
 	local IncludeNilValues = (options.IncludeNilValues == nil and false) or options.IncludeNilValues
-
+	local Pairs = (options.CustomPairs == nil and pairs) or options.CustomPairs
 	-- Internal options:
 
 	-- Internal stack level for depth checks and indenting
@@ -729,12 +731,7 @@ local function LuaEncode(inputTable, options)
 			Output = Output .. EntryOutput
 		end
 	end
-	if options.IncludeNilValues then --only use this if you're sure that the table that you're analyzing doesn't contain indexes that are different from numbers
-		for i = 1, #inputTable do	
-			iterate(i, inputTable[i])
-		end
-	else
-		for Key, Value in next, inputTable do
+		for Key, Value in options.Pairs(inputTable) do
 			iterate(Key, Value)
 		end
 	end
