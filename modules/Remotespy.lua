@@ -1,4 +1,30 @@
 local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/modules/Remotespy.lua"))()
+local randomstr = crypt.generatebytes(25) --making sure games can't mess with this system
+local function createtablewithnil()
+    local list = {}
+    local storage = {}
+    setrawmetatable(list, {
+        __index = storage,
+        __newindex = function(t, k, v)
+            if v == nil then
+                storage[k] = randomstr -- represting nil with a random string
+            else
+                storage[k] = v
+            end
+        end,
+        __pairs = function() --will be needed for luaencode
+            return function(_, k)
+                local next_key, next_value = next(storage, k)
+                if next_value == randomstr then
+                    return next_key, nil
+                else
+                    return next_key, next_value
+                end
+            end
+        end,
+    })
+    return list
+end
 local function comparetables(t1,t2)
     local t1string = customrequire(ui.LuaEncode)(t1)
     local t2string = customrequire(ui.LuaEncode)(t2)
@@ -22,7 +48,11 @@ end
 local GetDebugId = game.GetDebugId
 local old; old = hookmetamethod(game, "__namecall", newcclosure(function(...)
     local self = ...
-    local args = {select(2,...)}
+    local initialargs = {select(2,...)}
+    local args = createtablewithnil()
+    for i = 2, select("#",...) do
+        args[i] = initialargs[i]
+    end
     local method = getnamecallmethod()
     local callingscript = getcallingscript()
     local iscaller = checkcaller()
@@ -57,7 +87,12 @@ for i,v in pairs(getinstances()) do
                 then
                     return
             end
-            local remote = remoteclass.new(cloneref(v), method, {...}, nil, nil)
+            local initialargs = {...}
+            local args = createtablewithnil()
+            for i = 2, select("#",...) do
+                args[i] = initialargs[i]
+            end
+            local remote = remoteclass.new(cloneref(v), method, args, nil, nil)
             task.spawn(addcall,remote)
         end)
     elseif v:IsA("RemoteFunction") then
@@ -68,13 +103,18 @@ for i,v in pairs(getinstances()) do
             setthreadidentity(8)
             local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/modules/Remotespy.lua"))()--upvalue exceeded fix
             local method = "OnClientInvoke"
+            local initialargs = {...}
+            local args = createtablewithnil()
+            for i = 2, select("#",...) do
+                args[i] = initialargs[i]
+            end
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method].args,args)) then
                 return 
             elseif getgenv().loggedremotes.ignoredremotes["All"][(GetDebugId(v))..method] or (getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(v))..method].args,args)) or getgenv().iscaller and iscaller
                 then
                     return
             end
-            local remote = remoteclass.new(cloneref(v), method, {...}, nil, nil)
+            local remote = remoteclass.new(cloneref(v), method, args, nil, nil)
             task.spawn(addcall,remote)
             setthreadidentity(oldid)
             return old(...)
@@ -88,7 +128,11 @@ local fire = Instance.new("BindableEvent").Fire
 local invoke = Instance.new("BindableFunction").Invoke
 local old; old = hookfunction(fireserver,newcclosure(function(...)
             local self = ...
-            local args = {select(2,...)}
+            local initialargs = {select(2,...)}
+            local args = createtablewithnil()
+            for i = 2, select("#",...) do
+                args[i] = initialargs[i]
+            end
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
             local method = "FireServer"
@@ -107,7 +151,11 @@ local old; old = hookfunction(fireserver,newcclosure(function(...)
         end))
 local old; old = hookfunction(invokeserver,newcclosure(function(...)
             local self = ...
-            local args = {select(2,...)}
+            local initialargs = {select(2,...)}
+            local args = createtablewithnil()
+            for i = 2, select("#",...) do
+                args[i] = initialargs[i]
+            end
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
             local method = "InvokeServer"
@@ -129,7 +177,11 @@ local old; old = hookfunction(invokeserver,newcclosure(function(...)
         end))
 local old; old = hookfunction(fire,newcclosure(function(...)
             local self = ...
-            local args = {select(2,...)}
+            local initialargs = {select(2,...)}
+            local args = createtablewithnil()
+            for i = 2, select("#",...) do
+                args[i] = initialargs[i]
+            end
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
             local method = "Fire"
@@ -148,7 +200,11 @@ local old; old = hookfunction(fire,newcclosure(function(...)
         end))
 local old; old = hookfunction(invoke,newcclosure(function(...)
             local self = ...
-            local args = {select(2,...)}
+            local initialargs = {select(2,...)}
+            local args = createtablewithnil()
+            for i = 2, select("#",...) do
+                args[i] = initialargs[i]
+            end
             local callingscript = getcallingscript()
             local iscaller = checkcaller()
             local method = "Invoke"
@@ -170,13 +226,18 @@ if typeof(v) == "Instance" then
     if v:IsA("BaseRemoteEvent") then
         v.OnClientEvent:Connect(function(...)
             local method = "OnClientEvent"
+            local initialargs = {...}
+            local args = createtablewithnil()
+            for i = 2, select("#",...) do
+                args[i] = initialargs[i]
+            end
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method].args,args)) then
                 return 
             elseif getgenv().loggedremotes.ignoredremotes["All"][(GetDebugId(v))..method] or (getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(v))..method].args,args)) or getgenv().iscaller and iscaller
                 then
                     return
             end
-            local remote = remoteclass.new(cloneref(v), method, {...}, nil, function() end)
+            local remote = remoteclass.new(cloneref(v), method, args, nil, function() end)
             addcall(remote)
         end)
     elseif v:IsA("RemoteFunction") then
@@ -188,13 +249,18 @@ if typeof(v) == "Instance" then
             setthreadidentity(8)
             local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/modules/Remotespy.lua"))()--upvalue exceeded fix
             local method = "OnClientInvoke"
+            local initialargs = {...}
+            local args = createtablewithnil()
+            for i = 2, select("#",...) do
+                args[i] = initialargs[i]
+            end
             if getgenv().loggedremotes.blockedremotes["All"][GetDebugId(v)..method] or (getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.blockedremotes["Args"][(GetDebugId(v))..method].args,args)) then
                 return 
             elseif getgenv().loggedremotes.ignoredremotes["All"][(GetDebugId(v))..method] or (getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(v))..method] and comparetables(getgenv().loggedremotes.ignoredremotes["Args"][(GetDebugId(v))..method].args,args)) or getgenv().iscaller and iscaller
                 then
                     return
             end
-            local remote = remoteclass.new(cloneref(v), method, {...}, nil, function() end)
+            local remote = remoteclass.new(cloneref(v), method, args, nil, function() end)
             task.spawn(addcall,remote)
             setthreadidentity(oldid)
             return old(...)
