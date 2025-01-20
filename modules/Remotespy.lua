@@ -1,10 +1,16 @@
 local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/modules/Remotespy.lua"))()
 local randomstr = crypt.generatebytes(25) --making sure games can't mess with this system
 local function createtablewithnil()
-    local list = {}
+    local tbl = {}
     local storage = {}
-    setrawmetatable(list, {
-        __index = storage,
+    setrawmetatable(tbl, {
+        __index = function(t, k)
+            if storage[k] == randomstr then
+                return nil
+            else
+                return storage[k]
+            end
+        end,
         __newindex = function(t, k, v)
             if v == nil then
                 storage[k] = randomstr -- represting nil with a random string
@@ -26,7 +32,7 @@ local function createtablewithnil()
             return #storage
         end
     })
-    return list
+    return tbl
 end
 local function comparetables(t1,t2)
     local t1string = customrequire(ui.LuaEncode)(t1)
