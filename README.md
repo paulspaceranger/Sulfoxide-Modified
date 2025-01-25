@@ -16,4 +16,14 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/r
     * Generate calling function info (copy,view)
     * Clear logs, blocks and exclusions
     * Ignore calls called by the executor
+    * Log nil args
+* Function scanner
+    * Filter functions by name and path
+    * Generate code
+    * Save bytecode (only in synz rewrite for now)
+    * Decompile (only in synz)
+    * Get upvalues
+    * Get constants
+    * Get protos
+    * Get info
 More features to come very soon!
