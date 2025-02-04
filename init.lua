@@ -7,7 +7,7 @@ getgenv().import = function(module)
     end
 end
 getgenv().settings = { --will add more stuff here
-    runmode = "file"
+    runmode = "web"
 }
 getgenv().ui, getgenv().customrequire = import("ui/ui.lua")
 import("modules/Remotespy.lua")
