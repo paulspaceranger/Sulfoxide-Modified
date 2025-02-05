@@ -702,7 +702,6 @@ G2L["44"]["BackgroundTransparency"] = 1;
 
 -- StarterGui.Sulfoxide.Main.group.Credits
 G2L["45"] = Instance.new("ScrollingFrame", G2L["38"]);
-G2L["45"]["Visible"] = false;
 G2L["45"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
 G2L["45"]["BorderSizePixel"] = 0;
 G2L["45"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
@@ -1208,6 +1207,7 @@ G2L["74"]["Position"] = UDim2.new(0.59612, 0, 0.11594, 0);
 
 -- StarterGui.Sulfoxide.Main.group.Remotespy
 G2L["75"] = Instance.new("ScrollingFrame", G2L["38"]);
+G2L["75"]["Visible"] = false;
 G2L["75"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
 G2L["75"]["BorderSizePixel"] = 0;
 G2L["75"]["CanvasSize"] = UDim2.new(0, 0, 0, 66);
@@ -1217,6 +1217,7 @@ G2L["75"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["75"]["Name"] = [[Remotespy]];
 G2L["75"]["ScrollBarImageTransparency"] = 0.95;
 G2L["75"]["BottomImage"] = [[rbxassetid://6889812791]];
+G2L["75"]["ClipsDescendants"] = false;
 G2L["75"]["Size"] = UDim2.new(1, 0, 1, 0);
 G2L["75"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["75"]["ScrollBarThickness"] = 3;
@@ -1232,7 +1233,7 @@ G2L["76"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
 G2L["76"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["76"]["Name"] = [[Logs]];
 G2L["76"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
-G2L["76"]["Size"] = UDim2.new(0, 174, 0, 294);
+G2L["76"]["Size"] = UDim2.new(0, 174, 0, 291);
 G2L["76"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["76"]["Position"] = UDim2.new(0, 0, 0.1427, 0);
 G2L["76"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
@@ -2175,41 +2176,41 @@ G2L["d2"] = Instance.new("UIStroke", G2L["d0"]);
 
 
 
+-- StarterGui.Sulfoxide.Controls.ContextMenu.UICorner
+G2L["d3"] = Instance.new("UICorner", G2L["d0"]);
+G2L["d3"]["CornerRadius"] = UDim.new(0, 4);
+
+
 -- StarterGui.Sulfoxide.Controls.ContextMenu.TextButton
-G2L["d3"] = Instance.new("TextButton", G2L["d0"]);
-G2L["d3"]["BorderSizePixel"] = 0;
-G2L["d3"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["d3"]["TextSize"] = 14;
-G2L["d3"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["d3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["d3"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-G2L["d3"]["AutomaticSize"] = Enum.AutomaticSize.X;
-G2L["d3"]["Size"] = UDim2.new(0, 122, 0, 25);
-G2L["d3"]["BackgroundTransparency"] = 1;
-G2L["d3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d3"]["Text"] = [[Decompile]];
+G2L["d4"] = Instance.new("TextButton", G2L["d0"]);
+G2L["d4"]["BorderSizePixel"] = 0;
+G2L["d4"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["d4"]["TextSize"] = 14;
+G2L["d4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d4"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["d4"]["AutomaticSize"] = Enum.AutomaticSize.X;
+G2L["d4"]["Size"] = UDim2.new(0, 122, 0, 32);
+G2L["d4"]["BackgroundTransparency"] = 1;
+G2L["d4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["d4"]["Text"] = [[Decompile]];
 
 
 -- StarterGui.Sulfoxide.Controls.ContextMenu.TextButton.ImageLabel
-G2L["d4"] = Instance.new("ImageLabel", G2L["d3"]);
-G2L["d4"]["BorderSizePixel"] = 0;
-G2L["d4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["d4"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
-G2L["d4"]["Size"] = UDim2.new(0, 20, 0, 20);
-G2L["d4"]["Visible"] = false;
-G2L["d4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d4"]["Position"] = UDim2.new(-0.23, 0, 0.065, 0);
+G2L["d5"] = Instance.new("ImageLabel", G2L["d4"]);
+G2L["d5"]["BorderSizePixel"] = 0;
+G2L["d5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d5"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+G2L["d5"]["Size"] = UDim2.new(0, 20, 0, 20);
+G2L["d5"]["Visible"] = false;
+G2L["d5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["d5"]["Position"] = UDim2.new(-0.23, 0, 0.065, 0);
 
 
 -- StarterGui.Sulfoxide.Controls.ContextMenu.TextButton.UIPadding
-G2L["d5"] = Instance.new("UIPadding", G2L["d3"]);
-G2L["d5"]["PaddingRight"] = UDim.new(0, 5);
-G2L["d5"]["PaddingLeft"] = UDim.new(0, 28);
-
-
--- StarterGui.Sulfoxide.Controls.ContextMenu.UICorner
-G2L["d6"] = Instance.new("UICorner", G2L["d0"]);
-G2L["d6"]["CornerRadius"] = UDim.new(0, 4);
+G2L["d6"] = Instance.new("UIPadding", G2L["d4"]);
+G2L["d6"]["PaddingRight"] = UDim.new(0, 5);
+G2L["d6"]["PaddingLeft"] = UDim.new(0, 28);
 
 
 -- Require G2L wrapper

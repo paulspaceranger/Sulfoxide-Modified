@@ -19,6 +19,7 @@ local Contextmenu = function(instance, parent, content) --content structure exam
 					button.ImageLabel.Image = v["Image"]
 					button.ImageLabel.Visible = true
 				end
+			contextmenu.Size = UDim2.new(0,122,0,math.max(130, #content*32/2))
 			button.Activated:Connect(v["Func"])
 			end
 			local connection;connection = uip.InputEnded:Connect(function(input)
