@@ -2158,7 +2158,6 @@ G2L["d0"]["ElasticBehavior"] = Enum.ElasticBehavior.Never;
 G2L["d0"]["BackgroundColor3"] = Color3.fromRGB(41, 41, 41);
 G2L["d0"]["Name"] = [[ContextMenu]];
 G2L["d0"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
-G2L["d0"]["AutomaticSize"] = Enum.AutomaticSize.X;
 G2L["d0"]["Size"] = UDim2.new(0, 122, 0, 130);
 G2L["d0"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["d0"]["Position"] = UDim2.new(0.11715, 0, 0.40124, 0);
