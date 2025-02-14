@@ -147,9 +147,8 @@ ui.Main.group.Remotespy.Buttons.Autoblock.Activated:Connect(function()
 		end
 	end
 end)
-function addcall(remote)
-	local remoteinstance = remote.remote
-	local remotecallfunctions = {--format is made for contextmenu
+local function getremotecallfuncs(remote)
+		local remotecallfunctions = {--format is made for contextmenu
 		{
 			Text = "Get source script",
 			Func = function()
@@ -255,6 +254,10 @@ function addcall(remote)
 			end
 		},
 	}
+	return remotecallfunctions
+end
+function addcall(remote)
+	local remoteinstance = remote.remote
 	if not getgenv().loggedremotes[(getdebugid(remoteinstance))..remote.method] then
 		local newlog = logexample.Clone(logexample)
 		getgenv().loggedremotes[(getdebugid(remoteinstance))..remote.method] = {}
@@ -284,7 +287,7 @@ function addcall(remote)
 					end
 				end
 				for a,b in pairs(getgenv().loggedremotes[(getdebugid(remoteinstance))..remote.method]) do
-					if a ~= "lastcall" then --lastcall value is a number
+					local remotecallfunctions = getremotecallfuncs(b)
 					local newcall = callexample.Clone(callexample)
 					newcall.Parent = ui.Main.group.Remotespy.Args
 					newcall.Title.Text = "Call "..tostring(a)
@@ -293,14 +296,14 @@ function addcall(remote)
 							Text = "Clear call",
 							Func = function()
 								newcall:Destroy()
-								getgenv().loggedremotes[(getdebugid(remoteinstance))..remote.method][a] = nil
+								getgenv().loggedremotes[(getdebugid(b.remote))..remote.method][a] = nil
 								newlog.Frame.calls.Text = tostring(tonumber(newlog.Frame.calls.Text)-1)
 							end
 						})
 					end
 					contextmenu(newcall, newcall.Parent.Parent, remotecallfunctions)
-					if #remote.args == 0 then local new = argexample.Clone(argexample) new.Parent = newcall end
-					for i,v in getrawmetatable(remote.args).__pairs(remote.args) do
+					if #b.args == 0 then local new = argexample.Clone(argexample) new.Parent = newcall end
+					for i,v in getrawmetatable(b.args).__pairs(b.args) do
 						local newarg = argexample.Clone(argexample)
 						newarg.Parent = newcall
 						newarg.Index.Text = tostring(i)
@@ -312,7 +315,6 @@ function addcall(remote)
 					end
 				end
 				selectedremote = remote
-			end
 			end
 		end)
 		contextmenu(newlog, newlog.Parent.Parent, {
@@ -373,6 +375,7 @@ function addcall(remote)
 		getgenv().loggedremotes[(getdebugid(remoteinstance))..remote.method][newcalls] = remote
 		if selectedremote and compareinstances(remoteinstance,selectedremote.remote) and rawequal(remote.method, selectedremote.method)	then --check if the called remote is the same as the selected remote
 			local newcall = callexample.Clone(callexample)
+			local remotecallfunction = getremotecallfuncs(remote)
 			newcall.Parent = ui.Main.group.Remotespy.Args
 			newcall.Title.Text = "Call "..remotelog.Frame.calls.Text
 			table.insert(remotecallfunctions, {
