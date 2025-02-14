@@ -289,8 +289,8 @@ function addcall(remote)
 				for a,b in pairs(getgenv().loggedremotes[(getdebugid(remoteinstance))..remote.method]) do
 					if a ~= "lastcall" then --make sure that we're not indexing lastcall
 						local remotecallfunctions = getremotecallfuncs(b)
-						newcall.Parent = ui.Main.group.Remotespy.Args
 						local newcall = callexample.Clone(callexample)
+						newcall.Parent = ui.Main.group.Remotespy.Args
 						newcall.Title.Text = "Call "..tostring(a)
 						if not #remotecallfunctions == 10 then
 							table.insert(remotecallfunctions, {
