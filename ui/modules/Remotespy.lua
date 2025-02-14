@@ -377,7 +377,7 @@ function addcall(remote)
 		getgenv().loggedremotes[(getdebugid(remoteinstance))..remote.method][newcalls] = remote
 		if selectedremote and compareinstances(remoteinstance,selectedremote.remote) and rawequal(remote.method, selectedremote.method)	then --check if the called remote is the same as the selected remote
 			local newcall = callexample.Clone(callexample)
-			local remotecallfunction = getremotecallfuncs(remote)
+			local remotecallfunctions = getremotecallfuncs(remote)
 			newcall.Parent = ui.Main.group.Remotespy.Args
 			newcall.Title.Text = "Call "..remotelog.Frame.calls.Text
 			table.insert(remotecallfunctions, {
