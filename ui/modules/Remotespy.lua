@@ -287,30 +287,32 @@ function addcall(remote)
 					end
 				end
 				for a,b in pairs(getgenv().loggedremotes[(getdebugid(remoteinstance))..remote.method]) do
-					local remotecallfunctions = getremotecallfuncs(b)
-					local newcall = callexample.Clone(callexample)
-					newcall.Parent = ui.Main.group.Remotespy.Args
-					newcall.Title.Text = "Call "..tostring(a)
-					if not #remotecallfunctions == 10 then
-						table.insert(remotecallfunctions, {
-							Text = "Clear call",
-							Func = function()
-								newcall:Destroy()
-								getgenv().loggedremotes[(getdebugid(b.remote))..remote.method][a] = nil
-								newlog.Frame.calls.Text = tostring(tonumber(newlog.Frame.calls.Text)-1)
+					if a ~= "lastcall" then --make sure that we're not indexing lastcall
+						local remotecallfunctions = getremotecallfuncs(b)
+						newcall.Parent = ui.Main.group.Remotespy.Args
+						local newcall = callexample.Clone(callexample)
+						newcall.Title.Text = "Call "..tostring(a)
+						if not #remotecallfunctions == 10 then
+							table.insert(remotecallfunctions, {
+								Text = "Clear call",
+								Func = function()
+									newcall:Destroy()
+									getgenv().loggedremotes[(getdebugid(b.remote))..remote.method][a] = nil
+									newlog.Frame.calls.Text = tostring(tonumber(newlog.Frame.calls.Text)-1)
+								end
+							})
+						end
+						contextmenu(newcall, newcall.Parent.Parent, remotecallfunctions)
+						if #b.args == 0 then local new = argexample.Clone(argexample) new.Parent = newcall end
+						for i,v in getrawmetatable(b.args).__pairs(b.args) do
+							local newarg = argexample.Clone(argexample)
+							newarg.Parent = newcall
+							newarg.Index.Text = tostring(i)
+							if typeof(v) == "table" then
+								newarg.Key.Text = tostring(v)
+							else
+								newarg.Key.Text = typeenc(v)
 							end
-						})
-					end
-					contextmenu(newcall, newcall.Parent.Parent, remotecallfunctions)
-					if #b.args == 0 then local new = argexample.Clone(argexample) new.Parent = newcall end
-					for i,v in getrawmetatable(b.args).__pairs(b.args) do
-						local newarg = argexample.Clone(argexample)
-						newarg.Parent = newcall
-						newarg.Index.Text = tostring(i)
-						if typeof(v) == "table" then
-							newarg.Key.Text = tostring(v)
-						else
-							newarg.Key.Text = typeenc(v)
 						end
 					end
 				end
