@@ -389,7 +389,7 @@ local function LuaEncode(inputTable, options)
 			end
 
 			-- If all else, force key func to return nil; can't handle a func val..
-			return "function() return end"
+			return "function() return end --Name: "..debug.getinfo(value).name
 		end
 
 		---------- ROBLOX CUSTOM DATATYPES BELOW ----------
