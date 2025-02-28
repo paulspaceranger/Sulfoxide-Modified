@@ -1,3 +1,4 @@
+setthreadidentity(8)
 local typeenc = import("modules/luatypeencode.lua")
 local tableenc = import("modules/luaencode.lua")
 local contextmenu = import("ui/controls/Contextmenu.lua")
