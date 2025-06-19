@@ -98,7 +98,7 @@ end
     return old(...)
 end))
 for i,v in pairs(getinstances()) do
-    if v:IsA("BaseRemoteEvent") then
+    if v:IsA("RemoteEvent") then
         --[[hooksignal(v.OnClientEvent,function(info,...)
             print("hooksignal works")
             local remote = remoteclass.new(v, "OnClientEvent", {...}, nil, nil)
@@ -256,7 +256,7 @@ local old; old = hookfunction(invoke,newcclosure(function(...)
         end))
 game.DescendantAdded:Connect(function(v)
 if typeof(v) == "Instance" then
-    if v:IsA("BaseRemoteEvent") then
+    if v:IsA("RemoteEvent") then
         v.OnClientEvent:Connect(function(...)
             local method = "OnClientEvent"
             local initialargs = {...}
