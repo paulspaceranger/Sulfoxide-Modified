@@ -128,7 +128,7 @@ for i,v in pairs(getinstances()) do
         local _,old = pcall(hookfunction,getcallbackvalue(v, "OnClientInvoke"), newcclosure(function(...)
             local oldid = getthreadidentity()
             setthreadidentity(8)
-            local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/modules/Remotespy.lua"))()--upvalue exceeded fix
+            local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/paulspaceranger/Sulfoxide-Modified/refs/heads/main/ui/modules/Remotespy.lua"))()--upvalue exceeded fix
             local method = "OnClientInvoke"
             local caller = checkcaller()
             local returnedvalue = old(...)
@@ -281,7 +281,7 @@ if typeof(v) == "Instance" then
         local _,old = pcall(hookfunction,getcallbackvalue(v, "OnClientInvoke"), newcclosure(function(...)
             local oldid = getthreadidentity()
             setthreadidentity(8)
-            local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Void2391/Sulfoxide/refs/heads/main/ui/modules/Remotespy.lua"))()--upvalue exceeded fix
+            local addcall = loadstring(game:HttpGet("https://raw.githubusercontent.com/paulspaceranger/Sulfoxide-Modified/refs/heads/main/ui/modules/Remotespy.lua"))()--upvalue exceeded fix
             local method = "OnClientInvoke"
             local initialargs = {...}
             local caller = checkcaller()
