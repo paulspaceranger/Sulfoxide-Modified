@@ -1,3 +1,19 @@
+local function generateRandomString(length)
+    local charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    local result = ""
+    for i = 1, length do
+        local randIndex = math.random(1, #charset)
+        result = result .. charset:sub(randIndex, randIndex)
+    end
+    return result
+end
+
+crypt = {}
+
+crypt.generatebytes = crypt.generatebytes or function(length)
+    return generateRandomString(length)
+end
+
 local addcall = import("ui/modules/Remotespy.lua")
 local luaencode = import("modules/luaencode.lua")
 local randomstr = crypt.generatebytes(25) --making sure games can't mess with this system
